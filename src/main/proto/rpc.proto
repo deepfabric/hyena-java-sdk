@@ -1,0 +1,68 @@
+syntax = "proto2";
+
+option java_multiple_files = true;
+option java_package = "io.aicloud.sdk.hyena.pb";
+option java_outer_classname = "HyenaRPCPB";
+option objc_class_prefix = "HLW";
+
+package rpc;
+
+// MsgType msg type
+enum MsgType {
+    MsgSearchReq = 0;
+    MsgSearchRsp = 1;
+    MsgInsertReq = 2;
+    MsgInsertRsp = 3;
+    MsgUpdateReq = 4;
+    MsgUpdateRsp = 5;
+    MsgErrorRsp  = 6;
+    MsgAdmin     = 7;
+}
+
+// SearchRequest search request
+message SearchRequest {
+    optional bytes  id      = 1;
+    optional uint64 db      = 2;
+    repeated float  xq      = 3;
+    optional int64  offset  = 4;
+}
+
+// SearchResponse search response
+message SearchResponse {
+    optional bytes  id        = 1;
+    repeated float  distances = 2;
+    repeated int64  xids      = 3;
+    optional uint64 db        = 4;
+}
+
+// InsertRequest insert request
+message InsertRequest {
+    optional bytes  id     = 1;
+    repeated float  xbs    = 2;
+    repeated int64  ids    = 3;
+    optional int64  offset = 4;
+}
+
+// InsertResponse insert response
+message InsertResponse {
+    optional bytes id = 1;
+}
+
+// UpdateRequest insert request
+message UpdateRequest {
+    optional bytes  id  = 1;
+    optional uint64 db  = 2;
+    repeated float  xbs = 3;
+    repeated int64  ids = 4;
+}
+
+// UpdateResponse update response
+message UpdateResponse {
+    optional bytes id = 1;
+}
+
+// ErrResponse error response
+message ErrResponse {
+    optional bytes id    = 1;
+    optional bytes error = 2;
+}
