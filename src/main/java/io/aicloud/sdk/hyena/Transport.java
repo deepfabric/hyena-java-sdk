@@ -1,24 +1,22 @@
 package io.aicloud.sdk.hyena;
 
+import com.google.protobuf.ByteString;
 import com.google.protobuf.MessageLite;
 import io.aicloud.sdk.hyena.pb.SearchRequest;
+import io.aicloud.sdk.hyena.pb.Store;
 import io.aicloud.tools.netty.ChannelAware;
 import io.aicloud.tools.netty.Connector;
 import io.aicloud.tools.netty.ConnectorBuilder;
 import io.aicloud.tools.netty.util.NamedThreadFactory;
-import io.netty.channel.Channel;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.pool2.ObjectPool;
 
 import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.function.Function;
+import java.util.concurrent.*;
 
 /**
  * Description:
@@ -29,39 +27,70 @@ import java.util.function.Function;
  *
  * @author fagongzi
  */
-public class Transport implements ChannelAware<SearchRequest> {
+@Slf4j(topic = "hyena")
+class Transport {
     private volatile boolean running = false;
     private ExecutorService executor;
     private ScheduledExecutorService sharedExecutor = Executors.newSingleThreadScheduledExecutor();
     private EventLoopGroup sharedConnectorEventGroup;
 
     private long mask;
-    private Function<Long, String> addressGetter;
-    private List<Queue<SentData>> queues;
+    private List<BlockingQueue<SentData>> queues;
     private SentData stopFlag = new SentData();
 
+    private ChannelAware<MessageLite> channelAware;
+    private Map<Long, Connector<MessageLite>> connectors = new ConcurrentHashMap<>();
     private ObjectPool<SentData> pool = SimpleBeanPoolFactory.create(SentData::new);
 
-    Transport(int corePoolSize, int ioPoolSize, Function<Long, String> addressGetter) {
-        this.addressGetter = addressGetter;
-        mask = corePoolSize - 1;
-        executor = Executors.newFixedThreadPool(corePoolSize, new NamedThreadFactory("transport"));
-        sharedConnectorEventGroup = new NioEventLoopGroup(ioPoolSize);
+    Transport(int executors, int ioExecutors, ChannelAware<MessageLite> channelAware) {
+        log.info("transport start with {} executors and {} io executors",
+                executors,
+                ioExecutors);
 
-        queues = new ArrayList<>(corePoolSize);
-        for (int i = 0; i < corePoolSize; i++) {
+        this.channelAware = channelAware;
+        mask = executors - 1;
+        executor = Executors.newFixedThreadPool(executors, new NamedThreadFactory("transport"));
+        sharedConnectorEventGroup = new NioEventLoopGroup(ioExecutors);
+
+        queues = new ArrayList<>(executors);
+        for (int i = 0; i < executors; i++) {
             queues.add(new LinkedBlockingQueue<>());
         }
     }
 
     void start() {
         running = true;
-        queues.forEach(queue -> executor.execute(() -> run(queue)));
+        final int[] index = {0};
+        queues.forEach(queue -> executor.execute(() -> run(queue, index[0]++)));
+
+        log.info("transport started");
     }
 
     void stop() {
         running = false;
         queues.forEach(queue -> queue.add(stopFlag));
+
+        log.info("transport stopped");
+    }
+
+    void addConnector(Store store) {
+        if (connectors.containsKey(store.getId())) {
+            return;
+        }
+
+        Connector<MessageLite> conn = new ConnectorBuilder<MessageLite>(store.getClientAddress())
+                .allowReconnect(true, 5)
+                .channelAware(channelAware)
+                .codec(RPCCodec.DEFAULT)
+                .executor(sharedExecutor)
+                .eventGroup(sharedConnectorEventGroup)
+                .build();
+        conn.connect();
+        connectors.put(store.getId(), conn);
+
+        log.info("connector for store-{}({}) added",
+                store.getId(),
+                store.getClientAddress());
     }
 
     void sent(long to, SearchRequest message) {
@@ -75,61 +104,52 @@ public class Transport implements ChannelAware<SearchRequest> {
 
         data.setTo(to);
         data.setMessage(message);
+        data.setId(message.getId());
         queue.add(data);
+
+        log.info("request-{} added to sent queue",
+                Arrays.toString(message.getId().toByteArray()));
     }
 
-    private void run(Queue<SentData> queue) {
-        Map<Long, Connector<SearchRequest>> connectors = new HashMap<>();
-
+    private void run(BlockingQueue<SentData> queue, int index) {
         while (running) {
-            SentData data = queue.poll();
-            if (data == stopFlag) {
-                break;
-            }
-
-            Connector<SearchRequest> conn = connectors.get(data.getTo());
-            if (null == conn) {
-                String address = addressGetter.apply(data.to);
-
-                if (null == address) {
-                    continue;
+            SentData data = null;
+            try {
+                data = queue.take();
+                if (data == stopFlag) {
+                    break;
                 }
 
-                connectors.put(data.getTo(), new ConnectorBuilder<SearchRequest>(address)
-                        .allowReconnect(true, 5)
-                        .channelAware(this)
-                        .codec(RPCCodec.DEFAULT)
-                        .executor(sharedExecutor)
-                        .eventGroup(sharedConnectorEventGroup)
-                        .build());
+                Connector<MessageLite> conn = connectors.get(data.getTo());
+                if (null != conn) {
+                    conn.writeAndFlush(data.getMessage());
+
+                    log.info("request-{} sent succeed",
+                            Arrays.toString(data.getId().toByteArray()));
+                } else {
+                    log.warn("request-{} sent failed with no connector",
+                            Arrays.toString(data.getId().toByteArray()));
+                }
+            } catch (Throwable e) {
+                log.error("sent executor-{} failed", e);
+            } finally {
+                try {
+                    pool.returnObject(data);
+                } catch (Exception e) {
+                    log.error("return sent-data object to poll failed", e);
+                }
             }
         }
-    }
 
-    @Override
-    public void messageReceived(Channel channel, SearchRequest message) {
-
-    }
-
-    @Override
-    public void onChannelException(Channel channel, Throwable cause) {
-
-    }
-
-    @Override
-    public void onChannelClosed(Channel channel) {
-
-    }
-
-    @Override
-    public void onChannelConnected(Channel channel) {
-
+        log.debug("sent executor-{} exit",
+                index);
     }
 
 
     @Getter
     @Setter
     private static class SentData {
+        private ByteString id;
         private long to;
         private MessageLite message;
     }

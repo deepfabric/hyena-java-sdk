@@ -27,7 +27,12 @@ public class Builder {
         return this;
     }
 
-    public Client build() {
+    public Builder dim(int dim) {
+        options.setDim(dim);
+        return this;
+    }
+
+    public Client build() throws Exception {
         return new MQBasedClient(options, hyenaAddresses);
     }
 }

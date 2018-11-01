@@ -5,6 +5,8 @@ import io.aicloud.sdk.hyena.pb.SearchRequest;
 import io.aicloud.sdk.hyena.pb.SearchResponse;
 import io.aicloud.sdk.hyena.pb.UpdateRequest;
 
+import java.util.concurrent.Future;
+
 /**
  * Description:
  * <pre>
@@ -19,5 +21,5 @@ public interface Client {
 
     void update(UpdateRequest request) throws Exception;
 
-    SearchResponse search(SearchRequest request) throws Exception;
+    Future<SearchResponse> search(SearchRequest request) throws Exception;
 }

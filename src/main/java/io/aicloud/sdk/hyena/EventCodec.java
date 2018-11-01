@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import io.aicloud.tools.netty.Codec;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
+import lombok.extern.slf4j.Slf4j;
 
 import java.nio.charset.Charset;
 
@@ -16,6 +17,7 @@ import java.nio.charset.Charset;
  *
  * @author fagongzi
  */
+@Slf4j(topic = "hyena")
 public class EventCodec implements Codec<Object> {
     private static Charset UTF8 = Charset.forName("UTF-8");
     private static final byte typeErrorRsp = 10;
@@ -34,6 +36,9 @@ public class EventCodec implements Codec<Object> {
                 break;
             case typeErrorRsp:
                 retValue = JSONObject.parseObject(value, 1, value.length - 1, UTF8, Error.class);
+            default:
+                log.warn("not support event type {}", value[0]);
+                break;
         }
         return retValue;
     }

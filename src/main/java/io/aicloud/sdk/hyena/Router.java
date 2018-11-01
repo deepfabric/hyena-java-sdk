@@ -1,13 +1,20 @@
 package io.aicloud.sdk.hyena;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import io.aicloud.sdk.hyena.pb.DBState;
+import com.google.protobuf.MessageLite;
+import io.aicloud.sdk.hyena.pb.Peer;
+import io.aicloud.sdk.hyena.pb.SearchRequest;
 import io.aicloud.sdk.hyena.pb.Store;
 import io.aicloud.sdk.hyena.pb.VectorDB;
+import io.aicloud.tools.netty.ChannelAware;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.function.Consumer;
 
 /**
  * Description:
@@ -18,16 +25,31 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  *
  * @author fagongzi
  */
+@Slf4j(topic = "hyena")
 class Router {
     private Map<Long, Store> stores = new HashMap<>();
     private Map<Long, VectorDB> dbs = new HashMap<>();
     private Map<Long, Long> leaders = new HashMap<>();
-    private VectorDB writableDB;
+    private Map<Long, AtomicLong> ops = new HashMap<>();
     private Transport transport;
+    private CountDownLatch waiter = new CountDownLatch(1);
+
     private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
-    Router(int executors, int ioExecutors) {
-        transport = new Transport(executors, ioExecutors, this::getAddress);
+    Router(int executors, int ioExecutors, ChannelAware<MessageLite> channelAware) {
+        transport = new Transport(executors, ioExecutors, channelAware);
+        transport.start();
+    }
+
+    void waitForComplete() throws InterruptedException {
+        waiter.await();
+        waiter = null;
+    }
+
+    void doForEachDB(Consumer<VectorDB> action) {
+        lock.readLock().lock();
+        dbs.values().forEach(action);
+        lock.readLock().unlock();
     }
 
     void onInitEvent(EventNotify message) {
@@ -36,14 +58,18 @@ class Router {
         dbs.clear();
         message.readInitEventValues(this::updateDB, this::updateStore);
         lock.writeLock().unlock();
+
+        if (waiter != null) {
+            waiter.countDown();
+        }
     }
 
-    void onDBCreatedoOrChanged(EventNotify message) {
+    void onDBCreatedOrChanged(EventNotify message) {
         lock.writeLock().lock();
         try {
             updateDB(VectorDB.parseFrom(message.getValue()));
         } catch (InvalidProtocolBufferException e) {
-            e.printStackTrace();
+            log.error("parse failed", e);
         } finally {
             lock.writeLock().unlock();
         }
@@ -61,13 +87,13 @@ class Router {
         try {
             updateStore(Store.parseFrom(message.getValue()));
         } catch (InvalidProtocolBufferException e) {
-            e.printStackTrace();
+            log.error("parse failed", e);
         } finally {
             lock.writeLock().unlock();
         }
     }
 
-    private String getAddress(long id) {
+    String getAddress(long id) {
         String address = null;
 
         lock.readLock().lock();
@@ -80,26 +106,41 @@ class Router {
         return address;
     }
 
+    void sent(VectorDB db, SearchRequest req) {
+        transport.sent(selectTargetPeer(db).getStoreID(), req);
+    }
+
+    private Peer selectTargetPeer(VectorDB db) {
+        lock.readLock().lock();
+        AtomicLong op = ops.get(db.getId());
+        Peer value = db.getPeers((int) (op.incrementAndGet() % db.getPeersCount()));
+        lock.readLock().unlock();
+        return value;
+    }
+
     private void updateDB(EventNotify.ResourceValue value) {
         try {
             VectorDB db = VectorDB.parseFrom(value.getData());
             updateDB(db);
 
             if (value.getLeader() > 0) {
-                leaders.put(db.getId(), value.getLeader());
+                updateLeader(db.getId(), value.getLeader());
             }
         } catch (InvalidProtocolBufferException e) {
-            e.printStackTrace();
+            log.error("parse failed", e);
         }
     }
 
     private void updateDB(VectorDB db) {
-        if (dbs.containsKey(db.getId())) {
-            return;
+        if (!ops.containsKey(db.getId())) {
+            ops.put(db.getId(), new AtomicLong(0));
         }
 
         dbs.put(db.getId(), db);
-        updateWritable(db);
+
+        log.info("db-{} updated, {}",
+                db.getId(),
+                db.toString());
     }
 
     private void updateStore(byte[] value) {
@@ -107,29 +148,28 @@ class Router {
             Store store = Store.parseFrom(value);
             updateStore(store);
         } catch (InvalidProtocolBufferException e) {
-            e.printStackTrace();
+            log.error("parse failed", e);
         }
     }
 
     private void updateStore(Store store) {
-        if (stores.containsKey(store.getId())) {
-            return;
-        }
-
         stores.put(store.getId(), store);
+        log.info("store-{} updated, {}",
+                store.getId(),
+                store.toString());
+
+        transport.addConnector(store);
     }
 
     private void updateLeader(long id, long newLeader) {
-        if (dbs.containsKey(id)) {
+        if (!dbs.containsKey(id)) {
+            log.warn("db-{} is missing", id);
             return;
         }
 
         leaders.put(id, newLeader);
-    }
-
-    private void updateWritable(VectorDB db) {
-        if (db.getState() == DBState.RWU) {
-            writableDB = db;
-        }
+        log.info("db-{} leader changed to {}",
+                id,
+                newLeader);
     }
 }

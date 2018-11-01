@@ -27,6 +27,7 @@
         <netty.version>4.1.22.Final</netty.version>
         <fastjson.version>1.2.32</fastjson.version>
         <common.pool.version>2.6.0</common.pool.version>
+        <logback.version>1.2.3</logback.version>
     </properties>
 
     <dependencyManagement>
@@ -96,6 +97,11 @@
             <version>${common.pool.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

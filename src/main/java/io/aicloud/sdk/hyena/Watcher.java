@@ -4,6 +4,7 @@ import io.aicloud.tools.netty.ChannelAware;
 import io.aicloud.tools.netty.Connector;
 import io.aicloud.tools.netty.ConnectorBuilder;
 import io.netty.channel.Channel;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Description:
@@ -14,6 +15,7 @@ import io.netty.channel.Channel;
  *
  * @author fagongzi
  */
+@Slf4j(topic = "hyena")
 public class Watcher implements ChannelAware<Object> {
     private int flag;
     private Connector<Object> connector;
@@ -39,42 +41,55 @@ public class Watcher implements ChannelAware<Object> {
         if (message instanceof EventNotify) {
             switch (((EventNotify) message).getEvent()) {
                 case EventNotify.EVENT_INIT:
+                    log.info("init event: {}", message);
                     router.onInitEvent((EventNotify) message);
                     break;
                 case EventNotify.EVENT_RESOURCE_CHANGED:
-                    router.onDBCreatedoOrChanged((EventNotify) message);
+                    log.info("db changed event: {}", message);
+                    router.onDBCreatedOrChanged((EventNotify) message);
                     break;
                 case EventNotify.EVENT_RESOURCE_CREATED:
-                    router.onDBCreatedoOrChanged((EventNotify) message);
+                    log.info("db created event: {}", message);
+                    router.onDBCreatedOrChanged((EventNotify) message);
                     break;
                 case EventNotify.EVENT_RESOURCE_LEADER_CHANGED:
+                    log.info("db leader changed event: {}", message);
                     router.onDBLeaderChanged((EventNotify) message);
                     break;
                 case EventNotify.EVENT_CONTAINER_CREATED:
+                    log.info("store created event: {}", message);
                     router.onStoreCreatedOrChanged((EventNotify) message);
                     break;
                 case EventNotify.EVENT_CONTAINER_CHANGED:
+                    log.info("store changed event: {}", message);
                     router.onStoreCreatedOrChanged((EventNotify) message);
                     break;
             }
         } else if (message instanceof Error) {
             // choose another server, close current connection
             connector.close();
+
+            log.info("received a error notify {}, closed watcher connection to choose another hyena server",
+                    ((Error) message).getErr());
         }
     }
 
     @Override
     public void onChannelException(Channel channel, Throwable cause) {
-
+        log.error("uncaught exception", cause);
     }
 
     @Override
     public void onChannelClosed(Channel channel) {
-
+        log.warn("connection {} closed", channel.remoteAddress());
     }
 
     @Override
     public void onChannelConnected(Channel channel) {
         connector.writeAndFlush(new EventNotify.InitWatcher(flag));
+        
+        log.info("connected to hyena succeed, sent {} flag to watch event",
+                channel.remoteAddress(),
+                flag);
     }
 }
