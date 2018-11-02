@@ -32,6 +32,12 @@ public class Builder {
         return this;
     }
 
+    public Builder kafka(String brokers, String topic) {
+        options.setBrokers(brokers);
+        options.setTopic(topic);
+        return this;
+    }
+
     public Client build() throws Exception {
         return new MQBasedClient(options, hyenaAddresses);
     }

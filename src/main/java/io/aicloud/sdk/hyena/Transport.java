@@ -13,6 +13,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.pool2.ObjectPool;
 
 import java.util.*;
@@ -107,8 +108,10 @@ class Transport {
         data.setId(message.getId());
         queue.add(data);
 
-        log.info("request-{} added to sent queue",
-                Arrays.toString(message.getId().toByteArray()));
+        if (log.isDebugEnabled()) {
+            log.debug("request-{} added to sent queue",
+                    Hex.encodeHexString(message.getId().toByteArray()));
+        }
     }
 
     private void run(BlockingQueue<SentData> queue, int index) {
@@ -124,11 +127,13 @@ class Transport {
                 if (null != conn) {
                     conn.writeAndFlush(data.getMessage());
 
-                    log.info("request-{} sent succeed",
-                            Arrays.toString(data.getId().toByteArray()));
+                    if (log.isDebugEnabled()) {
+                        log.debug("request-{} sent succeed",
+                                Hex.encodeHexString(data.getId().toByteArray()));
+                    }
                 } else {
                     log.warn("request-{} sent failed with no connector",
-                            Arrays.toString(data.getId().toByteArray()));
+                            Hex.encodeHexString(data.getId().toByteArray()));
                 }
             } catch (Throwable e) {
                 log.error("sent executor-{} failed", e);

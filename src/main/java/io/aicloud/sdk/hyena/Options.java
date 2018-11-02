@@ -23,6 +23,9 @@ class Options {
     private int timeout = 200;
     private TimeUnit timeoutUnit = TimeUnit.MILLISECONDS;
 
+    private String brokers;
+    private String topic;
+
     @Override
     public String toString() {
         return "\ndim: " + dim + "\n"

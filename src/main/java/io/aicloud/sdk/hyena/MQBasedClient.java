@@ -9,6 +9,7 @@ import io.aicloud.sdk.hyena.pb.UpdateRequest;
 import io.aicloud.tools.netty.ChannelAware;
 import io.netty.channel.Channel;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.kafka.clients.producer.*;
 
 import java.nio.charset.Charset;
 import java.util.*;
@@ -32,24 +33,39 @@ class MQBasedClient implements Client, ChannelAware<MessageLite> {
     private Router router;
     private Map<ByteString, Context> contexts = new ConcurrentHashMap<>(4096);
 
+    private Producer<byte[], byte[]> producer;
+    private AtomicLong offset = new AtomicLong(0);
+
     MQBasedClient(Options options, String... hyenaAddresses) throws InterruptedException {
-        log.info("start hyena sdk client with servers: {}", Arrays.toString(hyenaAddresses));
+        log.info("start hyena sdk client with kafka servers: {}, topic: ", options.getBrokers(), options.getTopic());
+        log.info("start hyena sdk client with hyena servers: {}", Arrays.toString(hyenaAddresses));
         log.info("start hyena sdk client with options: {}", options);
 
         this.options = options;
         this.router = new Router(options.getExecutors(), options.getIoExecutors(), this);
         this.watcher = new Watcher(router, hyenaAddresses);
 
+        initMQProducer();
         this.router.waitForComplete();
+    }
+
+    private void initMQProducer() {
+        Properties properties = new Properties();
+        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, options.getBrokers());
+        properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.ByteArraySerializer");
+        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.ByteArraySerializer");
+
+        producer = new KafkaProducer<>(properties);
     }
 
     @Override
     public void insert(InsertRequest request) throws Exception {
-
+        doPublishToMQ(request);
     }
 
     @Override
     public void update(UpdateRequest request) throws Exception {
+        doPublishToMQ(request);
     }
 
     @Override
@@ -62,11 +78,30 @@ class MQBasedClient implements Client, ChannelAware<MessageLite> {
         return ctx;
     }
 
+    private void doPublishToMQ(MessageLite request) throws ExecutionException, InterruptedException {
+        ProducerRecord<byte[], byte[]> record = new ProducerRecord<>(options.getTopic(), null, RPCCodec.DEFAULT.encodeWithLength(request));
+        Future<RecordMetadata> value = producer.send(record);
+        RecordMetadata metadata = value.get();
+
+        for (; ; ) {
+            long oldValue = offset.get();
+            if (oldValue >= metadata.offset()) {
+                return;
+            }
+
+            if (offset.compareAndSet(oldValue, metadata.offset())) {
+                return;
+            }
+        }
+    }
+
     private void doSearch(Context ctx, SearchRequest request) {
+        long after = offset.get();
         router.doForEachDB(db -> {
             ctx.to++;
             SearchRequest req = SearchRequest.newBuilder()
                     .setId(ByteString.copyFrom(UUID.randomUUID().toString(), UTF8))
+                    .setOffset(after)
                     .setDb(db.getId())
                     .addAllXq(request.getXqList())
                     .build();
