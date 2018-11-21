@@ -110,6 +110,8 @@ class Router {
         if (waiter != null) {
             waiter.countDown();
         }
+
+        notifyAllWaiter();
     }
 
     void onDBCreatedOrChanged(EventNotify message) {
@@ -121,6 +123,8 @@ class Router {
         } finally {
             lock.writeLock().unlock();
         }
+
+        notifyAllWaiter();
     }
 
     void onDBLeaderChanged(EventNotify message) {
@@ -146,22 +150,22 @@ class Router {
             for (; ; ) {
                 try {
                     WaitReq req = waitQueue.take();
-                    log.debug("offset {} start wait at db {}", req.oldReq.getOffset(), req.oldDB);
-                    waitForNewDB(req.oldDB);
-                    log.debug("offset {} end wait at db {}", req.oldReq.getOffset(), req.oldDB);
+                    log.debug("offset {} start wait at db {}", req.oldReq.getOffset(), req.oldReq.getDb());
+                    waitForNewDB(req.oldReq.getDb());
+                    log.debug("offset {} end wait at db {}", req.oldReq.getOffset(), req.oldReq.getDb());
 
                     doForEachDB(db -> {
-                        if (db.getId() > req.oldDB) {
+                        if (db.getId() > req.oldReq.getDb()) {
                             SearchRequest target = SearchRequest.newBuilder(req.oldReq)
                                     .setDb(db.getId())
                                     .setId(ByteString.copyFrom(UUID.randomUUID().toString(), MQBasedClient.UTF8))
                                     .setLast(db.getId() == getMaxDB())
                                     .build();
-                            req.action.accept(target);
+                            req.before.accept(target);
                             sent(db, target);
                         }
                     });
-                    req.complete.accept(null);
+                    req.after.accept(null);
                 } catch (Throwable e) {
                     // ignore
                 }
@@ -169,8 +173,8 @@ class Router {
         }).start();
     }
 
-    void sentWaitReq(long old, SearchRequest req, Consumer<SearchRequest> action, Consumer<Void> complete) {
-        waitQueue.add(new WaitReq(old, req, action, complete));
+    void sentWaitReq(SearchRequest req, Consumer<SearchRequest> before, Consumer<Void> after) {
+        waitQueue.add(new WaitReq(req, before, after));
     }
 
     void sent(VectorDB db, SearchRequest req) {
@@ -212,8 +216,6 @@ class Router {
         if (db.getId() > maxDB) {
             maxDB = db.getId();
         }
-
-        notifyAllWaiter();
     }
 
     private void updateStore(byte[] value) {
@@ -247,16 +249,14 @@ class Router {
     }
 
     private static class WaitReq {
-        private long oldDB;
         private SearchRequest oldReq;
-        private Consumer<SearchRequest> action;
-        private Consumer<Void> complete;
+        private Consumer<SearchRequest> before;
+        private Consumer<Void> after;
 
-        public WaitReq(long oldDB, SearchRequest oldReq, Consumer<SearchRequest> action, Consumer<Void> complete) {
-            this.oldDB = oldDB;
+        public WaitReq(SearchRequest oldReq, Consumer<SearchRequest> before, Consumer<Void> after) {
             this.oldReq = oldReq;
-            this.action = action;
-            this.complete = complete;
+            this.before = before;
+            this.after = after;
         }
     }
 }

@@ -8,7 +8,6 @@ import io.netty.channel.Channel;
 import io.netty.util.HashedWheelTimer;
 import io.netty.util.Timer;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.codec.binary.Hex;
 import org.apache.kafka.clients.producer.*;
 
 import java.nio.charset.Charset;
@@ -103,10 +102,8 @@ class MQBasedClient implements Client, ChannelAware<MessageLite> {
     private void doSearch(Context ctx, SearchRequest request) {
         long after = offset.get();
         log.debug("send search request after {} offset", after);
-        ctx.offset = after;
         router.doForEachDB(db -> {
             ctx.to++;
-            ctx.sentTo.add(db.getId());
             SearchRequest req = SearchRequest.newBuilder()
                     .setId(ByteString.copyFrom(UUID.randomUUID().toString(), UTF8))
                     .setOffset(after)
@@ -139,21 +136,13 @@ class MQBasedClient implements Client, ChannelAware<MessageLite> {
             Context ctx = contexts.remove(id);
             if (null != ctx) {
                 if (((SearchResponse) message).getSearchNext()) {
-                    log.debug("offset {} search next return by db {}, uuid {}, channel {}",
-                            ctx.offset,
-                            ((SearchResponse) message).getDb(),
-                            Hex.encodeHexString(((SearchResponse) message).getId().toByteArray()),
-                            channel);
                     ctx.wait = true;
                     SearchRequest req = requests.get(id);
                     if (req != null) {
-                        router.sentWaitReq(((SearchResponse) message).getDb(), req, newReq -> {
+                        router.sentWaitReq(req, newReq -> {
                             ctx.to++;
-                            ctx.sentTo.add(newReq.getDb());
                             addAsyncContext(newReq, ctx);
                         }, value -> ctx.wait = false);
-                    } else {
-                        log.debug("offset {} missing request in search next", ctx.offset);
                     }
                 }
                 ctx.done((SearchResponse) message);
@@ -196,10 +185,6 @@ class MQBasedClient implements Client, ChannelAware<MessageLite> {
         private CountDownLatch latch;
         private long db;
 
-        private long offset;
-        private List<Long> sentTo = Collections.synchronizedList(new ArrayList<>());
-        private List<Long> recv = Collections.synchronizedList(new ArrayList<>());
-
         public Context(Options options) {
             this.options = options;
         }
@@ -207,7 +192,7 @@ class MQBasedClient implements Client, ChannelAware<MessageLite> {
         @Override
         public SearchResponse get() throws InterruptedException, TimeoutException {
             if (!wait(options.getTimeout(), options.getTimeoutUnit())) {
-                throw new TimeoutException("timeout wait response: sent to {" + sentTo + "}, received {" + recv + "}");
+                throw new TimeoutException("timeout wait response");
             }
 
             return SearchResponse.newBuilder()
@@ -232,7 +217,6 @@ class MQBasedClient implements Client, ChannelAware<MessageLite> {
         private void done(SearchResponse response) {
             long newValue = received.incrementAndGet();
             if (null != response) {
-                recv.add(response.getDb());
                 for (int i = 0; i < response.getXidsCount(); i++) {
                     long value = response.getXids(i);
                     if (value == -1) {
