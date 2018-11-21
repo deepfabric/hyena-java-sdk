@@ -41,27 +41,27 @@ public class Watcher implements ChannelAware<Object> {
         if (message instanceof EventNotify) {
             switch (((EventNotify) message).getEvent()) {
                 case EventNotify.EVENT_INIT:
-                    log.info("init event: {}", message);
+                    log.debug("init event: {}", message);
                     router.onInitEvent((EventNotify) message);
                     break;
                 case EventNotify.EVENT_RESOURCE_CHANGED:
-                    log.info("db changed event: {}", message);
+                    log.debug("db changed event: {}", message);
                     router.onDBCreatedOrChanged((EventNotify) message);
                     break;
                 case EventNotify.EVENT_RESOURCE_CREATED:
-                    log.info("db created event: {}", message);
+                    log.debug("db created event: {}", message);
                     router.onDBCreatedOrChanged((EventNotify) message);
                     break;
                 case EventNotify.EVENT_RESOURCE_LEADER_CHANGED:
-                    log.info("db leader changed event: {}", message);
+                    log.debug("db leader changed event: {}", message);
                     router.onDBLeaderChanged((EventNotify) message);
                     break;
                 case EventNotify.EVENT_CONTAINER_CREATED:
-                    log.info("store created event: {}", message);
+                    log.debug("store created event: {}", message);
                     router.onStoreCreatedOrChanged((EventNotify) message);
                     break;
                 case EventNotify.EVENT_CONTAINER_CHANGED:
-                    log.info("store changed event: {}", message);
+                    log.debug("store changed event: {}", message);
                     router.onStoreCreatedOrChanged((EventNotify) message);
                     break;
             }
@@ -87,7 +87,7 @@ public class Watcher implements ChannelAware<Object> {
     @Override
     public void onChannelConnected(Channel channel) {
         connector.writeAndFlush(new EventNotify.InitWatcher(flag));
-        
+
         log.info("connected to hyena succeed, sent {} flag to watch event",
                 channel.remoteAddress(),
                 flag);

@@ -4,23 +4,20 @@
 package io.aicloud.sdk.hyena.pb;
 
 /**
- * <pre>
- * InsertResponse insert response
- * </pre>
- *
- * Protobuf type {@code rpc.InsertResponse}
+ * Protobuf type {@code rpc.RaftEntryTooLarge}
  */
-public  final class InsertResponse extends
+public  final class RaftEntryTooLarge extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:rpc.InsertResponse)
-    InsertResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:rpc.RaftEntryTooLarge)
+    RaftEntryTooLargeOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use InsertResponse.newBuilder() to construct.
-  private InsertResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use RaftEntryTooLarge.newBuilder() to construct.
+  private RaftEntryTooLarge(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private InsertResponse() {
-    id_ = com.google.protobuf.ByteString.EMPTY;
+  private RaftEntryTooLarge() {
+    id_ = 0L;
+    entrySize_ = 0L;
   }
 
   @java.lang.Override
@@ -28,7 +25,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private InsertResponse(
+  private RaftEntryTooLarge(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -54,9 +51,14 @@ private static final long serialVersionUID = 0L;
             }
             break;
           }
-          case 10: {
+          case 8: {
             bitField0_ |= 0x00000001;
-            id_ = input.readBytes();
+            id_ = input.readUInt64();
+            break;
+          }
+          case 16: {
+            bitField0_ |= 0x00000002;
+            entrySize_ = input.readUInt64();
             break;
           }
         }
@@ -73,30 +75,45 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_InsertResponse_descriptor;
+    return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_RaftEntryTooLarge_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_InsertResponse_fieldAccessorTable
+    return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_RaftEntryTooLarge_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            io.aicloud.sdk.hyena.pb.InsertResponse.class, io.aicloud.sdk.hyena.pb.InsertResponse.Builder.class);
+            io.aicloud.sdk.hyena.pb.RaftEntryTooLarge.class, io.aicloud.sdk.hyena.pb.RaftEntryTooLarge.Builder.class);
   }
 
   private int bitField0_;
   public static final int ID_FIELD_NUMBER = 1;
-  private com.google.protobuf.ByteString id_;
+  private long id_;
   /**
-   * <code>optional bytes id = 1;</code>
+   * <code>optional uint64 id = 1;</code>
    */
   public boolean hasId() {
     return ((bitField0_ & 0x00000001) == 0x00000001);
   }
   /**
-   * <code>optional bytes id = 1;</code>
+   * <code>optional uint64 id = 1;</code>
    */
-  public com.google.protobuf.ByteString getId() {
+  public long getId() {
     return id_;
+  }
+
+  public static final int ENTRYSIZE_FIELD_NUMBER = 2;
+  private long entrySize_;
+  /**
+   * <code>optional uint64 entrySize = 2;</code>
+   */
+  public boolean hasEntrySize() {
+    return ((bitField0_ & 0x00000002) == 0x00000002);
+  }
+  /**
+   * <code>optional uint64 entrySize = 2;</code>
+   */
+  public long getEntrySize() {
+    return entrySize_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -112,7 +129,10 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (((bitField0_ & 0x00000001) == 0x00000001)) {
-      output.writeBytes(1, id_);
+      output.writeUInt64(1, id_);
+    }
+    if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      output.writeUInt64(2, entrySize_);
     }
     unknownFields.writeTo(output);
   }
@@ -124,7 +144,11 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (((bitField0_ & 0x00000001) == 0x00000001)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(1, id_);
+        .computeUInt64Size(1, id_);
+    }
+    if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(2, entrySize_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -136,16 +160,21 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof io.aicloud.sdk.hyena.pb.InsertResponse)) {
+    if (!(obj instanceof io.aicloud.sdk.hyena.pb.RaftEntryTooLarge)) {
       return super.equals(obj);
     }
-    io.aicloud.sdk.hyena.pb.InsertResponse other = (io.aicloud.sdk.hyena.pb.InsertResponse) obj;
+    io.aicloud.sdk.hyena.pb.RaftEntryTooLarge other = (io.aicloud.sdk.hyena.pb.RaftEntryTooLarge) obj;
 
     boolean result = true;
     result = result && (hasId() == other.hasId());
     if (hasId()) {
-      result = result && getId()
-          .equals(other.getId());
+      result = result && (getId()
+          == other.getId());
+    }
+    result = result && (hasEntrySize() == other.hasEntrySize());
+    if (hasEntrySize()) {
+      result = result && (getEntrySize()
+          == other.getEntrySize());
     }
     result = result && unknownFields.equals(other.unknownFields);
     return result;
@@ -160,76 +189,82 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     if (hasId()) {
       hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getId().hashCode();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getId());
+    }
+    if (hasEntrySize()) {
+      hash = (37 * hash) + ENTRYSIZE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getEntrySize());
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.RaftEntryTooLarge parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.RaftEntryTooLarge parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.RaftEntryTooLarge parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.RaftEntryTooLarge parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseFrom(byte[] data)
+  public static io.aicloud.sdk.hyena.pb.RaftEntryTooLarge parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.RaftEntryTooLarge parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseFrom(java.io.InputStream input)
+  public static io.aicloud.sdk.hyena.pb.RaftEntryTooLarge parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.RaftEntryTooLarge parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseDelimitedFrom(java.io.InputStream input)
+  public static io.aicloud.sdk.hyena.pb.RaftEntryTooLarge parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseDelimitedFrom(
+  public static io.aicloud.sdk.hyena.pb.RaftEntryTooLarge parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.RaftEntryTooLarge parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.RaftEntryTooLarge parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -241,7 +276,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(io.aicloud.sdk.hyena.pb.InsertResponse prototype) {
+  public static Builder newBuilder(io.aicloud.sdk.hyena.pb.RaftEntryTooLarge prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   public Builder toBuilder() {
@@ -256,29 +291,25 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * InsertResponse insert response
-   * </pre>
-   *
-   * Protobuf type {@code rpc.InsertResponse}
+   * Protobuf type {@code rpc.RaftEntryTooLarge}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:rpc.InsertResponse)
-      io.aicloud.sdk.hyena.pb.InsertResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:rpc.RaftEntryTooLarge)
+      io.aicloud.sdk.hyena.pb.RaftEntryTooLargeOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_InsertResponse_descriptor;
+      return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_RaftEntryTooLarge_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_InsertResponse_fieldAccessorTable
+      return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_RaftEntryTooLarge_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              io.aicloud.sdk.hyena.pb.InsertResponse.class, io.aicloud.sdk.hyena.pb.InsertResponse.Builder.class);
+              io.aicloud.sdk.hyena.pb.RaftEntryTooLarge.class, io.aicloud.sdk.hyena.pb.RaftEntryTooLarge.Builder.class);
     }
 
-    // Construct using io.aicloud.sdk.hyena.pb.InsertResponse.newBuilder()
+    // Construct using io.aicloud.sdk.hyena.pb.RaftEntryTooLarge.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -295,36 +326,42 @@ private static final long serialVersionUID = 0L;
     }
     public Builder clear() {
       super.clear();
-      id_ = com.google.protobuf.ByteString.EMPTY;
+      id_ = 0L;
       bitField0_ = (bitField0_ & ~0x00000001);
+      entrySize_ = 0L;
+      bitField0_ = (bitField0_ & ~0x00000002);
       return this;
     }
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_InsertResponse_descriptor;
+      return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_RaftEntryTooLarge_descriptor;
     }
 
-    public io.aicloud.sdk.hyena.pb.InsertResponse getDefaultInstanceForType() {
-      return io.aicloud.sdk.hyena.pb.InsertResponse.getDefaultInstance();
+    public io.aicloud.sdk.hyena.pb.RaftEntryTooLarge getDefaultInstanceForType() {
+      return io.aicloud.sdk.hyena.pb.RaftEntryTooLarge.getDefaultInstance();
     }
 
-    public io.aicloud.sdk.hyena.pb.InsertResponse build() {
-      io.aicloud.sdk.hyena.pb.InsertResponse result = buildPartial();
+    public io.aicloud.sdk.hyena.pb.RaftEntryTooLarge build() {
+      io.aicloud.sdk.hyena.pb.RaftEntryTooLarge result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
       return result;
     }
 
-    public io.aicloud.sdk.hyena.pb.InsertResponse buildPartial() {
-      io.aicloud.sdk.hyena.pb.InsertResponse result = new io.aicloud.sdk.hyena.pb.InsertResponse(this);
+    public io.aicloud.sdk.hyena.pb.RaftEntryTooLarge buildPartial() {
+      io.aicloud.sdk.hyena.pb.RaftEntryTooLarge result = new io.aicloud.sdk.hyena.pb.RaftEntryTooLarge(this);
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
         to_bitField0_ |= 0x00000001;
       }
       result.id_ = id_;
+      if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+        to_bitField0_ |= 0x00000002;
+      }
+      result.entrySize_ = entrySize_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -357,18 +394,21 @@ private static final long serialVersionUID = 0L;
       return (Builder) super.addRepeatedField(field, value);
     }
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof io.aicloud.sdk.hyena.pb.InsertResponse) {
-        return mergeFrom((io.aicloud.sdk.hyena.pb.InsertResponse)other);
+      if (other instanceof io.aicloud.sdk.hyena.pb.RaftEntryTooLarge) {
+        return mergeFrom((io.aicloud.sdk.hyena.pb.RaftEntryTooLarge)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(io.aicloud.sdk.hyena.pb.InsertResponse other) {
-      if (other == io.aicloud.sdk.hyena.pb.InsertResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(io.aicloud.sdk.hyena.pb.RaftEntryTooLarge other) {
+      if (other == io.aicloud.sdk.hyena.pb.RaftEntryTooLarge.getDefaultInstance()) return this;
       if (other.hasId()) {
         setId(other.getId());
+      }
+      if (other.hasEntrySize()) {
+        setEntrySize(other.getEntrySize());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -383,11 +423,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      io.aicloud.sdk.hyena.pb.InsertResponse parsedMessage = null;
+      io.aicloud.sdk.hyena.pb.RaftEntryTooLarge parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (io.aicloud.sdk.hyena.pb.InsertResponse) e.getUnfinishedMessage();
+        parsedMessage = (io.aicloud.sdk.hyena.pb.RaftEntryTooLarge) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -398,37 +438,66 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private com.google.protobuf.ByteString id_ = com.google.protobuf.ByteString.EMPTY;
+    private long id_ ;
     /**
-     * <code>optional bytes id = 1;</code>
+     * <code>optional uint64 id = 1;</code>
      */
     public boolean hasId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional bytes id = 1;</code>
+     * <code>optional uint64 id = 1;</code>
      */
-    public com.google.protobuf.ByteString getId() {
+    public long getId() {
       return id_;
     }
     /**
-     * <code>optional bytes id = 1;</code>
+     * <code>optional uint64 id = 1;</code>
      */
-    public Builder setId(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+    public Builder setId(long value) {
+      bitField0_ |= 0x00000001;
       id_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>optional bytes id = 1;</code>
+     * <code>optional uint64 id = 1;</code>
      */
     public Builder clearId() {
       bitField0_ = (bitField0_ & ~0x00000001);
-      id_ = getDefaultInstance().getId();
+      id_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private long entrySize_ ;
+    /**
+     * <code>optional uint64 entrySize = 2;</code>
+     */
+    public boolean hasEntrySize() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional uint64 entrySize = 2;</code>
+     */
+    public long getEntrySize() {
+      return entrySize_;
+    }
+    /**
+     * <code>optional uint64 entrySize = 2;</code>
+     */
+    public Builder setEntrySize(long value) {
+      bitField0_ |= 0x00000002;
+      entrySize_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional uint64 entrySize = 2;</code>
+     */
+    public Builder clearEntrySize() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      entrySize_ = 0L;
       onChanged();
       return this;
     }
@@ -443,39 +512,39 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:rpc.InsertResponse)
+    // @@protoc_insertion_point(builder_scope:rpc.RaftEntryTooLarge)
   }
 
-  // @@protoc_insertion_point(class_scope:rpc.InsertResponse)
-  private static final io.aicloud.sdk.hyena.pb.InsertResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:rpc.RaftEntryTooLarge)
+  private static final io.aicloud.sdk.hyena.pb.RaftEntryTooLarge DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new io.aicloud.sdk.hyena.pb.InsertResponse();
+    DEFAULT_INSTANCE = new io.aicloud.sdk.hyena.pb.RaftEntryTooLarge();
   }
 
-  public static io.aicloud.sdk.hyena.pb.InsertResponse getDefaultInstance() {
+  public static io.aicloud.sdk.hyena.pb.RaftEntryTooLarge getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  @java.lang.Deprecated public static final com.google.protobuf.Parser<InsertResponse>
-      PARSER = new com.google.protobuf.AbstractParser<InsertResponse>() {
-    public InsertResponse parsePartialFrom(
+  @java.lang.Deprecated public static final com.google.protobuf.Parser<RaftEntryTooLarge>
+      PARSER = new com.google.protobuf.AbstractParser<RaftEntryTooLarge>() {
+    public RaftEntryTooLarge parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new InsertResponse(input, extensionRegistry);
+      return new RaftEntryTooLarge(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<InsertResponse> parser() {
+  public static com.google.protobuf.Parser<RaftEntryTooLarge> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<InsertResponse> getParserForType() {
+  public com.google.protobuf.Parser<RaftEntryTooLarge> getParserForType() {
     return PARSER;
   }
 
-  public io.aicloud.sdk.hyena.pb.InsertResponse getDefaultInstanceForType() {
+  public io.aicloud.sdk.hyena.pb.RaftEntryTooLarge getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

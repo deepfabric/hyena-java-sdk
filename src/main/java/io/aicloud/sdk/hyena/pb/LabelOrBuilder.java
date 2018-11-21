@@ -14,7 +14,7 @@ public interface LabelOrBuilder extends
   /**
    * <code>optional string key = 1;</code>
    */
-  String getKey();
+  java.lang.String getKey();
   /**
    * <code>optional string key = 1;</code>
    */
@@ -28,7 +28,7 @@ public interface LabelOrBuilder extends
   /**
    * <code>optional string value = 2;</code>
    */
-  String getValue();
+  java.lang.String getValue();
   /**
    * <code>optional string value = 2;</code>
    */

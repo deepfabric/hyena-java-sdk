@@ -1,5 +1,6 @@
 package io.aicloud.sdk.hyena;
 
+import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 import io.aicloud.sdk.hyena.pb.Peer;
@@ -11,8 +12,12 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.function.Consumer;
 
@@ -27,18 +32,46 @@ import java.util.function.Consumer;
  */
 @Slf4j(topic = "hyena")
 class Router {
+    private long maxDB;
     private Map<Long, Store> stores = new HashMap<>();
     private Map<Long, VectorDB> dbs = new HashMap<>();
     private Map<Long, Long> leaders = new HashMap<>();
     private Map<Long, AtomicLong> ops = new HashMap<>();
     private Transport transport;
     private CountDownLatch waiter = new CountDownLatch(1);
-
     private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+    private Condition cond = lock.writeLock().newCondition();
+    private BlockingQueue<WaitReq> waitQueue = new LinkedBlockingQueue<>(1024);
 
     Router(int executors, int ioExecutors, ChannelAware<MessageLite> channelAware) {
         transport = new Transport(executors, ioExecutors, channelAware);
         transport.start();
+
+        startWaitQueue();
+    }
+
+    void waitForNewDB(long old) {
+        try {
+            lock.writeLock().lockInterruptibly();
+            for (; getMaxDB() <= old; ) {
+                cond.await();
+            }
+        } catch (InterruptedException e) {
+            // ignore
+        } finally {
+            lock.writeLock().unlock();
+        }
+    }
+
+    void notifyAllWaiter() {
+        try {
+            lock.writeLock().lockInterruptibly();
+            cond.signalAll();
+        } catch (InterruptedException e) {
+            // ignore
+        } finally {
+            lock.writeLock().unlock();
+        }
     }
 
     void waitForComplete() throws InterruptedException {
@@ -46,10 +79,25 @@ class Router {
         waiter = null;
     }
 
+    VectorDB getDB(long id) {
+        lock.readLock().lock();
+        VectorDB value = dbs.get(id);
+        lock.readLock().unlock();
+        return value;
+    }
+
     void doForEachDB(Consumer<VectorDB> action) {
         lock.readLock().lock();
         dbs.values().forEach(action);
         lock.readLock().unlock();
+    }
+
+    long getMaxDB() {
+        lock.readLock().lock();
+        long value = maxDB;
+        lock.readLock().unlock();
+
+        return value;
     }
 
     void onInitEvent(EventNotify message) {
@@ -93,17 +141,36 @@ class Router {
         }
     }
 
-    String getAddress(long id) {
-        String address = null;
+    void startWaitQueue() {
+        new Thread(() -> {
+            for (; ; ) {
+                try {
+                    WaitReq req = waitQueue.take();
+                    log.debug("offset {} start wait at db {}", req.oldReq.getOffset(), req.oldDB);
+                    waitForNewDB(req.oldDB);
+                    log.debug("offset {} end wait at db {}", req.oldReq.getOffset(), req.oldDB);
 
-        lock.readLock().lock();
-        Store store = stores.get(id);
-        if (store != null) {
-            address = store.getClientAddress();
-        }
-        lock.readLock().unlock();
+                    doForEachDB(db -> {
+                        if (db.getId() > req.oldDB) {
+                            SearchRequest target = SearchRequest.newBuilder(req.oldReq)
+                                    .setDb(db.getId())
+                                    .setId(ByteString.copyFrom(UUID.randomUUID().toString(), MQBasedClient.UTF8))
+                                    .setLast(db.getId() == getMaxDB())
+                                    .build();
+                            req.action.accept(target);
+                            sent(db, target);
+                        }
+                    });
+                    req.complete.accept(null);
+                } catch (Throwable e) {
+                    // ignore
+                }
+            }
+        }).start();
+    }
 
-        return address;
+    void sentWaitReq(long old, SearchRequest req, Consumer<SearchRequest> action, Consumer<Void> complete) {
+        waitQueue.add(new WaitReq(old, req, action, complete));
     }
 
     void sent(VectorDB db, SearchRequest req) {
@@ -138,9 +205,15 @@ class Router {
 
         dbs.put(db.getId(), db);
 
-        log.info("db-{} updated, {}",
+        log.debug("db-{} updated, {}",
                 db.getId(),
                 db.toString());
+
+        if (db.getId() > maxDB) {
+            maxDB = db.getId();
+        }
+
+        notifyAllWaiter();
     }
 
     private void updateStore(byte[] value) {
@@ -154,7 +227,7 @@ class Router {
 
     private void updateStore(Store store) {
         stores.put(store.getId(), store);
-        log.info("store-{} updated, {}",
+        log.debug("store-{} updated, {}",
                 store.getId(),
                 store.toString());
 
@@ -168,8 +241,22 @@ class Router {
         }
 
         leaders.put(id, newLeader);
-        log.info("db-{} leader changed to {}",
+        log.debug("db-{} leader changed to {}",
                 id,
                 newLeader);
+    }
+
+    private static class WaitReq {
+        private long oldDB;
+        private SearchRequest oldReq;
+        private Consumer<SearchRequest> action;
+        private Consumer<Void> complete;
+
+        public WaitReq(long oldDB, SearchRequest oldReq, Consumer<SearchRequest> action, Consumer<Void> complete) {
+            this.oldDB = oldDB;
+            this.oldReq = oldReq;
+            this.action = action;
+            this.complete = complete;
+        }
     }
 }

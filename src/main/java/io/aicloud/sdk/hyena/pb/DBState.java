@@ -55,7 +55,7 @@ public enum DBState
   /**
    * @deprecated Use {@link #forNumber(int)} instead.
    */
-  @Deprecated
+  @java.lang.Deprecated
   public static DBState valueOf(int value) {
     return forNumber(value);
   }
@@ -90,7 +90,7 @@ public enum DBState
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return HyenaMetaPB.getDescriptor().getEnumTypes().get(1);
+    return io.aicloud.sdk.hyena.pb.HyenaMetaPB.getDescriptor().getEnumTypes().get(1);
   }
 
   private static final DBState[] VALUES = values();
@@ -98,7 +98,7 @@ public enum DBState
   public static DBState valueOf(
       com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
     if (desc.getType() != getDescriptor()) {
-      throw new IllegalArgumentException(
+      throw new java.lang.IllegalArgumentException(
         "EnumValueDescriptor is not for this type.");
     }
     return VALUES[desc.getIndex()];

@@ -47,7 +47,7 @@ public enum StoreState
   /**
    * @deprecated Use {@link #forNumber(int)} instead.
    */
-  @Deprecated
+  @java.lang.Deprecated
   public static StoreState valueOf(int value) {
     return forNumber(value);
   }
@@ -83,7 +83,7 @@ public enum StoreState
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return HyenaMetaPB.getDescriptor().getEnumTypes().get(0);
+    return io.aicloud.sdk.hyena.pb.HyenaMetaPB.getDescriptor().getEnumTypes().get(0);
   }
 
   private static final StoreState[] VALUES = values();
@@ -91,7 +91,7 @@ public enum StoreState
   public static StoreState valueOf(
       com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
     if (desc.getType() != getDescriptor()) {
-      throw new IllegalArgumentException(
+      throw new java.lang.IllegalArgumentException(
         "EnumValueDescriptor is not for this type.");
     }
     return VALUES[desc.getIndex()];

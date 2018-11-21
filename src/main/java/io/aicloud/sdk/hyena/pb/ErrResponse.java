@@ -21,10 +21,10 @@ private static final long serialVersionUID = 0L;
   }
   private ErrResponse() {
     id_ = com.google.protobuf.ByteString.EMPTY;
-    error_ = com.google.protobuf.ByteString.EMPTY;
+    message_ = "";
   }
 
-  @Override
+  @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
     return this.unknownFields;
@@ -35,7 +35,7 @@ private static final long serialVersionUID = 0L;
       throws com.google.protobuf.InvalidProtocolBufferException {
     this();
     if (extensionRegistry == null) {
-      throw new NullPointerException();
+      throw new java.lang.NullPointerException();
     }
     int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
@@ -61,8 +61,100 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 18: {
+            com.google.protobuf.ByteString bs = input.readBytes();
             bitField0_ |= 0x00000002;
-            error_ = input.readBytes();
+            message_ = bs;
+            break;
+          }
+          case 26: {
+            io.aicloud.sdk.hyena.pb.NotLeader.Builder subBuilder = null;
+            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+              subBuilder = notLeader_.toBuilder();
+            }
+            notLeader_ = input.readMessage(io.aicloud.sdk.hyena.pb.NotLeader.PARSER, extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(notLeader_);
+              notLeader_ = subBuilder.buildPartial();
+            }
+            bitField0_ |= 0x00000004;
+            break;
+          }
+          case 34: {
+            io.aicloud.sdk.hyena.pb.DBNotFound.Builder subBuilder = null;
+            if (((bitField0_ & 0x00000008) == 0x00000008)) {
+              subBuilder = dbNotFound_.toBuilder();
+            }
+            dbNotFound_ = input.readMessage(io.aicloud.sdk.hyena.pb.DBNotFound.PARSER, extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(dbNotFound_);
+              dbNotFound_ = subBuilder.buildPartial();
+            }
+            bitField0_ |= 0x00000008;
+            break;
+          }
+          case 42: {
+            io.aicloud.sdk.hyena.pb.StaleEpoch.Builder subBuilder = null;
+            if (((bitField0_ & 0x00000010) == 0x00000010)) {
+              subBuilder = staleEpoch_.toBuilder();
+            }
+            staleEpoch_ = input.readMessage(io.aicloud.sdk.hyena.pb.StaleEpoch.PARSER, extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(staleEpoch_);
+              staleEpoch_ = subBuilder.buildPartial();
+            }
+            bitField0_ |= 0x00000010;
+            break;
+          }
+          case 50: {
+            io.aicloud.sdk.hyena.pb.ServerIsBusy.Builder subBuilder = null;
+            if (((bitField0_ & 0x00000020) == 0x00000020)) {
+              subBuilder = serverIsBusy_.toBuilder();
+            }
+            serverIsBusy_ = input.readMessage(io.aicloud.sdk.hyena.pb.ServerIsBusy.PARSER, extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(serverIsBusy_);
+              serverIsBusy_ = subBuilder.buildPartial();
+            }
+            bitField0_ |= 0x00000020;
+            break;
+          }
+          case 58: {
+            io.aicloud.sdk.hyena.pb.StaleCommand.Builder subBuilder = null;
+            if (((bitField0_ & 0x00000040) == 0x00000040)) {
+              subBuilder = staleCommand_.toBuilder();
+            }
+            staleCommand_ = input.readMessage(io.aicloud.sdk.hyena.pb.StaleCommand.PARSER, extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(staleCommand_);
+              staleCommand_ = subBuilder.buildPartial();
+            }
+            bitField0_ |= 0x00000040;
+            break;
+          }
+          case 66: {
+            io.aicloud.sdk.hyena.pb.StoreNotMatch.Builder subBuilder = null;
+            if (((bitField0_ & 0x00000080) == 0x00000080)) {
+              subBuilder = storeNotMatch_.toBuilder();
+            }
+            storeNotMatch_ = input.readMessage(io.aicloud.sdk.hyena.pb.StoreNotMatch.PARSER, extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(storeNotMatch_);
+              storeNotMatch_ = subBuilder.buildPartial();
+            }
+            bitField0_ |= 0x00000080;
+            break;
+          }
+          case 74: {
+            io.aicloud.sdk.hyena.pb.RaftEntryTooLarge.Builder subBuilder = null;
+            if (((bitField0_ & 0x00000100) == 0x00000100)) {
+              subBuilder = raftEntryTooLarge_.toBuilder();
+            }
+            raftEntryTooLarge_ = input.readMessage(io.aicloud.sdk.hyena.pb.RaftEntryTooLarge.PARSER, extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(raftEntryTooLarge_);
+              raftEntryTooLarge_ = subBuilder.buildPartial();
+            }
+            bitField0_ |= 0x00000100;
             break;
           }
         }
@@ -79,14 +171,14 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return HyenaRPCPB.internal_static_rpc_ErrResponse_descriptor;
+    return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_ErrResponse_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return HyenaRPCPB.internal_static_rpc_ErrResponse_fieldAccessorTable
+    return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_ErrResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            ErrResponse.class, ErrResponse.Builder.class);
+            io.aicloud.sdk.hyena.pb.ErrResponse.class, io.aicloud.sdk.hyena.pb.ErrResponse.Builder.class);
   }
 
   private int bitField0_;
@@ -105,19 +197,193 @@ private static final long serialVersionUID = 0L;
     return id_;
   }
 
-  public static final int ERROR_FIELD_NUMBER = 2;
-  private com.google.protobuf.ByteString error_;
+  public static final int MESSAGE_FIELD_NUMBER = 2;
+  private volatile java.lang.Object message_;
   /**
-   * <code>optional bytes error = 2;</code>
+   * <code>optional string message = 2;</code>
    */
-  public boolean hasError() {
+  public boolean hasMessage() {
     return ((bitField0_ & 0x00000002) == 0x00000002);
   }
   /**
-   * <code>optional bytes error = 2;</code>
+   * <code>optional string message = 2;</code>
    */
-  public com.google.protobuf.ByteString getError() {
-    return error_;
+  public java.lang.String getMessage() {
+    java.lang.Object ref = message_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      if (bs.isValidUtf8()) {
+        message_ = s;
+      }
+      return s;
+    }
+  }
+  /**
+   * <code>optional string message = 2;</code>
+   */
+  public com.google.protobuf.ByteString
+      getMessageBytes() {
+    java.lang.Object ref = message_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      message_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int NOTLEADER_FIELD_NUMBER = 3;
+  private io.aicloud.sdk.hyena.pb.NotLeader notLeader_;
+  /**
+   * <code>optional .rpc.NotLeader notLeader = 3;</code>
+   */
+  public boolean hasNotLeader() {
+    return ((bitField0_ & 0x00000004) == 0x00000004);
+  }
+  /**
+   * <code>optional .rpc.NotLeader notLeader = 3;</code>
+   */
+  public io.aicloud.sdk.hyena.pb.NotLeader getNotLeader() {
+    return notLeader_ == null ? io.aicloud.sdk.hyena.pb.NotLeader.getDefaultInstance() : notLeader_;
+  }
+  /**
+   * <code>optional .rpc.NotLeader notLeader = 3;</code>
+   */
+  public io.aicloud.sdk.hyena.pb.NotLeaderOrBuilder getNotLeaderOrBuilder() {
+    return notLeader_ == null ? io.aicloud.sdk.hyena.pb.NotLeader.getDefaultInstance() : notLeader_;
+  }
+
+  public static final int DBNOTFOUND_FIELD_NUMBER = 4;
+  private io.aicloud.sdk.hyena.pb.DBNotFound dbNotFound_;
+  /**
+   * <code>optional .rpc.DBNotFound dbNotFound = 4;</code>
+   */
+  public boolean hasDbNotFound() {
+    return ((bitField0_ & 0x00000008) == 0x00000008);
+  }
+  /**
+   * <code>optional .rpc.DBNotFound dbNotFound = 4;</code>
+   */
+  public io.aicloud.sdk.hyena.pb.DBNotFound getDbNotFound() {
+    return dbNotFound_ == null ? io.aicloud.sdk.hyena.pb.DBNotFound.getDefaultInstance() : dbNotFound_;
+  }
+  /**
+   * <code>optional .rpc.DBNotFound dbNotFound = 4;</code>
+   */
+  public io.aicloud.sdk.hyena.pb.DBNotFoundOrBuilder getDbNotFoundOrBuilder() {
+    return dbNotFound_ == null ? io.aicloud.sdk.hyena.pb.DBNotFound.getDefaultInstance() : dbNotFound_;
+  }
+
+  public static final int STALEEPOCH_FIELD_NUMBER = 5;
+  private io.aicloud.sdk.hyena.pb.StaleEpoch staleEpoch_;
+  /**
+   * <code>optional .rpc.StaleEpoch staleEpoch = 5;</code>
+   */
+  public boolean hasStaleEpoch() {
+    return ((bitField0_ & 0x00000010) == 0x00000010);
+  }
+  /**
+   * <code>optional .rpc.StaleEpoch staleEpoch = 5;</code>
+   */
+  public io.aicloud.sdk.hyena.pb.StaleEpoch getStaleEpoch() {
+    return staleEpoch_ == null ? io.aicloud.sdk.hyena.pb.StaleEpoch.getDefaultInstance() : staleEpoch_;
+  }
+  /**
+   * <code>optional .rpc.StaleEpoch staleEpoch = 5;</code>
+   */
+  public io.aicloud.sdk.hyena.pb.StaleEpochOrBuilder getStaleEpochOrBuilder() {
+    return staleEpoch_ == null ? io.aicloud.sdk.hyena.pb.StaleEpoch.getDefaultInstance() : staleEpoch_;
+  }
+
+  public static final int SERVERISBUSY_FIELD_NUMBER = 6;
+  private io.aicloud.sdk.hyena.pb.ServerIsBusy serverIsBusy_;
+  /**
+   * <code>optional .rpc.ServerIsBusy serverIsBusy = 6;</code>
+   */
+  public boolean hasServerIsBusy() {
+    return ((bitField0_ & 0x00000020) == 0x00000020);
+  }
+  /**
+   * <code>optional .rpc.ServerIsBusy serverIsBusy = 6;</code>
+   */
+  public io.aicloud.sdk.hyena.pb.ServerIsBusy getServerIsBusy() {
+    return serverIsBusy_ == null ? io.aicloud.sdk.hyena.pb.ServerIsBusy.getDefaultInstance() : serverIsBusy_;
+  }
+  /**
+   * <code>optional .rpc.ServerIsBusy serverIsBusy = 6;</code>
+   */
+  public io.aicloud.sdk.hyena.pb.ServerIsBusyOrBuilder getServerIsBusyOrBuilder() {
+    return serverIsBusy_ == null ? io.aicloud.sdk.hyena.pb.ServerIsBusy.getDefaultInstance() : serverIsBusy_;
+  }
+
+  public static final int STALECOMMAND_FIELD_NUMBER = 7;
+  private io.aicloud.sdk.hyena.pb.StaleCommand staleCommand_;
+  /**
+   * <code>optional .rpc.StaleCommand staleCommand = 7;</code>
+   */
+  public boolean hasStaleCommand() {
+    return ((bitField0_ & 0x00000040) == 0x00000040);
+  }
+  /**
+   * <code>optional .rpc.StaleCommand staleCommand = 7;</code>
+   */
+  public io.aicloud.sdk.hyena.pb.StaleCommand getStaleCommand() {
+    return staleCommand_ == null ? io.aicloud.sdk.hyena.pb.StaleCommand.getDefaultInstance() : staleCommand_;
+  }
+  /**
+   * <code>optional .rpc.StaleCommand staleCommand = 7;</code>
+   */
+  public io.aicloud.sdk.hyena.pb.StaleCommandOrBuilder getStaleCommandOrBuilder() {
+    return staleCommand_ == null ? io.aicloud.sdk.hyena.pb.StaleCommand.getDefaultInstance() : staleCommand_;
+  }
+
+  public static final int STORENOTMATCH_FIELD_NUMBER = 8;
+  private io.aicloud.sdk.hyena.pb.StoreNotMatch storeNotMatch_;
+  /**
+   * <code>optional .rpc.StoreNotMatch storeNotMatch = 8;</code>
+   */
+  public boolean hasStoreNotMatch() {
+    return ((bitField0_ & 0x00000080) == 0x00000080);
+  }
+  /**
+   * <code>optional .rpc.StoreNotMatch storeNotMatch = 8;</code>
+   */
+  public io.aicloud.sdk.hyena.pb.StoreNotMatch getStoreNotMatch() {
+    return storeNotMatch_ == null ? io.aicloud.sdk.hyena.pb.StoreNotMatch.getDefaultInstance() : storeNotMatch_;
+  }
+  /**
+   * <code>optional .rpc.StoreNotMatch storeNotMatch = 8;</code>
+   */
+  public io.aicloud.sdk.hyena.pb.StoreNotMatchOrBuilder getStoreNotMatchOrBuilder() {
+    return storeNotMatch_ == null ? io.aicloud.sdk.hyena.pb.StoreNotMatch.getDefaultInstance() : storeNotMatch_;
+  }
+
+  public static final int RAFTENTRYTOOLARGE_FIELD_NUMBER = 9;
+  private io.aicloud.sdk.hyena.pb.RaftEntryTooLarge raftEntryTooLarge_;
+  /**
+   * <code>optional .rpc.RaftEntryTooLarge raftEntryTooLarge = 9;</code>
+   */
+  public boolean hasRaftEntryTooLarge() {
+    return ((bitField0_ & 0x00000100) == 0x00000100);
+  }
+  /**
+   * <code>optional .rpc.RaftEntryTooLarge raftEntryTooLarge = 9;</code>
+   */
+  public io.aicloud.sdk.hyena.pb.RaftEntryTooLarge getRaftEntryTooLarge() {
+    return raftEntryTooLarge_ == null ? io.aicloud.sdk.hyena.pb.RaftEntryTooLarge.getDefaultInstance() : raftEntryTooLarge_;
+  }
+  /**
+   * <code>optional .rpc.RaftEntryTooLarge raftEntryTooLarge = 9;</code>
+   */
+  public io.aicloud.sdk.hyena.pb.RaftEntryTooLargeOrBuilder getRaftEntryTooLargeOrBuilder() {
+    return raftEntryTooLarge_ == null ? io.aicloud.sdk.hyena.pb.RaftEntryTooLarge.getDefaultInstance() : raftEntryTooLarge_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -136,7 +402,28 @@ private static final long serialVersionUID = 0L;
       output.writeBytes(1, id_);
     }
     if (((bitField0_ & 0x00000002) == 0x00000002)) {
-      output.writeBytes(2, error_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
+    }
+    if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      output.writeMessage(3, getNotLeader());
+    }
+    if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      output.writeMessage(4, getDbNotFound());
+    }
+    if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      output.writeMessage(5, getStaleEpoch());
+    }
+    if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      output.writeMessage(6, getServerIsBusy());
+    }
+    if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      output.writeMessage(7, getStaleCommand());
+    }
+    if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      output.writeMessage(8, getStoreNotMatch());
+    }
+    if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      output.writeMessage(9, getRaftEntryTooLarge());
     }
     unknownFields.writeTo(output);
   }
@@ -151,23 +438,50 @@ private static final long serialVersionUID = 0L;
         .computeBytesSize(1, id_);
     }
     if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
+    }
+    if (((bitField0_ & 0x00000004) == 0x00000004)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(2, error_);
+        .computeMessageSize(3, getNotLeader());
+    }
+    if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(4, getDbNotFound());
+    }
+    if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(5, getStaleEpoch());
+    }
+    if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(6, getServerIsBusy());
+    }
+    if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(7, getStaleCommand());
+    }
+    if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(8, getStoreNotMatch());
+    }
+    if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(9, getRaftEntryTooLarge());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @Override
-  public boolean equals(final Object obj) {
+  @java.lang.Override
+  public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof ErrResponse)) {
+    if (!(obj instanceof io.aicloud.sdk.hyena.pb.ErrResponse)) {
       return super.equals(obj);
     }
-    ErrResponse other = (ErrResponse) obj;
+    io.aicloud.sdk.hyena.pb.ErrResponse other = (io.aicloud.sdk.hyena.pb.ErrResponse) obj;
 
     boolean result = true;
     result = result && (hasId() == other.hasId());
@@ -175,16 +489,51 @@ private static final long serialVersionUID = 0L;
       result = result && getId()
           .equals(other.getId());
     }
-    result = result && (hasError() == other.hasError());
-    if (hasError()) {
-      result = result && getError()
-          .equals(other.getError());
+    result = result && (hasMessage() == other.hasMessage());
+    if (hasMessage()) {
+      result = result && getMessage()
+          .equals(other.getMessage());
+    }
+    result = result && (hasNotLeader() == other.hasNotLeader());
+    if (hasNotLeader()) {
+      result = result && getNotLeader()
+          .equals(other.getNotLeader());
+    }
+    result = result && (hasDbNotFound() == other.hasDbNotFound());
+    if (hasDbNotFound()) {
+      result = result && getDbNotFound()
+          .equals(other.getDbNotFound());
+    }
+    result = result && (hasStaleEpoch() == other.hasStaleEpoch());
+    if (hasStaleEpoch()) {
+      result = result && getStaleEpoch()
+          .equals(other.getStaleEpoch());
+    }
+    result = result && (hasServerIsBusy() == other.hasServerIsBusy());
+    if (hasServerIsBusy()) {
+      result = result && getServerIsBusy()
+          .equals(other.getServerIsBusy());
+    }
+    result = result && (hasStaleCommand() == other.hasStaleCommand());
+    if (hasStaleCommand()) {
+      result = result && getStaleCommand()
+          .equals(other.getStaleCommand());
+    }
+    result = result && (hasStoreNotMatch() == other.hasStoreNotMatch());
+    if (hasStoreNotMatch()) {
+      result = result && getStoreNotMatch()
+          .equals(other.getStoreNotMatch());
+    }
+    result = result && (hasRaftEntryTooLarge() == other.hasRaftEntryTooLarge());
+    if (hasRaftEntryTooLarge()) {
+      result = result && getRaftEntryTooLarge()
+          .equals(other.getRaftEntryTooLarge());
     }
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
 
-  @Override
+  @java.lang.Override
   public int hashCode() {
     if (memoizedHashCode != 0) {
       return memoizedHashCode;
@@ -195,78 +544,106 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
     }
-    if (hasError()) {
-      hash = (37 * hash) + ERROR_FIELD_NUMBER;
-      hash = (53 * hash) + getError().hashCode();
+    if (hasMessage()) {
+      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getMessage().hashCode();
+    }
+    if (hasNotLeader()) {
+      hash = (37 * hash) + NOTLEADER_FIELD_NUMBER;
+      hash = (53 * hash) + getNotLeader().hashCode();
+    }
+    if (hasDbNotFound()) {
+      hash = (37 * hash) + DBNOTFOUND_FIELD_NUMBER;
+      hash = (53 * hash) + getDbNotFound().hashCode();
+    }
+    if (hasStaleEpoch()) {
+      hash = (37 * hash) + STALEEPOCH_FIELD_NUMBER;
+      hash = (53 * hash) + getStaleEpoch().hashCode();
+    }
+    if (hasServerIsBusy()) {
+      hash = (37 * hash) + SERVERISBUSY_FIELD_NUMBER;
+      hash = (53 * hash) + getServerIsBusy().hashCode();
+    }
+    if (hasStaleCommand()) {
+      hash = (37 * hash) + STALECOMMAND_FIELD_NUMBER;
+      hash = (53 * hash) + getStaleCommand().hashCode();
+    }
+    if (hasStoreNotMatch()) {
+      hash = (37 * hash) + STORENOTMATCH_FIELD_NUMBER;
+      hash = (53 * hash) + getStoreNotMatch().hashCode();
+    }
+    if (hasRaftEntryTooLarge()) {
+      hash = (37 * hash) + RAFTENTRYTOOLARGE_FIELD_NUMBER;
+      hash = (53 * hash) + getRaftEntryTooLarge().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static ErrResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.ErrResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ErrResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.ErrResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ErrResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.ErrResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ErrResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.ErrResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ErrResponse parseFrom(byte[] data)
+  public static io.aicloud.sdk.hyena.pb.ErrResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ErrResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.ErrResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ErrResponse parseFrom(java.io.InputStream input)
+  public static io.aicloud.sdk.hyena.pb.ErrResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static ErrResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.ErrResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static ErrResponse parseDelimitedFrom(java.io.InputStream input)
+  public static io.aicloud.sdk.hyena.pb.ErrResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static ErrResponse parseDelimitedFrom(
+  public static io.aicloud.sdk.hyena.pb.ErrResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static ErrResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.ErrResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static ErrResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.ErrResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -278,7 +655,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(ErrResponse prototype) {
+  public static Builder newBuilder(io.aicloud.sdk.hyena.pb.ErrResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   public Builder toBuilder() {
@@ -286,7 +663,7 @@ private static final long serialVersionUID = 0L;
         ? new Builder() : new Builder().mergeFrom(this);
   }
 
-  @Override
+  @java.lang.Override
   protected Builder newBuilderForType(
       com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
@@ -302,17 +679,17 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:rpc.ErrResponse)
-      ErrResponseOrBuilder {
+      io.aicloud.sdk.hyena.pb.ErrResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return HyenaRPCPB.internal_static_rpc_ErrResponse_descriptor;
+      return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_ErrResponse_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return HyenaRPCPB.internal_static_rpc_ErrResponse_fieldAccessorTable
+      return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_ErrResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ErrResponse.class, ErrResponse.Builder.class);
+              io.aicloud.sdk.hyena.pb.ErrResponse.class, io.aicloud.sdk.hyena.pb.ErrResponse.Builder.class);
     }
 
     // Construct using io.aicloud.sdk.hyena.pb.ErrResponse.newBuilder()
@@ -328,36 +705,85 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
+        getNotLeaderFieldBuilder();
+        getDbNotFoundFieldBuilder();
+        getStaleEpochFieldBuilder();
+        getServerIsBusyFieldBuilder();
+        getStaleCommandFieldBuilder();
+        getStoreNotMatchFieldBuilder();
+        getRaftEntryTooLargeFieldBuilder();
       }
     }
     public Builder clear() {
       super.clear();
       id_ = com.google.protobuf.ByteString.EMPTY;
       bitField0_ = (bitField0_ & ~0x00000001);
-      error_ = com.google.protobuf.ByteString.EMPTY;
+      message_ = "";
       bitField0_ = (bitField0_ & ~0x00000002);
+      if (notLeaderBuilder_ == null) {
+        notLeader_ = null;
+      } else {
+        notLeaderBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000004);
+      if (dbNotFoundBuilder_ == null) {
+        dbNotFound_ = null;
+      } else {
+        dbNotFoundBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000008);
+      if (staleEpochBuilder_ == null) {
+        staleEpoch_ = null;
+      } else {
+        staleEpochBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000010);
+      if (serverIsBusyBuilder_ == null) {
+        serverIsBusy_ = null;
+      } else {
+        serverIsBusyBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000020);
+      if (staleCommandBuilder_ == null) {
+        staleCommand_ = null;
+      } else {
+        staleCommandBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000040);
+      if (storeNotMatchBuilder_ == null) {
+        storeNotMatch_ = null;
+      } else {
+        storeNotMatchBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000080);
+      if (raftEntryTooLargeBuilder_ == null) {
+        raftEntryTooLarge_ = null;
+      } else {
+        raftEntryTooLargeBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000100);
       return this;
     }
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return HyenaRPCPB.internal_static_rpc_ErrResponse_descriptor;
+      return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_ErrResponse_descriptor;
     }
 
-    public ErrResponse getDefaultInstanceForType() {
-      return ErrResponse.getDefaultInstance();
+    public io.aicloud.sdk.hyena.pb.ErrResponse getDefaultInstanceForType() {
+      return io.aicloud.sdk.hyena.pb.ErrResponse.getDefaultInstance();
     }
 
-    public ErrResponse build() {
-      ErrResponse result = buildPartial();
+    public io.aicloud.sdk.hyena.pb.ErrResponse build() {
+      io.aicloud.sdk.hyena.pb.ErrResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
       return result;
     }
 
-    public ErrResponse buildPartial() {
-      ErrResponse result = new ErrResponse(this);
+    public io.aicloud.sdk.hyena.pb.ErrResponse buildPartial() {
+      io.aicloud.sdk.hyena.pb.ErrResponse result = new io.aicloud.sdk.hyena.pb.ErrResponse(this);
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -367,7 +793,63 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
         to_bitField0_ |= 0x00000002;
       }
-      result.error_ = error_;
+      result.message_ = message_;
+      if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+        to_bitField0_ |= 0x00000004;
+      }
+      if (notLeaderBuilder_ == null) {
+        result.notLeader_ = notLeader_;
+      } else {
+        result.notLeader_ = notLeaderBuilder_.build();
+      }
+      if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+        to_bitField0_ |= 0x00000008;
+      }
+      if (dbNotFoundBuilder_ == null) {
+        result.dbNotFound_ = dbNotFound_;
+      } else {
+        result.dbNotFound_ = dbNotFoundBuilder_.build();
+      }
+      if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+        to_bitField0_ |= 0x00000010;
+      }
+      if (staleEpochBuilder_ == null) {
+        result.staleEpoch_ = staleEpoch_;
+      } else {
+        result.staleEpoch_ = staleEpochBuilder_.build();
+      }
+      if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+        to_bitField0_ |= 0x00000020;
+      }
+      if (serverIsBusyBuilder_ == null) {
+        result.serverIsBusy_ = serverIsBusy_;
+      } else {
+        result.serverIsBusy_ = serverIsBusyBuilder_.build();
+      }
+      if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+        to_bitField0_ |= 0x00000040;
+      }
+      if (staleCommandBuilder_ == null) {
+        result.staleCommand_ = staleCommand_;
+      } else {
+        result.staleCommand_ = staleCommandBuilder_.build();
+      }
+      if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+        to_bitField0_ |= 0x00000080;
+      }
+      if (storeNotMatchBuilder_ == null) {
+        result.storeNotMatch_ = storeNotMatch_;
+      } else {
+        result.storeNotMatch_ = storeNotMatchBuilder_.build();
+      }
+      if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+        to_bitField0_ |= 0x00000100;
+      }
+      if (raftEntryTooLargeBuilder_ == null) {
+        result.raftEntryTooLarge_ = raftEntryTooLarge_;
+      } else {
+        result.raftEntryTooLarge_ = raftEntryTooLargeBuilder_.build();
+      }
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -378,7 +860,7 @@ private static final long serialVersionUID = 0L;
     }
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        Object value) {
+        java.lang.Object value) {
       return (Builder) super.setField(field, value);
     }
     public Builder clearField(
@@ -391,30 +873,53 @@ private static final long serialVersionUID = 0L;
     }
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, Object value) {
+        int index, java.lang.Object value) {
       return (Builder) super.setRepeatedField(field, index, value);
     }
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        Object value) {
+        java.lang.Object value) {
       return (Builder) super.addRepeatedField(field, value);
     }
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof ErrResponse) {
-        return mergeFrom((ErrResponse)other);
+      if (other instanceof io.aicloud.sdk.hyena.pb.ErrResponse) {
+        return mergeFrom((io.aicloud.sdk.hyena.pb.ErrResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(ErrResponse other) {
-      if (other == ErrResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(io.aicloud.sdk.hyena.pb.ErrResponse other) {
+      if (other == io.aicloud.sdk.hyena.pb.ErrResponse.getDefaultInstance()) return this;
       if (other.hasId()) {
         setId(other.getId());
       }
-      if (other.hasError()) {
-        setError(other.getError());
+      if (other.hasMessage()) {
+        bitField0_ |= 0x00000002;
+        message_ = other.message_;
+        onChanged();
+      }
+      if (other.hasNotLeader()) {
+        mergeNotLeader(other.getNotLeader());
+      }
+      if (other.hasDbNotFound()) {
+        mergeDbNotFound(other.getDbNotFound());
+      }
+      if (other.hasStaleEpoch()) {
+        mergeStaleEpoch(other.getStaleEpoch());
+      }
+      if (other.hasServerIsBusy()) {
+        mergeServerIsBusy(other.getServerIsBusy());
+      }
+      if (other.hasStaleCommand()) {
+        mergeStaleCommand(other.getStaleCommand());
+      }
+      if (other.hasStoreNotMatch()) {
+        mergeStoreNotMatch(other.getStoreNotMatch());
+      }
+      if (other.hasRaftEntryTooLarge()) {
+        mergeRaftEntryTooLarge(other.getRaftEntryTooLarge());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -429,11 +934,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      ErrResponse parsedMessage = null;
+      io.aicloud.sdk.hyena.pb.ErrResponse parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (ErrResponse) e.getUnfinishedMessage();
+        parsedMessage = (io.aicloud.sdk.hyena.pb.ErrResponse) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -479,39 +984,906 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.ByteString error_ = com.google.protobuf.ByteString.EMPTY;
+    private java.lang.Object message_ = "";
     /**
-     * <code>optional bytes error = 2;</code>
+     * <code>optional string message = 2;</code>
      */
-    public boolean hasError() {
+    public boolean hasMessage() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional bytes error = 2;</code>
+     * <code>optional string message = 2;</code>
      */
-    public com.google.protobuf.ByteString getError() {
-      return error_;
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          message_ = s;
+        }
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>optional bytes error = 2;</code>
+     * <code>optional string message = 2;</code>
      */
-    public Builder setError(com.google.protobuf.ByteString value) {
+    public com.google.protobuf.ByteString
+        getMessageBytes() {
+      java.lang.Object ref = message_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        message_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string message = 2;</code>
+     */
+    public Builder setMessage(
+        java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000002;
-      error_ = value;
+      message_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>optional bytes error = 2;</code>
+     * <code>optional string message = 2;</code>
      */
-    public Builder clearError() {
+    public Builder clearMessage() {
       bitField0_ = (bitField0_ & ~0x00000002);
-      error_ = getDefaultInstance().getError();
+      message_ = getDefaultInstance().getMessage();
       onChanged();
       return this;
+    }
+    /**
+     * <code>optional string message = 2;</code>
+     */
+    public Builder setMessageBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+      message_ = value;
+      onChanged();
+      return this;
+    }
+
+    private io.aicloud.sdk.hyena.pb.NotLeader notLeader_ = null;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        io.aicloud.sdk.hyena.pb.NotLeader, io.aicloud.sdk.hyena.pb.NotLeader.Builder, io.aicloud.sdk.hyena.pb.NotLeaderOrBuilder> notLeaderBuilder_;
+    /**
+     * <code>optional .rpc.NotLeader notLeader = 3;</code>
+     */
+    public boolean hasNotLeader() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional .rpc.NotLeader notLeader = 3;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.NotLeader getNotLeader() {
+      if (notLeaderBuilder_ == null) {
+        return notLeader_ == null ? io.aicloud.sdk.hyena.pb.NotLeader.getDefaultInstance() : notLeader_;
+      } else {
+        return notLeaderBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>optional .rpc.NotLeader notLeader = 3;</code>
+     */
+    public Builder setNotLeader(io.aicloud.sdk.hyena.pb.NotLeader value) {
+      if (notLeaderBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        notLeader_ = value;
+        onChanged();
+      } else {
+        notLeaderBuilder_.setMessage(value);
+      }
+      bitField0_ |= 0x00000004;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.NotLeader notLeader = 3;</code>
+     */
+    public Builder setNotLeader(
+        io.aicloud.sdk.hyena.pb.NotLeader.Builder builderForValue) {
+      if (notLeaderBuilder_ == null) {
+        notLeader_ = builderForValue.build();
+        onChanged();
+      } else {
+        notLeaderBuilder_.setMessage(builderForValue.build());
+      }
+      bitField0_ |= 0x00000004;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.NotLeader notLeader = 3;</code>
+     */
+    public Builder mergeNotLeader(io.aicloud.sdk.hyena.pb.NotLeader value) {
+      if (notLeaderBuilder_ == null) {
+        if (((bitField0_ & 0x00000004) == 0x00000004) &&
+            notLeader_ != null &&
+            notLeader_ != io.aicloud.sdk.hyena.pb.NotLeader.getDefaultInstance()) {
+          notLeader_ =
+            io.aicloud.sdk.hyena.pb.NotLeader.newBuilder(notLeader_).mergeFrom(value).buildPartial();
+        } else {
+          notLeader_ = value;
+        }
+        onChanged();
+      } else {
+        notLeaderBuilder_.mergeFrom(value);
+      }
+      bitField0_ |= 0x00000004;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.NotLeader notLeader = 3;</code>
+     */
+    public Builder clearNotLeader() {
+      if (notLeaderBuilder_ == null) {
+        notLeader_ = null;
+        onChanged();
+      } else {
+        notLeaderBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000004);
+      return this;
+    }
+    /**
+     * <code>optional .rpc.NotLeader notLeader = 3;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.NotLeader.Builder getNotLeaderBuilder() {
+      bitField0_ |= 0x00000004;
+      onChanged();
+      return getNotLeaderFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>optional .rpc.NotLeader notLeader = 3;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.NotLeaderOrBuilder getNotLeaderOrBuilder() {
+      if (notLeaderBuilder_ != null) {
+        return notLeaderBuilder_.getMessageOrBuilder();
+      } else {
+        return notLeader_ == null ?
+            io.aicloud.sdk.hyena.pb.NotLeader.getDefaultInstance() : notLeader_;
+      }
+    }
+    /**
+     * <code>optional .rpc.NotLeader notLeader = 3;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        io.aicloud.sdk.hyena.pb.NotLeader, io.aicloud.sdk.hyena.pb.NotLeader.Builder, io.aicloud.sdk.hyena.pb.NotLeaderOrBuilder> 
+        getNotLeaderFieldBuilder() {
+      if (notLeaderBuilder_ == null) {
+        notLeaderBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            io.aicloud.sdk.hyena.pb.NotLeader, io.aicloud.sdk.hyena.pb.NotLeader.Builder, io.aicloud.sdk.hyena.pb.NotLeaderOrBuilder>(
+                getNotLeader(),
+                getParentForChildren(),
+                isClean());
+        notLeader_ = null;
+      }
+      return notLeaderBuilder_;
+    }
+
+    private io.aicloud.sdk.hyena.pb.DBNotFound dbNotFound_ = null;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        io.aicloud.sdk.hyena.pb.DBNotFound, io.aicloud.sdk.hyena.pb.DBNotFound.Builder, io.aicloud.sdk.hyena.pb.DBNotFoundOrBuilder> dbNotFoundBuilder_;
+    /**
+     * <code>optional .rpc.DBNotFound dbNotFound = 4;</code>
+     */
+    public boolean hasDbNotFound() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional .rpc.DBNotFound dbNotFound = 4;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.DBNotFound getDbNotFound() {
+      if (dbNotFoundBuilder_ == null) {
+        return dbNotFound_ == null ? io.aicloud.sdk.hyena.pb.DBNotFound.getDefaultInstance() : dbNotFound_;
+      } else {
+        return dbNotFoundBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>optional .rpc.DBNotFound dbNotFound = 4;</code>
+     */
+    public Builder setDbNotFound(io.aicloud.sdk.hyena.pb.DBNotFound value) {
+      if (dbNotFoundBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        dbNotFound_ = value;
+        onChanged();
+      } else {
+        dbNotFoundBuilder_.setMessage(value);
+      }
+      bitField0_ |= 0x00000008;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.DBNotFound dbNotFound = 4;</code>
+     */
+    public Builder setDbNotFound(
+        io.aicloud.sdk.hyena.pb.DBNotFound.Builder builderForValue) {
+      if (dbNotFoundBuilder_ == null) {
+        dbNotFound_ = builderForValue.build();
+        onChanged();
+      } else {
+        dbNotFoundBuilder_.setMessage(builderForValue.build());
+      }
+      bitField0_ |= 0x00000008;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.DBNotFound dbNotFound = 4;</code>
+     */
+    public Builder mergeDbNotFound(io.aicloud.sdk.hyena.pb.DBNotFound value) {
+      if (dbNotFoundBuilder_ == null) {
+        if (((bitField0_ & 0x00000008) == 0x00000008) &&
+            dbNotFound_ != null &&
+            dbNotFound_ != io.aicloud.sdk.hyena.pb.DBNotFound.getDefaultInstance()) {
+          dbNotFound_ =
+            io.aicloud.sdk.hyena.pb.DBNotFound.newBuilder(dbNotFound_).mergeFrom(value).buildPartial();
+        } else {
+          dbNotFound_ = value;
+        }
+        onChanged();
+      } else {
+        dbNotFoundBuilder_.mergeFrom(value);
+      }
+      bitField0_ |= 0x00000008;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.DBNotFound dbNotFound = 4;</code>
+     */
+    public Builder clearDbNotFound() {
+      if (dbNotFoundBuilder_ == null) {
+        dbNotFound_ = null;
+        onChanged();
+      } else {
+        dbNotFoundBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000008);
+      return this;
+    }
+    /**
+     * <code>optional .rpc.DBNotFound dbNotFound = 4;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.DBNotFound.Builder getDbNotFoundBuilder() {
+      bitField0_ |= 0x00000008;
+      onChanged();
+      return getDbNotFoundFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>optional .rpc.DBNotFound dbNotFound = 4;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.DBNotFoundOrBuilder getDbNotFoundOrBuilder() {
+      if (dbNotFoundBuilder_ != null) {
+        return dbNotFoundBuilder_.getMessageOrBuilder();
+      } else {
+        return dbNotFound_ == null ?
+            io.aicloud.sdk.hyena.pb.DBNotFound.getDefaultInstance() : dbNotFound_;
+      }
+    }
+    /**
+     * <code>optional .rpc.DBNotFound dbNotFound = 4;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        io.aicloud.sdk.hyena.pb.DBNotFound, io.aicloud.sdk.hyena.pb.DBNotFound.Builder, io.aicloud.sdk.hyena.pb.DBNotFoundOrBuilder> 
+        getDbNotFoundFieldBuilder() {
+      if (dbNotFoundBuilder_ == null) {
+        dbNotFoundBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            io.aicloud.sdk.hyena.pb.DBNotFound, io.aicloud.sdk.hyena.pb.DBNotFound.Builder, io.aicloud.sdk.hyena.pb.DBNotFoundOrBuilder>(
+                getDbNotFound(),
+                getParentForChildren(),
+                isClean());
+        dbNotFound_ = null;
+      }
+      return dbNotFoundBuilder_;
+    }
+
+    private io.aicloud.sdk.hyena.pb.StaleEpoch staleEpoch_ = null;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        io.aicloud.sdk.hyena.pb.StaleEpoch, io.aicloud.sdk.hyena.pb.StaleEpoch.Builder, io.aicloud.sdk.hyena.pb.StaleEpochOrBuilder> staleEpochBuilder_;
+    /**
+     * <code>optional .rpc.StaleEpoch staleEpoch = 5;</code>
+     */
+    public boolean hasStaleEpoch() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional .rpc.StaleEpoch staleEpoch = 5;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.StaleEpoch getStaleEpoch() {
+      if (staleEpochBuilder_ == null) {
+        return staleEpoch_ == null ? io.aicloud.sdk.hyena.pb.StaleEpoch.getDefaultInstance() : staleEpoch_;
+      } else {
+        return staleEpochBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>optional .rpc.StaleEpoch staleEpoch = 5;</code>
+     */
+    public Builder setStaleEpoch(io.aicloud.sdk.hyena.pb.StaleEpoch value) {
+      if (staleEpochBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        staleEpoch_ = value;
+        onChanged();
+      } else {
+        staleEpochBuilder_.setMessage(value);
+      }
+      bitField0_ |= 0x00000010;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.StaleEpoch staleEpoch = 5;</code>
+     */
+    public Builder setStaleEpoch(
+        io.aicloud.sdk.hyena.pb.StaleEpoch.Builder builderForValue) {
+      if (staleEpochBuilder_ == null) {
+        staleEpoch_ = builderForValue.build();
+        onChanged();
+      } else {
+        staleEpochBuilder_.setMessage(builderForValue.build());
+      }
+      bitField0_ |= 0x00000010;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.StaleEpoch staleEpoch = 5;</code>
+     */
+    public Builder mergeStaleEpoch(io.aicloud.sdk.hyena.pb.StaleEpoch value) {
+      if (staleEpochBuilder_ == null) {
+        if (((bitField0_ & 0x00000010) == 0x00000010) &&
+            staleEpoch_ != null &&
+            staleEpoch_ != io.aicloud.sdk.hyena.pb.StaleEpoch.getDefaultInstance()) {
+          staleEpoch_ =
+            io.aicloud.sdk.hyena.pb.StaleEpoch.newBuilder(staleEpoch_).mergeFrom(value).buildPartial();
+        } else {
+          staleEpoch_ = value;
+        }
+        onChanged();
+      } else {
+        staleEpochBuilder_.mergeFrom(value);
+      }
+      bitField0_ |= 0x00000010;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.StaleEpoch staleEpoch = 5;</code>
+     */
+    public Builder clearStaleEpoch() {
+      if (staleEpochBuilder_ == null) {
+        staleEpoch_ = null;
+        onChanged();
+      } else {
+        staleEpochBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000010);
+      return this;
+    }
+    /**
+     * <code>optional .rpc.StaleEpoch staleEpoch = 5;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.StaleEpoch.Builder getStaleEpochBuilder() {
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return getStaleEpochFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>optional .rpc.StaleEpoch staleEpoch = 5;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.StaleEpochOrBuilder getStaleEpochOrBuilder() {
+      if (staleEpochBuilder_ != null) {
+        return staleEpochBuilder_.getMessageOrBuilder();
+      } else {
+        return staleEpoch_ == null ?
+            io.aicloud.sdk.hyena.pb.StaleEpoch.getDefaultInstance() : staleEpoch_;
+      }
+    }
+    /**
+     * <code>optional .rpc.StaleEpoch staleEpoch = 5;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        io.aicloud.sdk.hyena.pb.StaleEpoch, io.aicloud.sdk.hyena.pb.StaleEpoch.Builder, io.aicloud.sdk.hyena.pb.StaleEpochOrBuilder> 
+        getStaleEpochFieldBuilder() {
+      if (staleEpochBuilder_ == null) {
+        staleEpochBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            io.aicloud.sdk.hyena.pb.StaleEpoch, io.aicloud.sdk.hyena.pb.StaleEpoch.Builder, io.aicloud.sdk.hyena.pb.StaleEpochOrBuilder>(
+                getStaleEpoch(),
+                getParentForChildren(),
+                isClean());
+        staleEpoch_ = null;
+      }
+      return staleEpochBuilder_;
+    }
+
+    private io.aicloud.sdk.hyena.pb.ServerIsBusy serverIsBusy_ = null;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        io.aicloud.sdk.hyena.pb.ServerIsBusy, io.aicloud.sdk.hyena.pb.ServerIsBusy.Builder, io.aicloud.sdk.hyena.pb.ServerIsBusyOrBuilder> serverIsBusyBuilder_;
+    /**
+     * <code>optional .rpc.ServerIsBusy serverIsBusy = 6;</code>
+     */
+    public boolean hasServerIsBusy() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional .rpc.ServerIsBusy serverIsBusy = 6;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.ServerIsBusy getServerIsBusy() {
+      if (serverIsBusyBuilder_ == null) {
+        return serverIsBusy_ == null ? io.aicloud.sdk.hyena.pb.ServerIsBusy.getDefaultInstance() : serverIsBusy_;
+      } else {
+        return serverIsBusyBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>optional .rpc.ServerIsBusy serverIsBusy = 6;</code>
+     */
+    public Builder setServerIsBusy(io.aicloud.sdk.hyena.pb.ServerIsBusy value) {
+      if (serverIsBusyBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        serverIsBusy_ = value;
+        onChanged();
+      } else {
+        serverIsBusyBuilder_.setMessage(value);
+      }
+      bitField0_ |= 0x00000020;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.ServerIsBusy serverIsBusy = 6;</code>
+     */
+    public Builder setServerIsBusy(
+        io.aicloud.sdk.hyena.pb.ServerIsBusy.Builder builderForValue) {
+      if (serverIsBusyBuilder_ == null) {
+        serverIsBusy_ = builderForValue.build();
+        onChanged();
+      } else {
+        serverIsBusyBuilder_.setMessage(builderForValue.build());
+      }
+      bitField0_ |= 0x00000020;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.ServerIsBusy serverIsBusy = 6;</code>
+     */
+    public Builder mergeServerIsBusy(io.aicloud.sdk.hyena.pb.ServerIsBusy value) {
+      if (serverIsBusyBuilder_ == null) {
+        if (((bitField0_ & 0x00000020) == 0x00000020) &&
+            serverIsBusy_ != null &&
+            serverIsBusy_ != io.aicloud.sdk.hyena.pb.ServerIsBusy.getDefaultInstance()) {
+          serverIsBusy_ =
+            io.aicloud.sdk.hyena.pb.ServerIsBusy.newBuilder(serverIsBusy_).mergeFrom(value).buildPartial();
+        } else {
+          serverIsBusy_ = value;
+        }
+        onChanged();
+      } else {
+        serverIsBusyBuilder_.mergeFrom(value);
+      }
+      bitField0_ |= 0x00000020;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.ServerIsBusy serverIsBusy = 6;</code>
+     */
+    public Builder clearServerIsBusy() {
+      if (serverIsBusyBuilder_ == null) {
+        serverIsBusy_ = null;
+        onChanged();
+      } else {
+        serverIsBusyBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000020);
+      return this;
+    }
+    /**
+     * <code>optional .rpc.ServerIsBusy serverIsBusy = 6;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.ServerIsBusy.Builder getServerIsBusyBuilder() {
+      bitField0_ |= 0x00000020;
+      onChanged();
+      return getServerIsBusyFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>optional .rpc.ServerIsBusy serverIsBusy = 6;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.ServerIsBusyOrBuilder getServerIsBusyOrBuilder() {
+      if (serverIsBusyBuilder_ != null) {
+        return serverIsBusyBuilder_.getMessageOrBuilder();
+      } else {
+        return serverIsBusy_ == null ?
+            io.aicloud.sdk.hyena.pb.ServerIsBusy.getDefaultInstance() : serverIsBusy_;
+      }
+    }
+    /**
+     * <code>optional .rpc.ServerIsBusy serverIsBusy = 6;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        io.aicloud.sdk.hyena.pb.ServerIsBusy, io.aicloud.sdk.hyena.pb.ServerIsBusy.Builder, io.aicloud.sdk.hyena.pb.ServerIsBusyOrBuilder> 
+        getServerIsBusyFieldBuilder() {
+      if (serverIsBusyBuilder_ == null) {
+        serverIsBusyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            io.aicloud.sdk.hyena.pb.ServerIsBusy, io.aicloud.sdk.hyena.pb.ServerIsBusy.Builder, io.aicloud.sdk.hyena.pb.ServerIsBusyOrBuilder>(
+                getServerIsBusy(),
+                getParentForChildren(),
+                isClean());
+        serverIsBusy_ = null;
+      }
+      return serverIsBusyBuilder_;
+    }
+
+    private io.aicloud.sdk.hyena.pb.StaleCommand staleCommand_ = null;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        io.aicloud.sdk.hyena.pb.StaleCommand, io.aicloud.sdk.hyena.pb.StaleCommand.Builder, io.aicloud.sdk.hyena.pb.StaleCommandOrBuilder> staleCommandBuilder_;
+    /**
+     * <code>optional .rpc.StaleCommand staleCommand = 7;</code>
+     */
+    public boolean hasStaleCommand() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional .rpc.StaleCommand staleCommand = 7;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.StaleCommand getStaleCommand() {
+      if (staleCommandBuilder_ == null) {
+        return staleCommand_ == null ? io.aicloud.sdk.hyena.pb.StaleCommand.getDefaultInstance() : staleCommand_;
+      } else {
+        return staleCommandBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>optional .rpc.StaleCommand staleCommand = 7;</code>
+     */
+    public Builder setStaleCommand(io.aicloud.sdk.hyena.pb.StaleCommand value) {
+      if (staleCommandBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        staleCommand_ = value;
+        onChanged();
+      } else {
+        staleCommandBuilder_.setMessage(value);
+      }
+      bitField0_ |= 0x00000040;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.StaleCommand staleCommand = 7;</code>
+     */
+    public Builder setStaleCommand(
+        io.aicloud.sdk.hyena.pb.StaleCommand.Builder builderForValue) {
+      if (staleCommandBuilder_ == null) {
+        staleCommand_ = builderForValue.build();
+        onChanged();
+      } else {
+        staleCommandBuilder_.setMessage(builderForValue.build());
+      }
+      bitField0_ |= 0x00000040;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.StaleCommand staleCommand = 7;</code>
+     */
+    public Builder mergeStaleCommand(io.aicloud.sdk.hyena.pb.StaleCommand value) {
+      if (staleCommandBuilder_ == null) {
+        if (((bitField0_ & 0x00000040) == 0x00000040) &&
+            staleCommand_ != null &&
+            staleCommand_ != io.aicloud.sdk.hyena.pb.StaleCommand.getDefaultInstance()) {
+          staleCommand_ =
+            io.aicloud.sdk.hyena.pb.StaleCommand.newBuilder(staleCommand_).mergeFrom(value).buildPartial();
+        } else {
+          staleCommand_ = value;
+        }
+        onChanged();
+      } else {
+        staleCommandBuilder_.mergeFrom(value);
+      }
+      bitField0_ |= 0x00000040;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.StaleCommand staleCommand = 7;</code>
+     */
+    public Builder clearStaleCommand() {
+      if (staleCommandBuilder_ == null) {
+        staleCommand_ = null;
+        onChanged();
+      } else {
+        staleCommandBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000040);
+      return this;
+    }
+    /**
+     * <code>optional .rpc.StaleCommand staleCommand = 7;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.StaleCommand.Builder getStaleCommandBuilder() {
+      bitField0_ |= 0x00000040;
+      onChanged();
+      return getStaleCommandFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>optional .rpc.StaleCommand staleCommand = 7;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.StaleCommandOrBuilder getStaleCommandOrBuilder() {
+      if (staleCommandBuilder_ != null) {
+        return staleCommandBuilder_.getMessageOrBuilder();
+      } else {
+        return staleCommand_ == null ?
+            io.aicloud.sdk.hyena.pb.StaleCommand.getDefaultInstance() : staleCommand_;
+      }
+    }
+    /**
+     * <code>optional .rpc.StaleCommand staleCommand = 7;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        io.aicloud.sdk.hyena.pb.StaleCommand, io.aicloud.sdk.hyena.pb.StaleCommand.Builder, io.aicloud.sdk.hyena.pb.StaleCommandOrBuilder> 
+        getStaleCommandFieldBuilder() {
+      if (staleCommandBuilder_ == null) {
+        staleCommandBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            io.aicloud.sdk.hyena.pb.StaleCommand, io.aicloud.sdk.hyena.pb.StaleCommand.Builder, io.aicloud.sdk.hyena.pb.StaleCommandOrBuilder>(
+                getStaleCommand(),
+                getParentForChildren(),
+                isClean());
+        staleCommand_ = null;
+      }
+      return staleCommandBuilder_;
+    }
+
+    private io.aicloud.sdk.hyena.pb.StoreNotMatch storeNotMatch_ = null;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        io.aicloud.sdk.hyena.pb.StoreNotMatch, io.aicloud.sdk.hyena.pb.StoreNotMatch.Builder, io.aicloud.sdk.hyena.pb.StoreNotMatchOrBuilder> storeNotMatchBuilder_;
+    /**
+     * <code>optional .rpc.StoreNotMatch storeNotMatch = 8;</code>
+     */
+    public boolean hasStoreNotMatch() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional .rpc.StoreNotMatch storeNotMatch = 8;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.StoreNotMatch getStoreNotMatch() {
+      if (storeNotMatchBuilder_ == null) {
+        return storeNotMatch_ == null ? io.aicloud.sdk.hyena.pb.StoreNotMatch.getDefaultInstance() : storeNotMatch_;
+      } else {
+        return storeNotMatchBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>optional .rpc.StoreNotMatch storeNotMatch = 8;</code>
+     */
+    public Builder setStoreNotMatch(io.aicloud.sdk.hyena.pb.StoreNotMatch value) {
+      if (storeNotMatchBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        storeNotMatch_ = value;
+        onChanged();
+      } else {
+        storeNotMatchBuilder_.setMessage(value);
+      }
+      bitField0_ |= 0x00000080;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.StoreNotMatch storeNotMatch = 8;</code>
+     */
+    public Builder setStoreNotMatch(
+        io.aicloud.sdk.hyena.pb.StoreNotMatch.Builder builderForValue) {
+      if (storeNotMatchBuilder_ == null) {
+        storeNotMatch_ = builderForValue.build();
+        onChanged();
+      } else {
+        storeNotMatchBuilder_.setMessage(builderForValue.build());
+      }
+      bitField0_ |= 0x00000080;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.StoreNotMatch storeNotMatch = 8;</code>
+     */
+    public Builder mergeStoreNotMatch(io.aicloud.sdk.hyena.pb.StoreNotMatch value) {
+      if (storeNotMatchBuilder_ == null) {
+        if (((bitField0_ & 0x00000080) == 0x00000080) &&
+            storeNotMatch_ != null &&
+            storeNotMatch_ != io.aicloud.sdk.hyena.pb.StoreNotMatch.getDefaultInstance()) {
+          storeNotMatch_ =
+            io.aicloud.sdk.hyena.pb.StoreNotMatch.newBuilder(storeNotMatch_).mergeFrom(value).buildPartial();
+        } else {
+          storeNotMatch_ = value;
+        }
+        onChanged();
+      } else {
+        storeNotMatchBuilder_.mergeFrom(value);
+      }
+      bitField0_ |= 0x00000080;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.StoreNotMatch storeNotMatch = 8;</code>
+     */
+    public Builder clearStoreNotMatch() {
+      if (storeNotMatchBuilder_ == null) {
+        storeNotMatch_ = null;
+        onChanged();
+      } else {
+        storeNotMatchBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000080);
+      return this;
+    }
+    /**
+     * <code>optional .rpc.StoreNotMatch storeNotMatch = 8;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.StoreNotMatch.Builder getStoreNotMatchBuilder() {
+      bitField0_ |= 0x00000080;
+      onChanged();
+      return getStoreNotMatchFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>optional .rpc.StoreNotMatch storeNotMatch = 8;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.StoreNotMatchOrBuilder getStoreNotMatchOrBuilder() {
+      if (storeNotMatchBuilder_ != null) {
+        return storeNotMatchBuilder_.getMessageOrBuilder();
+      } else {
+        return storeNotMatch_ == null ?
+            io.aicloud.sdk.hyena.pb.StoreNotMatch.getDefaultInstance() : storeNotMatch_;
+      }
+    }
+    /**
+     * <code>optional .rpc.StoreNotMatch storeNotMatch = 8;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        io.aicloud.sdk.hyena.pb.StoreNotMatch, io.aicloud.sdk.hyena.pb.StoreNotMatch.Builder, io.aicloud.sdk.hyena.pb.StoreNotMatchOrBuilder> 
+        getStoreNotMatchFieldBuilder() {
+      if (storeNotMatchBuilder_ == null) {
+        storeNotMatchBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            io.aicloud.sdk.hyena.pb.StoreNotMatch, io.aicloud.sdk.hyena.pb.StoreNotMatch.Builder, io.aicloud.sdk.hyena.pb.StoreNotMatchOrBuilder>(
+                getStoreNotMatch(),
+                getParentForChildren(),
+                isClean());
+        storeNotMatch_ = null;
+      }
+      return storeNotMatchBuilder_;
+    }
+
+    private io.aicloud.sdk.hyena.pb.RaftEntryTooLarge raftEntryTooLarge_ = null;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        io.aicloud.sdk.hyena.pb.RaftEntryTooLarge, io.aicloud.sdk.hyena.pb.RaftEntryTooLarge.Builder, io.aicloud.sdk.hyena.pb.RaftEntryTooLargeOrBuilder> raftEntryTooLargeBuilder_;
+    /**
+     * <code>optional .rpc.RaftEntryTooLarge raftEntryTooLarge = 9;</code>
+     */
+    public boolean hasRaftEntryTooLarge() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional .rpc.RaftEntryTooLarge raftEntryTooLarge = 9;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.RaftEntryTooLarge getRaftEntryTooLarge() {
+      if (raftEntryTooLargeBuilder_ == null) {
+        return raftEntryTooLarge_ == null ? io.aicloud.sdk.hyena.pb.RaftEntryTooLarge.getDefaultInstance() : raftEntryTooLarge_;
+      } else {
+        return raftEntryTooLargeBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>optional .rpc.RaftEntryTooLarge raftEntryTooLarge = 9;</code>
+     */
+    public Builder setRaftEntryTooLarge(io.aicloud.sdk.hyena.pb.RaftEntryTooLarge value) {
+      if (raftEntryTooLargeBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        raftEntryTooLarge_ = value;
+        onChanged();
+      } else {
+        raftEntryTooLargeBuilder_.setMessage(value);
+      }
+      bitField0_ |= 0x00000100;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.RaftEntryTooLarge raftEntryTooLarge = 9;</code>
+     */
+    public Builder setRaftEntryTooLarge(
+        io.aicloud.sdk.hyena.pb.RaftEntryTooLarge.Builder builderForValue) {
+      if (raftEntryTooLargeBuilder_ == null) {
+        raftEntryTooLarge_ = builderForValue.build();
+        onChanged();
+      } else {
+        raftEntryTooLargeBuilder_.setMessage(builderForValue.build());
+      }
+      bitField0_ |= 0x00000100;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.RaftEntryTooLarge raftEntryTooLarge = 9;</code>
+     */
+    public Builder mergeRaftEntryTooLarge(io.aicloud.sdk.hyena.pb.RaftEntryTooLarge value) {
+      if (raftEntryTooLargeBuilder_ == null) {
+        if (((bitField0_ & 0x00000100) == 0x00000100) &&
+            raftEntryTooLarge_ != null &&
+            raftEntryTooLarge_ != io.aicloud.sdk.hyena.pb.RaftEntryTooLarge.getDefaultInstance()) {
+          raftEntryTooLarge_ =
+            io.aicloud.sdk.hyena.pb.RaftEntryTooLarge.newBuilder(raftEntryTooLarge_).mergeFrom(value).buildPartial();
+        } else {
+          raftEntryTooLarge_ = value;
+        }
+        onChanged();
+      } else {
+        raftEntryTooLargeBuilder_.mergeFrom(value);
+      }
+      bitField0_ |= 0x00000100;
+      return this;
+    }
+    /**
+     * <code>optional .rpc.RaftEntryTooLarge raftEntryTooLarge = 9;</code>
+     */
+    public Builder clearRaftEntryTooLarge() {
+      if (raftEntryTooLargeBuilder_ == null) {
+        raftEntryTooLarge_ = null;
+        onChanged();
+      } else {
+        raftEntryTooLargeBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000100);
+      return this;
+    }
+    /**
+     * <code>optional .rpc.RaftEntryTooLarge raftEntryTooLarge = 9;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.RaftEntryTooLarge.Builder getRaftEntryTooLargeBuilder() {
+      bitField0_ |= 0x00000100;
+      onChanged();
+      return getRaftEntryTooLargeFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>optional .rpc.RaftEntryTooLarge raftEntryTooLarge = 9;</code>
+     */
+    public io.aicloud.sdk.hyena.pb.RaftEntryTooLargeOrBuilder getRaftEntryTooLargeOrBuilder() {
+      if (raftEntryTooLargeBuilder_ != null) {
+        return raftEntryTooLargeBuilder_.getMessageOrBuilder();
+      } else {
+        return raftEntryTooLarge_ == null ?
+            io.aicloud.sdk.hyena.pb.RaftEntryTooLarge.getDefaultInstance() : raftEntryTooLarge_;
+      }
+    }
+    /**
+     * <code>optional .rpc.RaftEntryTooLarge raftEntryTooLarge = 9;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        io.aicloud.sdk.hyena.pb.RaftEntryTooLarge, io.aicloud.sdk.hyena.pb.RaftEntryTooLarge.Builder, io.aicloud.sdk.hyena.pb.RaftEntryTooLargeOrBuilder> 
+        getRaftEntryTooLargeFieldBuilder() {
+      if (raftEntryTooLargeBuilder_ == null) {
+        raftEntryTooLargeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            io.aicloud.sdk.hyena.pb.RaftEntryTooLarge, io.aicloud.sdk.hyena.pb.RaftEntryTooLarge.Builder, io.aicloud.sdk.hyena.pb.RaftEntryTooLargeOrBuilder>(
+                getRaftEntryTooLarge(),
+                getParentForChildren(),
+                isClean());
+        raftEntryTooLarge_ = null;
+      }
+      return raftEntryTooLargeBuilder_;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -528,16 +1900,16 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:rpc.ErrResponse)
-  private static final ErrResponse DEFAULT_INSTANCE;
+  private static final io.aicloud.sdk.hyena.pb.ErrResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new ErrResponse();
+    DEFAULT_INSTANCE = new io.aicloud.sdk.hyena.pb.ErrResponse();
   }
 
-  public static ErrResponse getDefaultInstance() {
+  public static io.aicloud.sdk.hyena.pb.ErrResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  @Deprecated public static final com.google.protobuf.Parser<ErrResponse>
+  @java.lang.Deprecated public static final com.google.protobuf.Parser<ErrResponse>
       PARSER = new com.google.protobuf.AbstractParser<ErrResponse>() {
     public ErrResponse parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
@@ -551,12 +1923,12 @@ private static final long serialVersionUID = 0L;
     return PARSER;
   }
 
-  @Override
+  @java.lang.Override
   public com.google.protobuf.Parser<ErrResponse> getParserForType() {
     return PARSER;
   }
 
-  public ErrResponse getDefaultInstanceForType() {
+  public io.aicloud.sdk.hyena.pb.ErrResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

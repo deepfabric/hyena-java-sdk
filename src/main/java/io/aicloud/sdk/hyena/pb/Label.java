@@ -20,7 +20,7 @@ private static final long serialVersionUID = 0L;
     value_ = "";
   }
 
-  @Override
+  @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
     return this.unknownFields;
@@ -31,7 +31,7 @@ private static final long serialVersionUID = 0L;
       throws com.google.protobuf.InvalidProtocolBufferException {
     this();
     if (extensionRegistry == null) {
-      throw new NullPointerException();
+      throw new java.lang.NullPointerException();
     }
     int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
@@ -77,19 +77,19 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return HyenaMetaPB.internal_static_meta_Label_descriptor;
+    return io.aicloud.sdk.hyena.pb.HyenaMetaPB.internal_static_meta_Label_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return HyenaMetaPB.internal_static_meta_Label_fieldAccessorTable
+    return io.aicloud.sdk.hyena.pb.HyenaMetaPB.internal_static_meta_Label_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            Label.class, Label.Builder.class);
+            io.aicloud.sdk.hyena.pb.Label.class, io.aicloud.sdk.hyena.pb.Label.Builder.class);
   }
 
   private int bitField0_;
   public static final int KEY_FIELD_NUMBER = 1;
-  private volatile Object key_;
+  private volatile java.lang.Object key_;
   /**
    * <code>optional string key = 1;</code>
    */
@@ -99,14 +99,14 @@ private static final long serialVersionUID = 0L;
   /**
    * <code>optional string key = 1;</code>
    */
-  public String getKey() {
-    Object ref = key_;
-    if (ref instanceof String) {
-      return (String) ref;
+  public java.lang.String getKey() {
+    java.lang.Object ref = key_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs =
+      com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
-      String s = bs.toStringUtf8();
+      java.lang.String s = bs.toStringUtf8();
       if (bs.isValidUtf8()) {
         key_ = s;
       }
@@ -118,11 +118,11 @@ private static final long serialVersionUID = 0L;
    */
   public com.google.protobuf.ByteString
       getKeyBytes() {
-    Object ref = key_;
-    if (ref instanceof String) {
-      com.google.protobuf.ByteString b =
+    java.lang.Object ref = key_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
-              (String) ref);
+              (java.lang.String) ref);
       key_ = b;
       return b;
     } else {
@@ -131,7 +131,7 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int VALUE_FIELD_NUMBER = 2;
-  private volatile Object value_;
+  private volatile java.lang.Object value_;
   /**
    * <code>optional string value = 2;</code>
    */
@@ -141,14 +141,14 @@ private static final long serialVersionUID = 0L;
   /**
    * <code>optional string value = 2;</code>
    */
-  public String getValue() {
-    Object ref = value_;
-    if (ref instanceof String) {
-      return (String) ref;
+  public java.lang.String getValue() {
+    java.lang.Object ref = value_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs =
+      com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
-      String s = bs.toStringUtf8();
+      java.lang.String s = bs.toStringUtf8();
       if (bs.isValidUtf8()) {
         value_ = s;
       }
@@ -160,11 +160,11 @@ private static final long serialVersionUID = 0L;
    */
   public com.google.protobuf.ByteString
       getValueBytes() {
-    Object ref = value_;
-    if (ref instanceof String) {
-      com.google.protobuf.ByteString b =
+    java.lang.Object ref = value_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
-              (String) ref);
+              (java.lang.String) ref);
       value_ = b;
       return b;
     } else {
@@ -209,15 +209,15 @@ private static final long serialVersionUID = 0L;
     return size;
   }
 
-  @Override
-  public boolean equals(final Object obj) {
+  @java.lang.Override
+  public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof Label)) {
+    if (!(obj instanceof io.aicloud.sdk.hyena.pb.Label)) {
       return super.equals(obj);
     }
-    Label other = (Label) obj;
+    io.aicloud.sdk.hyena.pb.Label other = (io.aicloud.sdk.hyena.pb.Label) obj;
 
     boolean result = true;
     result = result && (hasKey() == other.hasKey());
@@ -234,7 +234,7 @@ private static final long serialVersionUID = 0L;
     return result;
   }
 
-  @Override
+  @java.lang.Override
   public int hashCode() {
     if (memoizedHashCode != 0) {
       return memoizedHashCode;
@@ -254,69 +254,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static Label parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Label parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static Label parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Label parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static Label parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Label parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static Label parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Label parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static Label parseFrom(byte[] data)
+  public static io.aicloud.sdk.hyena.pb.Label parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static Label parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Label parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static Label parseFrom(java.io.InputStream input)
+  public static io.aicloud.sdk.hyena.pb.Label parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static Label parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Label parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static Label parseDelimitedFrom(java.io.InputStream input)
+  public static io.aicloud.sdk.hyena.pb.Label parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static Label parseDelimitedFrom(
+  public static io.aicloud.sdk.hyena.pb.Label parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static Label parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Label parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static Label parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Label parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -328,7 +328,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(Label prototype) {
+  public static Builder newBuilder(io.aicloud.sdk.hyena.pb.Label prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   public Builder toBuilder() {
@@ -336,7 +336,7 @@ private static final long serialVersionUID = 0L;
         ? new Builder() : new Builder().mergeFrom(this);
   }
 
-  @Override
+  @java.lang.Override
   protected Builder newBuilderForType(
       com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
@@ -348,17 +348,17 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:meta.Label)
-      LabelOrBuilder {
+      io.aicloud.sdk.hyena.pb.LabelOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return HyenaMetaPB.internal_static_meta_Label_descriptor;
+      return io.aicloud.sdk.hyena.pb.HyenaMetaPB.internal_static_meta_Label_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return HyenaMetaPB.internal_static_meta_Label_fieldAccessorTable
+      return io.aicloud.sdk.hyena.pb.HyenaMetaPB.internal_static_meta_Label_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Label.class, Label.Builder.class);
+              io.aicloud.sdk.hyena.pb.Label.class, io.aicloud.sdk.hyena.pb.Label.Builder.class);
     }
 
     // Construct using io.aicloud.sdk.hyena.pb.Label.newBuilder()
@@ -387,23 +387,23 @@ private static final long serialVersionUID = 0L;
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return HyenaMetaPB.internal_static_meta_Label_descriptor;
+      return io.aicloud.sdk.hyena.pb.HyenaMetaPB.internal_static_meta_Label_descriptor;
     }
 
-    public Label getDefaultInstanceForType() {
-      return Label.getDefaultInstance();
+    public io.aicloud.sdk.hyena.pb.Label getDefaultInstanceForType() {
+      return io.aicloud.sdk.hyena.pb.Label.getDefaultInstance();
     }
 
-    public Label build() {
-      Label result = buildPartial();
+    public io.aicloud.sdk.hyena.pb.Label build() {
+      io.aicloud.sdk.hyena.pb.Label result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
       return result;
     }
 
-    public Label buildPartial() {
-      Label result = new Label(this);
+    public io.aicloud.sdk.hyena.pb.Label buildPartial() {
+      io.aicloud.sdk.hyena.pb.Label result = new io.aicloud.sdk.hyena.pb.Label(this);
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -424,7 +424,7 @@ private static final long serialVersionUID = 0L;
     }
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        Object value) {
+        java.lang.Object value) {
       return (Builder) super.setField(field, value);
     }
     public Builder clearField(
@@ -437,25 +437,25 @@ private static final long serialVersionUID = 0L;
     }
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, Object value) {
+        int index, java.lang.Object value) {
       return (Builder) super.setRepeatedField(field, index, value);
     }
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        Object value) {
+        java.lang.Object value) {
       return (Builder) super.addRepeatedField(field, value);
     }
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof Label) {
-        return mergeFrom((Label)other);
+      if (other instanceof io.aicloud.sdk.hyena.pb.Label) {
+        return mergeFrom((io.aicloud.sdk.hyena.pb.Label)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(Label other) {
-      if (other == Label.getDefaultInstance()) return this;
+    public Builder mergeFrom(io.aicloud.sdk.hyena.pb.Label other) {
+      if (other == io.aicloud.sdk.hyena.pb.Label.getDefaultInstance()) return this;
       if (other.hasKey()) {
         bitField0_ |= 0x00000001;
         key_ = other.key_;
@@ -479,11 +479,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Label parsedMessage = null;
+      io.aicloud.sdk.hyena.pb.Label parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (Label) e.getUnfinishedMessage();
+        parsedMessage = (io.aicloud.sdk.hyena.pb.Label) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -494,7 +494,7 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private Object key_ = "";
+    private java.lang.Object key_ = "";
     /**
      * <code>optional string key = 1;</code>
      */
@@ -504,18 +504,18 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>optional string key = 1;</code>
      */
-    public String getKey() {
-      Object ref = key_;
-      if (!(ref instanceof String)) {
+    public java.lang.String getKey() {
+      java.lang.Object ref = key_;
+      if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           key_ = s;
         }
         return s;
       } else {
-        return (String) ref;
+        return (java.lang.String) ref;
       }
     }
     /**
@@ -523,11 +523,11 @@ private static final long serialVersionUID = 0L;
      */
     public com.google.protobuf.ByteString
         getKeyBytes() {
-      Object ref = key_;
+      java.lang.Object ref = key_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         key_ = b;
         return b;
       } else {
@@ -538,7 +538,7 @@ private static final long serialVersionUID = 0L;
      * <code>optional string key = 1;</code>
      */
     public Builder setKey(
-        String value) {
+        java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
@@ -570,7 +570,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private Object value_ = "";
+    private java.lang.Object value_ = "";
     /**
      * <code>optional string value = 2;</code>
      */
@@ -580,18 +580,18 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>optional string value = 2;</code>
      */
-    public String getValue() {
-      Object ref = value_;
-      if (!(ref instanceof String)) {
+    public java.lang.String getValue() {
+      java.lang.Object ref = value_;
+      if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           value_ = s;
         }
         return s;
       } else {
-        return (String) ref;
+        return (java.lang.String) ref;
       }
     }
     /**
@@ -599,11 +599,11 @@ private static final long serialVersionUID = 0L;
      */
     public com.google.protobuf.ByteString
         getValueBytes() {
-      Object ref = value_;
+      java.lang.Object ref = value_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         value_ = b;
         return b;
       } else {
@@ -614,7 +614,7 @@ private static final long serialVersionUID = 0L;
      * <code>optional string value = 2;</code>
      */
     public Builder setValue(
-        String value) {
+        java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
@@ -660,16 +660,16 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:meta.Label)
-  private static final Label DEFAULT_INSTANCE;
+  private static final io.aicloud.sdk.hyena.pb.Label DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new Label();
+    DEFAULT_INSTANCE = new io.aicloud.sdk.hyena.pb.Label();
   }
 
-  public static Label getDefaultInstance() {
+  public static io.aicloud.sdk.hyena.pb.Label getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  @Deprecated public static final com.google.protobuf.Parser<Label>
+  @java.lang.Deprecated public static final com.google.protobuf.Parser<Label>
       PARSER = new com.google.protobuf.AbstractParser<Label>() {
     public Label parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
@@ -683,12 +683,12 @@ private static final long serialVersionUID = 0L;
     return PARSER;
   }
 
-  @Override
+  @java.lang.Override
   public com.google.protobuf.Parser<Label> getParserForType() {
     return PARSER;
   }
 
-  public Label getDefaultInstanceForType() {
+  public io.aicloud.sdk.hyena.pb.Label getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

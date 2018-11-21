@@ -20,7 +20,7 @@ class Options {
     private int dim = 512;
     private int executors = Runtime.getRuntime().availableProcessors();
     private int ioExecutors = 1;
-    private int timeout = 200;
+    private long timeout = 200;
     private TimeUnit timeoutUnit = TimeUnit.MILLISECONDS;
 
     private String brokers;

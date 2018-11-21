@@ -17,11 +17,107 @@ public interface ErrResponseOrBuilder extends
   com.google.protobuf.ByteString getId();
 
   /**
-   * <code>optional bytes error = 2;</code>
+   * <code>optional string message = 2;</code>
    */
-  boolean hasError();
+  boolean hasMessage();
   /**
-   * <code>optional bytes error = 2;</code>
+   * <code>optional string message = 2;</code>
    */
-  com.google.protobuf.ByteString getError();
+  java.lang.String getMessage();
+  /**
+   * <code>optional string message = 2;</code>
+   */
+  com.google.protobuf.ByteString
+      getMessageBytes();
+
+  /**
+   * <code>optional .rpc.NotLeader notLeader = 3;</code>
+   */
+  boolean hasNotLeader();
+  /**
+   * <code>optional .rpc.NotLeader notLeader = 3;</code>
+   */
+  io.aicloud.sdk.hyena.pb.NotLeader getNotLeader();
+  /**
+   * <code>optional .rpc.NotLeader notLeader = 3;</code>
+   */
+  io.aicloud.sdk.hyena.pb.NotLeaderOrBuilder getNotLeaderOrBuilder();
+
+  /**
+   * <code>optional .rpc.DBNotFound dbNotFound = 4;</code>
+   */
+  boolean hasDbNotFound();
+  /**
+   * <code>optional .rpc.DBNotFound dbNotFound = 4;</code>
+   */
+  io.aicloud.sdk.hyena.pb.DBNotFound getDbNotFound();
+  /**
+   * <code>optional .rpc.DBNotFound dbNotFound = 4;</code>
+   */
+  io.aicloud.sdk.hyena.pb.DBNotFoundOrBuilder getDbNotFoundOrBuilder();
+
+  /**
+   * <code>optional .rpc.StaleEpoch staleEpoch = 5;</code>
+   */
+  boolean hasStaleEpoch();
+  /**
+   * <code>optional .rpc.StaleEpoch staleEpoch = 5;</code>
+   */
+  io.aicloud.sdk.hyena.pb.StaleEpoch getStaleEpoch();
+  /**
+   * <code>optional .rpc.StaleEpoch staleEpoch = 5;</code>
+   */
+  io.aicloud.sdk.hyena.pb.StaleEpochOrBuilder getStaleEpochOrBuilder();
+
+  /**
+   * <code>optional .rpc.ServerIsBusy serverIsBusy = 6;</code>
+   */
+  boolean hasServerIsBusy();
+  /**
+   * <code>optional .rpc.ServerIsBusy serverIsBusy = 6;</code>
+   */
+  io.aicloud.sdk.hyena.pb.ServerIsBusy getServerIsBusy();
+  /**
+   * <code>optional .rpc.ServerIsBusy serverIsBusy = 6;</code>
+   */
+  io.aicloud.sdk.hyena.pb.ServerIsBusyOrBuilder getServerIsBusyOrBuilder();
+
+  /**
+   * <code>optional .rpc.StaleCommand staleCommand = 7;</code>
+   */
+  boolean hasStaleCommand();
+  /**
+   * <code>optional .rpc.StaleCommand staleCommand = 7;</code>
+   */
+  io.aicloud.sdk.hyena.pb.StaleCommand getStaleCommand();
+  /**
+   * <code>optional .rpc.StaleCommand staleCommand = 7;</code>
+   */
+  io.aicloud.sdk.hyena.pb.StaleCommandOrBuilder getStaleCommandOrBuilder();
+
+  /**
+   * <code>optional .rpc.StoreNotMatch storeNotMatch = 8;</code>
+   */
+  boolean hasStoreNotMatch();
+  /**
+   * <code>optional .rpc.StoreNotMatch storeNotMatch = 8;</code>
+   */
+  io.aicloud.sdk.hyena.pb.StoreNotMatch getStoreNotMatch();
+  /**
+   * <code>optional .rpc.StoreNotMatch storeNotMatch = 8;</code>
+   */
+  io.aicloud.sdk.hyena.pb.StoreNotMatchOrBuilder getStoreNotMatchOrBuilder();
+
+  /**
+   * <code>optional .rpc.RaftEntryTooLarge raftEntryTooLarge = 9;</code>
+   */
+  boolean hasRaftEntryTooLarge();
+  /**
+   * <code>optional .rpc.RaftEntryTooLarge raftEntryTooLarge = 9;</code>
+   */
+  io.aicloud.sdk.hyena.pb.RaftEntryTooLarge getRaftEntryTooLarge();
+  /**
+   * <code>optional .rpc.RaftEntryTooLarge raftEntryTooLarge = 9;</code>
+   */
+  io.aicloud.sdk.hyena.pb.RaftEntryTooLargeOrBuilder getRaftEntryTooLargeOrBuilder();
 }

@@ -26,7 +26,7 @@ private static final long serialVersionUID = 0L;
     peers_ = java.util.Collections.emptyList();
   }
 
-  @Override
+  @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
     return this.unknownFields;
@@ -37,7 +37,7 @@ private static final long serialVersionUID = 0L;
       throws com.google.protobuf.InvalidProtocolBufferException {
     this();
     if (extensionRegistry == null) {
-      throw new NullPointerException();
+      throw new java.lang.NullPointerException();
     }
     int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
@@ -64,7 +64,7 @@ private static final long serialVersionUID = 0L;
           }
           case 16: {
             int rawValue = input.readEnum();
-            DBState value = DBState.valueOf(rawValue);
+            io.aicloud.sdk.hyena.pb.DBState value = io.aicloud.sdk.hyena.pb.DBState.valueOf(rawValue);
             if (value == null) {
               unknownFields.mergeVarintField(2, rawValue);
             } else {
@@ -79,11 +79,11 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 34: {
-            Epoch.Builder subBuilder = null;
+            io.aicloud.sdk.hyena.pb.Epoch.Builder subBuilder = null;
             if (((bitField0_ & 0x00000008) == 0x00000008)) {
               subBuilder = epoch_.toBuilder();
             }
-            epoch_ = input.readMessage(Epoch.PARSER, extensionRegistry);
+            epoch_ = input.readMessage(io.aicloud.sdk.hyena.pb.Epoch.PARSER, extensionRegistry);
             if (subBuilder != null) {
               subBuilder.mergeFrom(epoch_);
               epoch_ = subBuilder.buildPartial();
@@ -93,11 +93,11 @@ private static final long serialVersionUID = 0L;
           }
           case 42: {
             if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-              peers_ = new java.util.ArrayList<Peer>();
+              peers_ = new java.util.ArrayList<io.aicloud.sdk.hyena.pb.Peer>();
               mutable_bitField0_ |= 0x00000010;
             }
             peers_.add(
-                input.readMessage(Peer.PARSER, extensionRegistry));
+                input.readMessage(io.aicloud.sdk.hyena.pb.Peer.PARSER, extensionRegistry));
             break;
           }
         }
@@ -117,14 +117,14 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return HyenaMetaPB.internal_static_meta_VectorDB_descriptor;
+    return io.aicloud.sdk.hyena.pb.HyenaMetaPB.internal_static_meta_VectorDB_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return HyenaMetaPB.internal_static_meta_VectorDB_fieldAccessorTable
+    return io.aicloud.sdk.hyena.pb.HyenaMetaPB.internal_static_meta_VectorDB_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            VectorDB.class, VectorDB.Builder.class);
+            io.aicloud.sdk.hyena.pb.VectorDB.class, io.aicloud.sdk.hyena.pb.VectorDB.Builder.class);
   }
 
   private int bitField0_;
@@ -154,9 +154,9 @@ private static final long serialVersionUID = 0L;
   /**
    * <code>optional .meta.DBState state = 2;</code>
    */
-  public DBState getState() {
-    DBState result = DBState.valueOf(state_);
-    return result == null ? DBState.RU : result;
+  public io.aicloud.sdk.hyena.pb.DBState getState() {
+    io.aicloud.sdk.hyena.pb.DBState result = io.aicloud.sdk.hyena.pb.DBState.valueOf(state_);
+    return result == null ? io.aicloud.sdk.hyena.pb.DBState.RU : result;
   }
 
   public static final int START_FIELD_NUMBER = 3;
@@ -175,7 +175,7 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int EPOCH_FIELD_NUMBER = 4;
-  private Epoch epoch_;
+  private io.aicloud.sdk.hyena.pb.Epoch epoch_;
   /**
    * <code>optional .meta.Epoch epoch = 4;</code>
    */
@@ -185,28 +185,28 @@ private static final long serialVersionUID = 0L;
   /**
    * <code>optional .meta.Epoch epoch = 4;</code>
    */
-  public Epoch getEpoch() {
-    return epoch_ == null ? Epoch.getDefaultInstance() : epoch_;
+  public io.aicloud.sdk.hyena.pb.Epoch getEpoch() {
+    return epoch_ == null ? io.aicloud.sdk.hyena.pb.Epoch.getDefaultInstance() : epoch_;
   }
   /**
    * <code>optional .meta.Epoch epoch = 4;</code>
    */
-  public EpochOrBuilder getEpochOrBuilder() {
-    return epoch_ == null ? Epoch.getDefaultInstance() : epoch_;
+  public io.aicloud.sdk.hyena.pb.EpochOrBuilder getEpochOrBuilder() {
+    return epoch_ == null ? io.aicloud.sdk.hyena.pb.Epoch.getDefaultInstance() : epoch_;
   }
 
   public static final int PEERS_FIELD_NUMBER = 5;
-  private java.util.List<Peer> peers_;
+  private java.util.List<io.aicloud.sdk.hyena.pb.Peer> peers_;
   /**
    * <code>repeated .meta.Peer peers = 5;</code>
    */
-  public java.util.List<Peer> getPeersList() {
+  public java.util.List<io.aicloud.sdk.hyena.pb.Peer> getPeersList() {
     return peers_;
   }
   /**
    * <code>repeated .meta.Peer peers = 5;</code>
    */
-  public java.util.List<? extends PeerOrBuilder>
+  public java.util.List<? extends io.aicloud.sdk.hyena.pb.PeerOrBuilder> 
       getPeersOrBuilderList() {
     return peers_;
   }
@@ -219,13 +219,13 @@ private static final long serialVersionUID = 0L;
   /**
    * <code>repeated .meta.Peer peers = 5;</code>
    */
-  public Peer getPeers(int index) {
+  public io.aicloud.sdk.hyena.pb.Peer getPeers(int index) {
     return peers_.get(index);
   }
   /**
    * <code>repeated .meta.Peer peers = 5;</code>
    */
-  public PeerOrBuilder getPeersOrBuilder(
+  public io.aicloud.sdk.hyena.pb.PeerOrBuilder getPeersOrBuilder(
       int index) {
     return peers_.get(index);
   }
@@ -290,15 +290,15 @@ private static final long serialVersionUID = 0L;
     return size;
   }
 
-  @Override
-  public boolean equals(final Object obj) {
+  @java.lang.Override
+  public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof VectorDB)) {
+    if (!(obj instanceof io.aicloud.sdk.hyena.pb.VectorDB)) {
       return super.equals(obj);
     }
-    VectorDB other = (VectorDB) obj;
+    io.aicloud.sdk.hyena.pb.VectorDB other = (io.aicloud.sdk.hyena.pb.VectorDB) obj;
 
     boolean result = true;
     result = result && (hasId() == other.hasId());
@@ -326,7 +326,7 @@ private static final long serialVersionUID = 0L;
     return result;
   }
 
-  @Override
+  @java.lang.Override
   public int hashCode() {
     if (memoizedHashCode != 0) {
       return memoizedHashCode;
@@ -360,69 +360,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static VectorDB parseFrom(
+  public static io.aicloud.sdk.hyena.pb.VectorDB parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static VectorDB parseFrom(
+  public static io.aicloud.sdk.hyena.pb.VectorDB parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static VectorDB parseFrom(
+  public static io.aicloud.sdk.hyena.pb.VectorDB parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static VectorDB parseFrom(
+  public static io.aicloud.sdk.hyena.pb.VectorDB parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static VectorDB parseFrom(byte[] data)
+  public static io.aicloud.sdk.hyena.pb.VectorDB parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static VectorDB parseFrom(
+  public static io.aicloud.sdk.hyena.pb.VectorDB parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static VectorDB parseFrom(java.io.InputStream input)
+  public static io.aicloud.sdk.hyena.pb.VectorDB parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static VectorDB parseFrom(
+  public static io.aicloud.sdk.hyena.pb.VectorDB parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static VectorDB parseDelimitedFrom(java.io.InputStream input)
+  public static io.aicloud.sdk.hyena.pb.VectorDB parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static VectorDB parseDelimitedFrom(
+  public static io.aicloud.sdk.hyena.pb.VectorDB parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static VectorDB parseFrom(
+  public static io.aicloud.sdk.hyena.pb.VectorDB parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static VectorDB parseFrom(
+  public static io.aicloud.sdk.hyena.pb.VectorDB parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -434,7 +434,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(VectorDB prototype) {
+  public static Builder newBuilder(io.aicloud.sdk.hyena.pb.VectorDB prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   public Builder toBuilder() {
@@ -442,7 +442,7 @@ private static final long serialVersionUID = 0L;
         ? new Builder() : new Builder().mergeFrom(this);
   }
 
-  @Override
+  @java.lang.Override
   protected Builder newBuilderForType(
       com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
@@ -458,17 +458,17 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:meta.VectorDB)
-      VectorDBOrBuilder {
+      io.aicloud.sdk.hyena.pb.VectorDBOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return HyenaMetaPB.internal_static_meta_VectorDB_descriptor;
+      return io.aicloud.sdk.hyena.pb.HyenaMetaPB.internal_static_meta_VectorDB_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return HyenaMetaPB.internal_static_meta_VectorDB_fieldAccessorTable
+      return io.aicloud.sdk.hyena.pb.HyenaMetaPB.internal_static_meta_VectorDB_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              VectorDB.class, VectorDB.Builder.class);
+              io.aicloud.sdk.hyena.pb.VectorDB.class, io.aicloud.sdk.hyena.pb.VectorDB.Builder.class);
     }
 
     // Construct using io.aicloud.sdk.hyena.pb.VectorDB.newBuilder()
@@ -513,23 +513,23 @@ private static final long serialVersionUID = 0L;
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return HyenaMetaPB.internal_static_meta_VectorDB_descriptor;
+      return io.aicloud.sdk.hyena.pb.HyenaMetaPB.internal_static_meta_VectorDB_descriptor;
     }
 
-    public VectorDB getDefaultInstanceForType() {
-      return VectorDB.getDefaultInstance();
+    public io.aicloud.sdk.hyena.pb.VectorDB getDefaultInstanceForType() {
+      return io.aicloud.sdk.hyena.pb.VectorDB.getDefaultInstance();
     }
 
-    public VectorDB build() {
-      VectorDB result = buildPartial();
+    public io.aicloud.sdk.hyena.pb.VectorDB build() {
+      io.aicloud.sdk.hyena.pb.VectorDB result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
       return result;
     }
 
-    public VectorDB buildPartial() {
-      VectorDB result = new VectorDB(this);
+    public io.aicloud.sdk.hyena.pb.VectorDB buildPartial() {
+      io.aicloud.sdk.hyena.pb.VectorDB result = new io.aicloud.sdk.hyena.pb.VectorDB(this);
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -571,7 +571,7 @@ private static final long serialVersionUID = 0L;
     }
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        Object value) {
+        java.lang.Object value) {
       return (Builder) super.setField(field, value);
     }
     public Builder clearField(
@@ -584,25 +584,25 @@ private static final long serialVersionUID = 0L;
     }
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, Object value) {
+        int index, java.lang.Object value) {
       return (Builder) super.setRepeatedField(field, index, value);
     }
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        Object value) {
+        java.lang.Object value) {
       return (Builder) super.addRepeatedField(field, value);
     }
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof VectorDB) {
-        return mergeFrom((VectorDB)other);
+      if (other instanceof io.aicloud.sdk.hyena.pb.VectorDB) {
+        return mergeFrom((io.aicloud.sdk.hyena.pb.VectorDB)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(VectorDB other) {
-      if (other == VectorDB.getDefaultInstance()) return this;
+    public Builder mergeFrom(io.aicloud.sdk.hyena.pb.VectorDB other) {
+      if (other == io.aicloud.sdk.hyena.pb.VectorDB.getDefaultInstance()) return this;
       if (other.hasId()) {
         setId(other.getId());
       }
@@ -633,7 +633,7 @@ private static final long serialVersionUID = 0L;
             peersBuilder_ = null;
             peers_ = other.peers_;
             bitField0_ = (bitField0_ & ~0x00000010);
-            peersBuilder_ =
+            peersBuilder_ = 
               com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                  getPeersFieldBuilder() : null;
           } else {
@@ -654,11 +654,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      VectorDB parsedMessage = null;
+      io.aicloud.sdk.hyena.pb.VectorDB parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (VectorDB) e.getUnfinishedMessage();
+        parsedMessage = (io.aicloud.sdk.hyena.pb.VectorDB) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -711,14 +711,14 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>optional .meta.DBState state = 2;</code>
      */
-    public DBState getState() {
-      DBState result = DBState.valueOf(state_);
-      return result == null ? DBState.RU : result;
+    public io.aicloud.sdk.hyena.pb.DBState getState() {
+      io.aicloud.sdk.hyena.pb.DBState result = io.aicloud.sdk.hyena.pb.DBState.valueOf(state_);
+      return result == null ? io.aicloud.sdk.hyena.pb.DBState.RU : result;
     }
     /**
      * <code>optional .meta.DBState state = 2;</code>
      */
-    public Builder setState(DBState value) {
+    public Builder setState(io.aicloud.sdk.hyena.pb.DBState value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -769,9 +769,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private Epoch epoch_ = null;
+    private io.aicloud.sdk.hyena.pb.Epoch epoch_ = null;
     private com.google.protobuf.SingleFieldBuilderV3<
-        Epoch, Epoch.Builder, EpochOrBuilder> epochBuilder_;
+        io.aicloud.sdk.hyena.pb.Epoch, io.aicloud.sdk.hyena.pb.Epoch.Builder, io.aicloud.sdk.hyena.pb.EpochOrBuilder> epochBuilder_;
     /**
      * <code>optional .meta.Epoch epoch = 4;</code>
      */
@@ -781,9 +781,9 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>optional .meta.Epoch epoch = 4;</code>
      */
-    public Epoch getEpoch() {
+    public io.aicloud.sdk.hyena.pb.Epoch getEpoch() {
       if (epochBuilder_ == null) {
-        return epoch_ == null ? Epoch.getDefaultInstance() : epoch_;
+        return epoch_ == null ? io.aicloud.sdk.hyena.pb.Epoch.getDefaultInstance() : epoch_;
       } else {
         return epochBuilder_.getMessage();
       }
@@ -791,7 +791,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>optional .meta.Epoch epoch = 4;</code>
      */
-    public Builder setEpoch(Epoch value) {
+    public Builder setEpoch(io.aicloud.sdk.hyena.pb.Epoch value) {
       if (epochBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -808,7 +808,7 @@ private static final long serialVersionUID = 0L;
      * <code>optional .meta.Epoch epoch = 4;</code>
      */
     public Builder setEpoch(
-        Epoch.Builder builderForValue) {
+        io.aicloud.sdk.hyena.pb.Epoch.Builder builderForValue) {
       if (epochBuilder_ == null) {
         epoch_ = builderForValue.build();
         onChanged();
@@ -821,13 +821,13 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>optional .meta.Epoch epoch = 4;</code>
      */
-    public Builder mergeEpoch(Epoch value) {
+    public Builder mergeEpoch(io.aicloud.sdk.hyena.pb.Epoch value) {
       if (epochBuilder_ == null) {
         if (((bitField0_ & 0x00000008) == 0x00000008) &&
             epoch_ != null &&
-            epoch_ != Epoch.getDefaultInstance()) {
+            epoch_ != io.aicloud.sdk.hyena.pb.Epoch.getDefaultInstance()) {
           epoch_ =
-            Epoch.newBuilder(epoch_).mergeFrom(value).buildPartial();
+            io.aicloud.sdk.hyena.pb.Epoch.newBuilder(epoch_).mergeFrom(value).buildPartial();
         } else {
           epoch_ = value;
         }
@@ -854,7 +854,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>optional .meta.Epoch epoch = 4;</code>
      */
-    public Epoch.Builder getEpochBuilder() {
+    public io.aicloud.sdk.hyena.pb.Epoch.Builder getEpochBuilder() {
       bitField0_ |= 0x00000008;
       onChanged();
       return getEpochFieldBuilder().getBuilder();
@@ -862,23 +862,23 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>optional .meta.Epoch epoch = 4;</code>
      */
-    public EpochOrBuilder getEpochOrBuilder() {
+    public io.aicloud.sdk.hyena.pb.EpochOrBuilder getEpochOrBuilder() {
       if (epochBuilder_ != null) {
         return epochBuilder_.getMessageOrBuilder();
       } else {
         return epoch_ == null ?
-            Epoch.getDefaultInstance() : epoch_;
+            io.aicloud.sdk.hyena.pb.Epoch.getDefaultInstance() : epoch_;
       }
     }
     /**
      * <code>optional .meta.Epoch epoch = 4;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        Epoch, Epoch.Builder, EpochOrBuilder>
+        io.aicloud.sdk.hyena.pb.Epoch, io.aicloud.sdk.hyena.pb.Epoch.Builder, io.aicloud.sdk.hyena.pb.EpochOrBuilder> 
         getEpochFieldBuilder() {
       if (epochBuilder_ == null) {
         epochBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            Epoch, Epoch.Builder, EpochOrBuilder>(
+            io.aicloud.sdk.hyena.pb.Epoch, io.aicloud.sdk.hyena.pb.Epoch.Builder, io.aicloud.sdk.hyena.pb.EpochOrBuilder>(
                 getEpoch(),
                 getParentForChildren(),
                 isClean());
@@ -887,22 +887,22 @@ private static final long serialVersionUID = 0L;
       return epochBuilder_;
     }
 
-    private java.util.List<Peer> peers_ =
+    private java.util.List<io.aicloud.sdk.hyena.pb.Peer> peers_ =
       java.util.Collections.emptyList();
     private void ensurePeersIsMutable() {
       if (!((bitField0_ & 0x00000010) == 0x00000010)) {
-        peers_ = new java.util.ArrayList<Peer>(peers_);
+        peers_ = new java.util.ArrayList<io.aicloud.sdk.hyena.pb.Peer>(peers_);
         bitField0_ |= 0x00000010;
        }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        Peer, Peer.Builder, PeerOrBuilder> peersBuilder_;
+        io.aicloud.sdk.hyena.pb.Peer, io.aicloud.sdk.hyena.pb.Peer.Builder, io.aicloud.sdk.hyena.pb.PeerOrBuilder> peersBuilder_;
 
     /**
      * <code>repeated .meta.Peer peers = 5;</code>
      */
-    public java.util.List<Peer> getPeersList() {
+    public java.util.List<io.aicloud.sdk.hyena.pb.Peer> getPeersList() {
       if (peersBuilder_ == null) {
         return java.util.Collections.unmodifiableList(peers_);
       } else {
@@ -922,7 +922,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>repeated .meta.Peer peers = 5;</code>
      */
-    public Peer getPeers(int index) {
+    public io.aicloud.sdk.hyena.pb.Peer getPeers(int index) {
       if (peersBuilder_ == null) {
         return peers_.get(index);
       } else {
@@ -933,7 +933,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .meta.Peer peers = 5;</code>
      */
     public Builder setPeers(
-        int index, Peer value) {
+        int index, io.aicloud.sdk.hyena.pb.Peer value) {
       if (peersBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -950,7 +950,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .meta.Peer peers = 5;</code>
      */
     public Builder setPeers(
-        int index, Peer.Builder builderForValue) {
+        int index, io.aicloud.sdk.hyena.pb.Peer.Builder builderForValue) {
       if (peersBuilder_ == null) {
         ensurePeersIsMutable();
         peers_.set(index, builderForValue.build());
@@ -963,7 +963,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>repeated .meta.Peer peers = 5;</code>
      */
-    public Builder addPeers(Peer value) {
+    public Builder addPeers(io.aicloud.sdk.hyena.pb.Peer value) {
       if (peersBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -980,7 +980,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .meta.Peer peers = 5;</code>
      */
     public Builder addPeers(
-        int index, Peer value) {
+        int index, io.aicloud.sdk.hyena.pb.Peer value) {
       if (peersBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -997,7 +997,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .meta.Peer peers = 5;</code>
      */
     public Builder addPeers(
-        Peer.Builder builderForValue) {
+        io.aicloud.sdk.hyena.pb.Peer.Builder builderForValue) {
       if (peersBuilder_ == null) {
         ensurePeersIsMutable();
         peers_.add(builderForValue.build());
@@ -1011,7 +1011,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .meta.Peer peers = 5;</code>
      */
     public Builder addPeers(
-        int index, Peer.Builder builderForValue) {
+        int index, io.aicloud.sdk.hyena.pb.Peer.Builder builderForValue) {
       if (peersBuilder_ == null) {
         ensurePeersIsMutable();
         peers_.add(index, builderForValue.build());
@@ -1025,7 +1025,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .meta.Peer peers = 5;</code>
      */
     public Builder addAllPeers(
-        Iterable<? extends Peer> values) {
+        java.lang.Iterable<? extends io.aicloud.sdk.hyena.pb.Peer> values) {
       if (peersBuilder_ == null) {
         ensurePeersIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -1065,14 +1065,14 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>repeated .meta.Peer peers = 5;</code>
      */
-    public Peer.Builder getPeersBuilder(
+    public io.aicloud.sdk.hyena.pb.Peer.Builder getPeersBuilder(
         int index) {
       return getPeersFieldBuilder().getBuilder(index);
     }
     /**
      * <code>repeated .meta.Peer peers = 5;</code>
      */
-    public PeerOrBuilder getPeersOrBuilder(
+    public io.aicloud.sdk.hyena.pb.PeerOrBuilder getPeersOrBuilder(
         int index) {
       if (peersBuilder_ == null) {
         return peers_.get(index);  } else {
@@ -1082,7 +1082,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>repeated .meta.Peer peers = 5;</code>
      */
-    public java.util.List<? extends PeerOrBuilder>
+    public java.util.List<? extends io.aicloud.sdk.hyena.pb.PeerOrBuilder> 
          getPeersOrBuilderList() {
       if (peersBuilder_ != null) {
         return peersBuilder_.getMessageOrBuilderList();
@@ -1093,31 +1093,31 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>repeated .meta.Peer peers = 5;</code>
      */
-    public Peer.Builder addPeersBuilder() {
+    public io.aicloud.sdk.hyena.pb.Peer.Builder addPeersBuilder() {
       return getPeersFieldBuilder().addBuilder(
-          Peer.getDefaultInstance());
+          io.aicloud.sdk.hyena.pb.Peer.getDefaultInstance());
     }
     /**
      * <code>repeated .meta.Peer peers = 5;</code>
      */
-    public Peer.Builder addPeersBuilder(
+    public io.aicloud.sdk.hyena.pb.Peer.Builder addPeersBuilder(
         int index) {
       return getPeersFieldBuilder().addBuilder(
-          index, Peer.getDefaultInstance());
+          index, io.aicloud.sdk.hyena.pb.Peer.getDefaultInstance());
     }
     /**
      * <code>repeated .meta.Peer peers = 5;</code>
      */
-    public java.util.List<Peer.Builder>
+    public java.util.List<io.aicloud.sdk.hyena.pb.Peer.Builder> 
          getPeersBuilderList() {
       return getPeersFieldBuilder().getBuilderList();
     }
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        Peer, Peer.Builder, PeerOrBuilder>
+        io.aicloud.sdk.hyena.pb.Peer, io.aicloud.sdk.hyena.pb.Peer.Builder, io.aicloud.sdk.hyena.pb.PeerOrBuilder> 
         getPeersFieldBuilder() {
       if (peersBuilder_ == null) {
         peersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            Peer, Peer.Builder, PeerOrBuilder>(
+            io.aicloud.sdk.hyena.pb.Peer, io.aicloud.sdk.hyena.pb.Peer.Builder, io.aicloud.sdk.hyena.pb.PeerOrBuilder>(
                 peers_,
                 ((bitField0_ & 0x00000010) == 0x00000010),
                 getParentForChildren(),
@@ -1141,16 +1141,16 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:meta.VectorDB)
-  private static final VectorDB DEFAULT_INSTANCE;
+  private static final io.aicloud.sdk.hyena.pb.VectorDB DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new VectorDB();
+    DEFAULT_INSTANCE = new io.aicloud.sdk.hyena.pb.VectorDB();
   }
 
-  public static VectorDB getDefaultInstance() {
+  public static io.aicloud.sdk.hyena.pb.VectorDB getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  @Deprecated public static final com.google.protobuf.Parser<VectorDB>
+  @java.lang.Deprecated public static final com.google.protobuf.Parser<VectorDB>
       PARSER = new com.google.protobuf.AbstractParser<VectorDB>() {
     public VectorDB parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
@@ -1164,12 +1164,12 @@ private static final long serialVersionUID = 0L;
     return PARSER;
   }
 
-  @Override
+  @java.lang.Override
   public com.google.protobuf.Parser<VectorDB> getParserForType() {
     return PARSER;
   }
 
-  public VectorDB getDefaultInstanceForType() {
+  public io.aicloud.sdk.hyena.pb.VectorDB getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

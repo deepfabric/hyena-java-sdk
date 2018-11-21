@@ -23,7 +23,7 @@ public interface StoreOrBuilder extends
   /**
    * <code>optional string address = 2;</code>
    */
-  String getAddress();
+  java.lang.String getAddress();
   /**
    * <code>optional string address = 2;</code>
    */
@@ -37,7 +37,7 @@ public interface StoreOrBuilder extends
   /**
    * <code>optional string clientAddress = 3;</code>
    */
-  String getClientAddress();
+  java.lang.String getClientAddress();
   /**
    * <code>optional string clientAddress = 3;</code>
    */
@@ -47,12 +47,12 @@ public interface StoreOrBuilder extends
   /**
    * <code>repeated .meta.Label lables = 4;</code>
    */
-  java.util.List<Label>
+  java.util.List<io.aicloud.sdk.hyena.pb.Label> 
       getLablesList();
   /**
    * <code>repeated .meta.Label lables = 4;</code>
    */
-  Label getLables(int index);
+  io.aicloud.sdk.hyena.pb.Label getLables(int index);
   /**
    * <code>repeated .meta.Label lables = 4;</code>
    */
@@ -60,13 +60,13 @@ public interface StoreOrBuilder extends
   /**
    * <code>repeated .meta.Label lables = 4;</code>
    */
-  java.util.List<? extends LabelOrBuilder>
+  java.util.List<? extends io.aicloud.sdk.hyena.pb.LabelOrBuilder> 
       getLablesOrBuilderList();
   /**
    * <code>repeated .meta.Label lables = 4;</code>
    */
-  LabelOrBuilder getLablesOrBuilder(
-          int index);
+  io.aicloud.sdk.hyena.pb.LabelOrBuilder getLablesOrBuilder(
+      int index);
 
   /**
    * <code>optional .meta.StoreState state = 5;</code>
@@ -75,5 +75,5 @@ public interface StoreOrBuilder extends
   /**
    * <code>optional .meta.StoreState state = 5;</code>
    */
-  StoreState getState();
+  io.aicloud.sdk.hyena.pb.StoreState getState();
 }

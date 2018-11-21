@@ -20,7 +20,7 @@ private static final long serialVersionUID = 0L;
     storeID_ = 0L;
   }
 
-  @Override
+  @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
     return this.unknownFields;
@@ -31,7 +31,7 @@ private static final long serialVersionUID = 0L;
       throws com.google.protobuf.InvalidProtocolBufferException {
     this();
     if (extensionRegistry == null) {
-      throw new NullPointerException();
+      throw new java.lang.NullPointerException();
     }
     int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
@@ -75,14 +75,14 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return HyenaMetaPB.internal_static_meta_Peer_descriptor;
+    return io.aicloud.sdk.hyena.pb.HyenaMetaPB.internal_static_meta_Peer_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return HyenaMetaPB.internal_static_meta_Peer_fieldAccessorTable
+    return io.aicloud.sdk.hyena.pb.HyenaMetaPB.internal_static_meta_Peer_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            Peer.class, Peer.Builder.class);
+            io.aicloud.sdk.hyena.pb.Peer.class, io.aicloud.sdk.hyena.pb.Peer.Builder.class);
   }
 
   private int bitField0_;
@@ -155,15 +155,15 @@ private static final long serialVersionUID = 0L;
     return size;
   }
 
-  @Override
-  public boolean equals(final Object obj) {
+  @java.lang.Override
+  public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof Peer)) {
+    if (!(obj instanceof io.aicloud.sdk.hyena.pb.Peer)) {
       return super.equals(obj);
     }
-    Peer other = (Peer) obj;
+    io.aicloud.sdk.hyena.pb.Peer other = (io.aicloud.sdk.hyena.pb.Peer) obj;
 
     boolean result = true;
     result = result && (hasId() == other.hasId());
@@ -180,7 +180,7 @@ private static final long serialVersionUID = 0L;
     return result;
   }
 
-  @Override
+  @java.lang.Override
   public int hashCode() {
     if (memoizedHashCode != 0) {
       return memoizedHashCode;
@@ -202,69 +202,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static Peer parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Peer parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static Peer parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Peer parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static Peer parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Peer parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static Peer parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Peer parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static Peer parseFrom(byte[] data)
+  public static io.aicloud.sdk.hyena.pb.Peer parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static Peer parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Peer parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static Peer parseFrom(java.io.InputStream input)
+  public static io.aicloud.sdk.hyena.pb.Peer parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static Peer parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Peer parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static Peer parseDelimitedFrom(java.io.InputStream input)
+  public static io.aicloud.sdk.hyena.pb.Peer parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static Peer parseDelimitedFrom(
+  public static io.aicloud.sdk.hyena.pb.Peer parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static Peer parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Peer parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static Peer parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Peer parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -276,7 +276,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(Peer prototype) {
+  public static Builder newBuilder(io.aicloud.sdk.hyena.pb.Peer prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   public Builder toBuilder() {
@@ -284,7 +284,7 @@ private static final long serialVersionUID = 0L;
         ? new Builder() : new Builder().mergeFrom(this);
   }
 
-  @Override
+  @java.lang.Override
   protected Builder newBuilderForType(
       com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
@@ -296,17 +296,17 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:meta.Peer)
-      PeerOrBuilder {
+      io.aicloud.sdk.hyena.pb.PeerOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return HyenaMetaPB.internal_static_meta_Peer_descriptor;
+      return io.aicloud.sdk.hyena.pb.HyenaMetaPB.internal_static_meta_Peer_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return HyenaMetaPB.internal_static_meta_Peer_fieldAccessorTable
+      return io.aicloud.sdk.hyena.pb.HyenaMetaPB.internal_static_meta_Peer_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Peer.class, Peer.Builder.class);
+              io.aicloud.sdk.hyena.pb.Peer.class, io.aicloud.sdk.hyena.pb.Peer.Builder.class);
     }
 
     // Construct using io.aicloud.sdk.hyena.pb.Peer.newBuilder()
@@ -335,23 +335,23 @@ private static final long serialVersionUID = 0L;
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return HyenaMetaPB.internal_static_meta_Peer_descriptor;
+      return io.aicloud.sdk.hyena.pb.HyenaMetaPB.internal_static_meta_Peer_descriptor;
     }
 
-    public Peer getDefaultInstanceForType() {
-      return Peer.getDefaultInstance();
+    public io.aicloud.sdk.hyena.pb.Peer getDefaultInstanceForType() {
+      return io.aicloud.sdk.hyena.pb.Peer.getDefaultInstance();
     }
 
-    public Peer build() {
-      Peer result = buildPartial();
+    public io.aicloud.sdk.hyena.pb.Peer build() {
+      io.aicloud.sdk.hyena.pb.Peer result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
       return result;
     }
 
-    public Peer buildPartial() {
-      Peer result = new Peer(this);
+    public io.aicloud.sdk.hyena.pb.Peer buildPartial() {
+      io.aicloud.sdk.hyena.pb.Peer result = new io.aicloud.sdk.hyena.pb.Peer(this);
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -372,7 +372,7 @@ private static final long serialVersionUID = 0L;
     }
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        Object value) {
+        java.lang.Object value) {
       return (Builder) super.setField(field, value);
     }
     public Builder clearField(
@@ -385,25 +385,25 @@ private static final long serialVersionUID = 0L;
     }
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, Object value) {
+        int index, java.lang.Object value) {
       return (Builder) super.setRepeatedField(field, index, value);
     }
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        Object value) {
+        java.lang.Object value) {
       return (Builder) super.addRepeatedField(field, value);
     }
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof Peer) {
-        return mergeFrom((Peer)other);
+      if (other instanceof io.aicloud.sdk.hyena.pb.Peer) {
+        return mergeFrom((io.aicloud.sdk.hyena.pb.Peer)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(Peer other) {
-      if (other == Peer.getDefaultInstance()) return this;
+    public Builder mergeFrom(io.aicloud.sdk.hyena.pb.Peer other) {
+      if (other == io.aicloud.sdk.hyena.pb.Peer.getDefaultInstance()) return this;
       if (other.hasId()) {
         setId(other.getId());
       }
@@ -423,11 +423,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Peer parsedMessage = null;
+      io.aicloud.sdk.hyena.pb.Peer parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (Peer) e.getUnfinishedMessage();
+        parsedMessage = (io.aicloud.sdk.hyena.pb.Peer) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -516,16 +516,16 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:meta.Peer)
-  private static final Peer DEFAULT_INSTANCE;
+  private static final io.aicloud.sdk.hyena.pb.Peer DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new Peer();
+    DEFAULT_INSTANCE = new io.aicloud.sdk.hyena.pb.Peer();
   }
 
-  public static Peer getDefaultInstance() {
+  public static io.aicloud.sdk.hyena.pb.Peer getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  @Deprecated public static final com.google.protobuf.Parser<Peer>
+  @java.lang.Deprecated public static final com.google.protobuf.Parser<Peer>
       PARSER = new com.google.protobuf.AbstractParser<Peer>() {
     public Peer parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
@@ -539,12 +539,12 @@ private static final long serialVersionUID = 0L;
     return PARSER;
   }
 
-  @Override
+  @java.lang.Override
   public com.google.protobuf.Parser<Peer> getParserForType() {
     return PARSER;
   }
 
-  public Peer getDefaultInstanceForType() {
+  public io.aicloud.sdk.hyena.pb.Peer getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

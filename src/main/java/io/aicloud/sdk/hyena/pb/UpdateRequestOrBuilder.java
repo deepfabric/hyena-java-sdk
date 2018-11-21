@@ -28,7 +28,7 @@ public interface UpdateRequestOrBuilder extends
   /**
    * <code>repeated float xbs = 3;</code>
    */
-  java.util.List<Float> getXbsList();
+  java.util.List<java.lang.Float> getXbsList();
   /**
    * <code>repeated float xbs = 3;</code>
    */
@@ -41,7 +41,7 @@ public interface UpdateRequestOrBuilder extends
   /**
    * <code>repeated int64 ids = 4;</code>
    */
-  java.util.List<Long> getIdsList();
+  java.util.List<java.lang.Long> getIdsList();
   /**
    * <code>repeated int64 ids = 4;</code>
    */

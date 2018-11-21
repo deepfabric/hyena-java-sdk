@@ -23,7 +23,7 @@ public interface VectorDBOrBuilder extends
   /**
    * <code>optional .meta.DBState state = 2;</code>
    */
-  DBState getState();
+  io.aicloud.sdk.hyena.pb.DBState getState();
 
   /**
    * <code>optional uint64 start = 3;</code>
@@ -41,21 +41,21 @@ public interface VectorDBOrBuilder extends
   /**
    * <code>optional .meta.Epoch epoch = 4;</code>
    */
-  Epoch getEpoch();
+  io.aicloud.sdk.hyena.pb.Epoch getEpoch();
   /**
    * <code>optional .meta.Epoch epoch = 4;</code>
    */
-  EpochOrBuilder getEpochOrBuilder();
+  io.aicloud.sdk.hyena.pb.EpochOrBuilder getEpochOrBuilder();
 
   /**
    * <code>repeated .meta.Peer peers = 5;</code>
    */
-  java.util.List<Peer>
+  java.util.List<io.aicloud.sdk.hyena.pb.Peer> 
       getPeersList();
   /**
    * <code>repeated .meta.Peer peers = 5;</code>
    */
-  Peer getPeers(int index);
+  io.aicloud.sdk.hyena.pb.Peer getPeers(int index);
   /**
    * <code>repeated .meta.Peer peers = 5;</code>
    */
@@ -63,11 +63,11 @@ public interface VectorDBOrBuilder extends
   /**
    * <code>repeated .meta.Peer peers = 5;</code>
    */
-  java.util.List<? extends PeerOrBuilder>
+  java.util.List<? extends io.aicloud.sdk.hyena.pb.PeerOrBuilder> 
       getPeersOrBuilderList();
   /**
    * <code>repeated .meta.Peer peers = 5;</code>
    */
-  PeerOrBuilder getPeersOrBuilder(
-          int index);
+  io.aicloud.sdk.hyena.pb.PeerOrBuilder getPeersOrBuilder(
+      int index);
 }

@@ -43,6 +43,7 @@ class RPCCodec implements Codec<MessageLite> {
                         break;
                     case MsgErrorRsp:
                         message = ErrResponse.parseFrom(in);
+                        log.debug("decode error response {}", message);
                         break;
                 }
             } catch (Throwable e) {

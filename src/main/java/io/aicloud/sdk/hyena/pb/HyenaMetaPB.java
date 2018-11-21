@@ -47,7 +47,7 @@ public final class HyenaMetaPB {
   private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
-    String[] descriptorData = {
+    java.lang.String[] descriptorData = {
       "\n\nmeta.proto\022\004meta\"#\n\005Label\022\013\n\003key\030\001 \001(\t" +
       "\022\r\n\005value\030\002 \001(\t\"#\n\004Peer\022\n\n\002id\030\001 \001(\004\022\017\n\007s" +
       "toreID\030\002 \001(\004\"-\n\005Epoch\022\017\n\007version\030\001 \001(\004\022\023" +
@@ -79,31 +79,31 @@ public final class HyenaMetaPB {
     internal_static_meta_Label_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_meta_Label_descriptor,
-        new String[] { "Key", "Value", });
+        new java.lang.String[] { "Key", "Value", });
     internal_static_meta_Peer_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_meta_Peer_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_meta_Peer_descriptor,
-        new String[] { "Id", "StoreID", });
+        new java.lang.String[] { "Id", "StoreID", });
     internal_static_meta_Epoch_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_meta_Epoch_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_meta_Epoch_descriptor,
-        new String[] { "Version", "ConfVersion", });
+        new java.lang.String[] { "Version", "ConfVersion", });
     internal_static_meta_VectorDB_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_meta_VectorDB_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_meta_VectorDB_descriptor,
-        new String[] { "Id", "State", "Start", "Epoch", "Peers", });
+        new java.lang.String[] { "Id", "State", "Start", "Epoch", "Peers", });
     internal_static_meta_Store_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_meta_Store_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_meta_Store_descriptor,
-        new String[] { "Id", "Address", "ClientAddress", "Lables", "State", });
+        new java.lang.String[] { "Id", "Address", "ClientAddress", "Lables", "State", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

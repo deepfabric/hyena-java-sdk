@@ -24,9 +24,10 @@ private static final long serialVersionUID = 0L;
     db_ = 0L;
     xq_ = java.util.Collections.emptyList();
     offset_ = 0L;
+    last_ = false;
   }
 
-  @Override
+  @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
     return this.unknownFields;
@@ -37,7 +38,7 @@ private static final long serialVersionUID = 0L;
       throws com.google.protobuf.InvalidProtocolBufferException {
     this();
     if (extensionRegistry == null) {
-      throw new NullPointerException();
+      throw new java.lang.NullPointerException();
     }
     int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
@@ -69,7 +70,7 @@ private static final long serialVersionUID = 0L;
           }
           case 29: {
             if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-              xq_ = new java.util.ArrayList<Float>();
+              xq_ = new java.util.ArrayList<java.lang.Float>();
               mutable_bitField0_ |= 0x00000004;
             }
             xq_.add(input.readFloat());
@@ -79,7 +80,7 @@ private static final long serialVersionUID = 0L;
             int length = input.readRawVarint32();
             int limit = input.pushLimit(length);
             if (!((mutable_bitField0_ & 0x00000004) == 0x00000004) && input.getBytesUntilLimit() > 0) {
-              xq_ = new java.util.ArrayList<Float>();
+              xq_ = new java.util.ArrayList<java.lang.Float>();
               mutable_bitField0_ |= 0x00000004;
             }
             while (input.getBytesUntilLimit() > 0) {
@@ -91,6 +92,11 @@ private static final long serialVersionUID = 0L;
           case 32: {
             bitField0_ |= 0x00000004;
             offset_ = input.readInt64();
+            break;
+          }
+          case 40: {
+            bitField0_ |= 0x00000008;
+            last_ = input.readBool();
             break;
           }
         }
@@ -110,14 +116,14 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return HyenaRPCPB.internal_static_rpc_SearchRequest_descriptor;
+    return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_SearchRequest_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return HyenaRPCPB.internal_static_rpc_SearchRequest_fieldAccessorTable
+    return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_SearchRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            SearchRequest.class, SearchRequest.Builder.class);
+            io.aicloud.sdk.hyena.pb.SearchRequest.class, io.aicloud.sdk.hyena.pb.SearchRequest.Builder.class);
   }
 
   private int bitField0_;
@@ -152,11 +158,11 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int XQ_FIELD_NUMBER = 3;
-  private java.util.List<Float> xq_;
+  private java.util.List<java.lang.Float> xq_;
   /**
    * <code>repeated float xq = 3;</code>
    */
-  public java.util.List<Float>
+  public java.util.List<java.lang.Float>
       getXqList() {
     return xq_;
   }
@@ -188,6 +194,21 @@ private static final long serialVersionUID = 0L;
     return offset_;
   }
 
+  public static final int LAST_FIELD_NUMBER = 5;
+  private boolean last_;
+  /**
+   * <code>optional bool last = 5;</code>
+   */
+  public boolean hasLast() {
+    return ((bitField0_ & 0x00000008) == 0x00000008);
+  }
+  /**
+   * <code>optional bool last = 5;</code>
+   */
+  public boolean getLast() {
+    return last_;
+  }
+
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -211,6 +232,9 @@ private static final long serialVersionUID = 0L;
     }
     if (((bitField0_ & 0x00000004) == 0x00000004)) {
       output.writeInt64(4, offset_);
+    }
+    if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      output.writeBool(5, last_);
     }
     unknownFields.writeTo(output);
   }
@@ -238,20 +262,24 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(4, offset_);
     }
+    if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(5, last_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @Override
-  public boolean equals(final Object obj) {
+  @java.lang.Override
+  public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof SearchRequest)) {
+    if (!(obj instanceof io.aicloud.sdk.hyena.pb.SearchRequest)) {
       return super.equals(obj);
     }
-    SearchRequest other = (SearchRequest) obj;
+    io.aicloud.sdk.hyena.pb.SearchRequest other = (io.aicloud.sdk.hyena.pb.SearchRequest) obj;
 
     boolean result = true;
     result = result && (hasId() == other.hasId());
@@ -271,11 +299,16 @@ private static final long serialVersionUID = 0L;
       result = result && (getOffset()
           == other.getOffset());
     }
+    result = result && (hasLast() == other.hasLast());
+    if (hasLast()) {
+      result = result && (getLast()
+          == other.getLast());
+    }
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
 
-  @Override
+  @java.lang.Override
   public int hashCode() {
     if (memoizedHashCode != 0) {
       return memoizedHashCode;
@@ -300,74 +333,79 @@ private static final long serialVersionUID = 0L;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getOffset());
     }
+    if (hasLast()) {
+      hash = (37 * hash) + LAST_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getLast());
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static SearchRequest parseFrom(
+  public static io.aicloud.sdk.hyena.pb.SearchRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static SearchRequest parseFrom(
+  public static io.aicloud.sdk.hyena.pb.SearchRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static SearchRequest parseFrom(
+  public static io.aicloud.sdk.hyena.pb.SearchRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static SearchRequest parseFrom(
+  public static io.aicloud.sdk.hyena.pb.SearchRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static SearchRequest parseFrom(byte[] data)
+  public static io.aicloud.sdk.hyena.pb.SearchRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static SearchRequest parseFrom(
+  public static io.aicloud.sdk.hyena.pb.SearchRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static SearchRequest parseFrom(java.io.InputStream input)
+  public static io.aicloud.sdk.hyena.pb.SearchRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static SearchRequest parseFrom(
+  public static io.aicloud.sdk.hyena.pb.SearchRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static SearchRequest parseDelimitedFrom(java.io.InputStream input)
+  public static io.aicloud.sdk.hyena.pb.SearchRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static SearchRequest parseDelimitedFrom(
+  public static io.aicloud.sdk.hyena.pb.SearchRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static SearchRequest parseFrom(
+  public static io.aicloud.sdk.hyena.pb.SearchRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static SearchRequest parseFrom(
+  public static io.aicloud.sdk.hyena.pb.SearchRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -379,7 +417,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(SearchRequest prototype) {
+  public static Builder newBuilder(io.aicloud.sdk.hyena.pb.SearchRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   public Builder toBuilder() {
@@ -387,7 +425,7 @@ private static final long serialVersionUID = 0L;
         ? new Builder() : new Builder().mergeFrom(this);
   }
 
-  @Override
+  @java.lang.Override
   protected Builder newBuilderForType(
       com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
@@ -403,17 +441,17 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:rpc.SearchRequest)
-      SearchRequestOrBuilder {
+      io.aicloud.sdk.hyena.pb.SearchRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return HyenaRPCPB.internal_static_rpc_SearchRequest_descriptor;
+      return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_SearchRequest_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return HyenaRPCPB.internal_static_rpc_SearchRequest_fieldAccessorTable
+      return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_SearchRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              SearchRequest.class, SearchRequest.Builder.class);
+              io.aicloud.sdk.hyena.pb.SearchRequest.class, io.aicloud.sdk.hyena.pb.SearchRequest.Builder.class);
     }
 
     // Construct using io.aicloud.sdk.hyena.pb.SearchRequest.newBuilder()
@@ -441,28 +479,30 @@ private static final long serialVersionUID = 0L;
       bitField0_ = (bitField0_ & ~0x00000004);
       offset_ = 0L;
       bitField0_ = (bitField0_ & ~0x00000008);
+      last_ = false;
+      bitField0_ = (bitField0_ & ~0x00000010);
       return this;
     }
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return HyenaRPCPB.internal_static_rpc_SearchRequest_descriptor;
+      return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_SearchRequest_descriptor;
     }
 
-    public SearchRequest getDefaultInstanceForType() {
-      return SearchRequest.getDefaultInstance();
+    public io.aicloud.sdk.hyena.pb.SearchRequest getDefaultInstanceForType() {
+      return io.aicloud.sdk.hyena.pb.SearchRequest.getDefaultInstance();
     }
 
-    public SearchRequest build() {
-      SearchRequest result = buildPartial();
+    public io.aicloud.sdk.hyena.pb.SearchRequest build() {
+      io.aicloud.sdk.hyena.pb.SearchRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
       return result;
     }
 
-    public SearchRequest buildPartial() {
-      SearchRequest result = new SearchRequest(this);
+    public io.aicloud.sdk.hyena.pb.SearchRequest buildPartial() {
+      io.aicloud.sdk.hyena.pb.SearchRequest result = new io.aicloud.sdk.hyena.pb.SearchRequest(this);
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -482,6 +522,10 @@ private static final long serialVersionUID = 0L;
         to_bitField0_ |= 0x00000004;
       }
       result.offset_ = offset_;
+      if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+        to_bitField0_ |= 0x00000008;
+      }
+      result.last_ = last_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -492,7 +536,7 @@ private static final long serialVersionUID = 0L;
     }
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        Object value) {
+        java.lang.Object value) {
       return (Builder) super.setField(field, value);
     }
     public Builder clearField(
@@ -505,25 +549,25 @@ private static final long serialVersionUID = 0L;
     }
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, Object value) {
+        int index, java.lang.Object value) {
       return (Builder) super.setRepeatedField(field, index, value);
     }
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        Object value) {
+        java.lang.Object value) {
       return (Builder) super.addRepeatedField(field, value);
     }
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof SearchRequest) {
-        return mergeFrom((SearchRequest)other);
+      if (other instanceof io.aicloud.sdk.hyena.pb.SearchRequest) {
+        return mergeFrom((io.aicloud.sdk.hyena.pb.SearchRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(SearchRequest other) {
-      if (other == SearchRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(io.aicloud.sdk.hyena.pb.SearchRequest other) {
+      if (other == io.aicloud.sdk.hyena.pb.SearchRequest.getDefaultInstance()) return this;
       if (other.hasId()) {
         setId(other.getId());
       }
@@ -543,6 +587,9 @@ private static final long serialVersionUID = 0L;
       if (other.hasOffset()) {
         setOffset(other.getOffset());
       }
+      if (other.hasLast()) {
+        setLast(other.getLast());
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -556,11 +603,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      SearchRequest parsedMessage = null;
+      io.aicloud.sdk.hyena.pb.SearchRequest parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (SearchRequest) e.getUnfinishedMessage();
+        parsedMessage = (io.aicloud.sdk.hyena.pb.SearchRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -638,17 +685,17 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.util.List<Float> xq_ = java.util.Collections.emptyList();
+    private java.util.List<java.lang.Float> xq_ = java.util.Collections.emptyList();
     private void ensureXqIsMutable() {
       if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-        xq_ = new java.util.ArrayList<Float>(xq_);
+        xq_ = new java.util.ArrayList<java.lang.Float>(xq_);
         bitField0_ |= 0x00000004;
        }
     }
     /**
      * <code>repeated float xq = 3;</code>
      */
-    public java.util.List<Float>
+    public java.util.List<java.lang.Float>
         getXqList() {
       return java.util.Collections.unmodifiableList(xq_);
     }
@@ -687,7 +734,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated float xq = 3;</code>
      */
     public Builder addAllXq(
-        Iterable<? extends Float> values) {
+        java.lang.Iterable<? extends java.lang.Float> values) {
       ensureXqIsMutable();
       com.google.protobuf.AbstractMessageLite.Builder.addAll(
           values, xq_);
@@ -735,6 +782,38 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
+    private boolean last_ ;
+    /**
+     * <code>optional bool last = 5;</code>
+     */
+    public boolean hasLast() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional bool last = 5;</code>
+     */
+    public boolean getLast() {
+      return last_;
+    }
+    /**
+     * <code>optional bool last = 5;</code>
+     */
+    public Builder setLast(boolean value) {
+      bitField0_ |= 0x00000010;
+      last_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional bool last = 5;</code>
+     */
+    public Builder clearLast() {
+      bitField0_ = (bitField0_ & ~0x00000010);
+      last_ = false;
+      onChanged();
+      return this;
+    }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
@@ -750,16 +829,16 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:rpc.SearchRequest)
-  private static final SearchRequest DEFAULT_INSTANCE;
+  private static final io.aicloud.sdk.hyena.pb.SearchRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new SearchRequest();
+    DEFAULT_INSTANCE = new io.aicloud.sdk.hyena.pb.SearchRequest();
   }
 
-  public static SearchRequest getDefaultInstance() {
+  public static io.aicloud.sdk.hyena.pb.SearchRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  @Deprecated public static final com.google.protobuf.Parser<SearchRequest>
+  @java.lang.Deprecated public static final com.google.protobuf.Parser<SearchRequest>
       PARSER = new com.google.protobuf.AbstractParser<SearchRequest>() {
     public SearchRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
@@ -773,12 +852,12 @@ private static final long serialVersionUID = 0L;
     return PARSER;
   }
 
-  @Override
+  @java.lang.Override
   public com.google.protobuf.Parser<SearchRequest> getParserForType() {
     return PARSER;
   }
 
-  public SearchRequest getDefaultInstanceForType() {
+  public io.aicloud.sdk.hyena.pb.SearchRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

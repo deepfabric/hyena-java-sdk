@@ -4,23 +4,18 @@
 package io.aicloud.sdk.hyena.pb;
 
 /**
- * <pre>
- * InsertResponse insert response
- * </pre>
- *
- * Protobuf type {@code rpc.InsertResponse}
+ * Protobuf type {@code rpc.ServerIsBusy}
  */
-public  final class InsertResponse extends
+public  final class ServerIsBusy extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:rpc.InsertResponse)
-    InsertResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:rpc.ServerIsBusy)
+    ServerIsBusyOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use InsertResponse.newBuilder() to construct.
-  private InsertResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use ServerIsBusy.newBuilder() to construct.
+  private ServerIsBusy(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private InsertResponse() {
-    id_ = com.google.protobuf.ByteString.EMPTY;
+  private ServerIsBusy() {
   }
 
   @java.lang.Override
@@ -28,7 +23,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private InsertResponse(
+  private ServerIsBusy(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -36,7 +31,6 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
-    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -54,11 +48,6 @@ private static final long serialVersionUID = 0L;
             }
             break;
           }
-          case 10: {
-            bitField0_ |= 0x00000001;
-            id_ = input.readBytes();
-            break;
-          }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -73,30 +62,14 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_InsertResponse_descriptor;
+    return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_ServerIsBusy_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_InsertResponse_fieldAccessorTable
+    return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_ServerIsBusy_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            io.aicloud.sdk.hyena.pb.InsertResponse.class, io.aicloud.sdk.hyena.pb.InsertResponse.Builder.class);
-  }
-
-  private int bitField0_;
-  public static final int ID_FIELD_NUMBER = 1;
-  private com.google.protobuf.ByteString id_;
-  /**
-   * <code>optional bytes id = 1;</code>
-   */
-  public boolean hasId() {
-    return ((bitField0_ & 0x00000001) == 0x00000001);
-  }
-  /**
-   * <code>optional bytes id = 1;</code>
-   */
-  public com.google.protobuf.ByteString getId() {
-    return id_;
+            io.aicloud.sdk.hyena.pb.ServerIsBusy.class, io.aicloud.sdk.hyena.pb.ServerIsBusy.Builder.class);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -111,9 +84,6 @@ private static final long serialVersionUID = 0L;
 
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (((bitField0_ & 0x00000001) == 0x00000001)) {
-      output.writeBytes(1, id_);
-    }
     unknownFields.writeTo(output);
   }
 
@@ -122,10 +92,6 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (((bitField0_ & 0x00000001) == 0x00000001)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(1, id_);
-    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -136,17 +102,12 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof io.aicloud.sdk.hyena.pb.InsertResponse)) {
+    if (!(obj instanceof io.aicloud.sdk.hyena.pb.ServerIsBusy)) {
       return super.equals(obj);
     }
-    io.aicloud.sdk.hyena.pb.InsertResponse other = (io.aicloud.sdk.hyena.pb.InsertResponse) obj;
+    io.aicloud.sdk.hyena.pb.ServerIsBusy other = (io.aicloud.sdk.hyena.pb.ServerIsBusy) obj;
 
     boolean result = true;
-    result = result && (hasId() == other.hasId());
-    if (hasId()) {
-      result = result && getId()
-          .equals(other.getId());
-    }
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -158,78 +119,74 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasId()) {
-      hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getId().hashCode();
-    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.ServerIsBusy parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.ServerIsBusy parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.ServerIsBusy parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.ServerIsBusy parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseFrom(byte[] data)
+  public static io.aicloud.sdk.hyena.pb.ServerIsBusy parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.ServerIsBusy parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseFrom(java.io.InputStream input)
+  public static io.aicloud.sdk.hyena.pb.ServerIsBusy parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.ServerIsBusy parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseDelimitedFrom(java.io.InputStream input)
+  public static io.aicloud.sdk.hyena.pb.ServerIsBusy parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseDelimitedFrom(
+  public static io.aicloud.sdk.hyena.pb.ServerIsBusy parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.ServerIsBusy parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static io.aicloud.sdk.hyena.pb.InsertResponse parseFrom(
+  public static io.aicloud.sdk.hyena.pb.ServerIsBusy parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -241,7 +198,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(io.aicloud.sdk.hyena.pb.InsertResponse prototype) {
+  public static Builder newBuilder(io.aicloud.sdk.hyena.pb.ServerIsBusy prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   public Builder toBuilder() {
@@ -256,29 +213,25 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * InsertResponse insert response
-   * </pre>
-   *
-   * Protobuf type {@code rpc.InsertResponse}
+   * Protobuf type {@code rpc.ServerIsBusy}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:rpc.InsertResponse)
-      io.aicloud.sdk.hyena.pb.InsertResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:rpc.ServerIsBusy)
+      io.aicloud.sdk.hyena.pb.ServerIsBusyOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_InsertResponse_descriptor;
+      return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_ServerIsBusy_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_InsertResponse_fieldAccessorTable
+      return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_ServerIsBusy_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              io.aicloud.sdk.hyena.pb.InsertResponse.class, io.aicloud.sdk.hyena.pb.InsertResponse.Builder.class);
+              io.aicloud.sdk.hyena.pb.ServerIsBusy.class, io.aicloud.sdk.hyena.pb.ServerIsBusy.Builder.class);
     }
 
-    // Construct using io.aicloud.sdk.hyena.pb.InsertResponse.newBuilder()
+    // Construct using io.aicloud.sdk.hyena.pb.ServerIsBusy.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -295,37 +248,28 @@ private static final long serialVersionUID = 0L;
     }
     public Builder clear() {
       super.clear();
-      id_ = com.google.protobuf.ByteString.EMPTY;
-      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_InsertResponse_descriptor;
+      return io.aicloud.sdk.hyena.pb.HyenaRPCPB.internal_static_rpc_ServerIsBusy_descriptor;
     }
 
-    public io.aicloud.sdk.hyena.pb.InsertResponse getDefaultInstanceForType() {
-      return io.aicloud.sdk.hyena.pb.InsertResponse.getDefaultInstance();
+    public io.aicloud.sdk.hyena.pb.ServerIsBusy getDefaultInstanceForType() {
+      return io.aicloud.sdk.hyena.pb.ServerIsBusy.getDefaultInstance();
     }
 
-    public io.aicloud.sdk.hyena.pb.InsertResponse build() {
-      io.aicloud.sdk.hyena.pb.InsertResponse result = buildPartial();
+    public io.aicloud.sdk.hyena.pb.ServerIsBusy build() {
+      io.aicloud.sdk.hyena.pb.ServerIsBusy result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
       return result;
     }
 
-    public io.aicloud.sdk.hyena.pb.InsertResponse buildPartial() {
-      io.aicloud.sdk.hyena.pb.InsertResponse result = new io.aicloud.sdk.hyena.pb.InsertResponse(this);
-      int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
-      if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-        to_bitField0_ |= 0x00000001;
-      }
-      result.id_ = id_;
-      result.bitField0_ = to_bitField0_;
+    public io.aicloud.sdk.hyena.pb.ServerIsBusy buildPartial() {
+      io.aicloud.sdk.hyena.pb.ServerIsBusy result = new io.aicloud.sdk.hyena.pb.ServerIsBusy(this);
       onBuilt();
       return result;
     }
@@ -357,19 +301,16 @@ private static final long serialVersionUID = 0L;
       return (Builder) super.addRepeatedField(field, value);
     }
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof io.aicloud.sdk.hyena.pb.InsertResponse) {
-        return mergeFrom((io.aicloud.sdk.hyena.pb.InsertResponse)other);
+      if (other instanceof io.aicloud.sdk.hyena.pb.ServerIsBusy) {
+        return mergeFrom((io.aicloud.sdk.hyena.pb.ServerIsBusy)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(io.aicloud.sdk.hyena.pb.InsertResponse other) {
-      if (other == io.aicloud.sdk.hyena.pb.InsertResponse.getDefaultInstance()) return this;
-      if (other.hasId()) {
-        setId(other.getId());
-      }
+    public Builder mergeFrom(io.aicloud.sdk.hyena.pb.ServerIsBusy other) {
+      if (other == io.aicloud.sdk.hyena.pb.ServerIsBusy.getDefaultInstance()) return this;
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -383,53 +324,17 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      io.aicloud.sdk.hyena.pb.InsertResponse parsedMessage = null;
+      io.aicloud.sdk.hyena.pb.ServerIsBusy parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (io.aicloud.sdk.hyena.pb.InsertResponse) e.getUnfinishedMessage();
+        parsedMessage = (io.aicloud.sdk.hyena.pb.ServerIsBusy) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
         }
       }
-      return this;
-    }
-    private int bitField0_;
-
-    private com.google.protobuf.ByteString id_ = com.google.protobuf.ByteString.EMPTY;
-    /**
-     * <code>optional bytes id = 1;</code>
-     */
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional bytes id = 1;</code>
-     */
-    public com.google.protobuf.ByteString getId() {
-      return id_;
-    }
-    /**
-     * <code>optional bytes id = 1;</code>
-     */
-    public Builder setId(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-      id_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional bytes id = 1;</code>
-     */
-    public Builder clearId() {
-      bitField0_ = (bitField0_ & ~0x00000001);
-      id_ = getDefaultInstance().getId();
-      onChanged();
       return this;
     }
     public final Builder setUnknownFields(
@@ -443,39 +348,39 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:rpc.InsertResponse)
+    // @@protoc_insertion_point(builder_scope:rpc.ServerIsBusy)
   }
 
-  // @@protoc_insertion_point(class_scope:rpc.InsertResponse)
-  private static final io.aicloud.sdk.hyena.pb.InsertResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:rpc.ServerIsBusy)
+  private static final io.aicloud.sdk.hyena.pb.ServerIsBusy DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new io.aicloud.sdk.hyena.pb.InsertResponse();
+    DEFAULT_INSTANCE = new io.aicloud.sdk.hyena.pb.ServerIsBusy();
   }
 
-  public static io.aicloud.sdk.hyena.pb.InsertResponse getDefaultInstance() {
+  public static io.aicloud.sdk.hyena.pb.ServerIsBusy getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  @java.lang.Deprecated public static final com.google.protobuf.Parser<InsertResponse>
-      PARSER = new com.google.protobuf.AbstractParser<InsertResponse>() {
-    public InsertResponse parsePartialFrom(
+  @java.lang.Deprecated public static final com.google.protobuf.Parser<ServerIsBusy>
+      PARSER = new com.google.protobuf.AbstractParser<ServerIsBusy>() {
+    public ServerIsBusy parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new InsertResponse(input, extensionRegistry);
+      return new ServerIsBusy(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<InsertResponse> parser() {
+  public static com.google.protobuf.Parser<ServerIsBusy> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<InsertResponse> getParserForType() {
+  public com.google.protobuf.Parser<ServerIsBusy> getParserForType() {
     return PARSER;
   }
 
-  public io.aicloud.sdk.hyena.pb.InsertResponse getDefaultInstanceForType() {
+  public io.aicloud.sdk.hyena.pb.ServerIsBusy getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

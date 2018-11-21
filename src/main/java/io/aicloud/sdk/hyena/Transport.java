@@ -16,7 +16,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.pool2.ObjectPool;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 import java.util.concurrent.*;
 
 /**
@@ -44,10 +47,15 @@ class Transport {
     private ObjectPool<SentData> pool = SimpleBeanPoolFactory.create(SentData::new);
 
     Transport(int executors, int ioExecutors, ChannelAware<MessageLite> channelAware) {
+        int adjustExecutors = 1;
+        while (adjustExecutors < executors) {
+            adjustExecutors <<= 1;
+        }
+
+        executors = adjustExecutors;
         log.info("transport start with {} executors and {} io executors",
                 executors,
                 ioExecutors);
-
         this.channelAware = channelAware;
         mask = executors - 1;
         executor = Executors.newFixedThreadPool(executors, new NamedThreadFactory("transport"));
@@ -89,7 +97,7 @@ class Transport {
         conn.connect();
         connectors.put(store.getId(), conn);
 
-        log.info("connector for store-{}({}) added",
+        log.debug("connector for store-{}({}) added",
                 store.getId(),
                 store.getClientAddress());
     }
@@ -125,11 +133,14 @@ class Transport {
 
                 Connector<MessageLite> conn = connectors.get(data.getTo());
                 if (null != conn) {
-                    conn.writeAndFlush(data.getMessage());
-
-                    if (log.isDebugEnabled()) {
-                        log.debug("request-{} sent succeed",
-                                Hex.encodeHexString(data.getId().toByteArray()));
+                    if (conn.writeAndFlush(data.getMessage())) {
+                        if (log.isDebugEnabled()) {
+                            log.debug("request-{} sent succeed",
+                                    Hex.encodeHexString(data.getId().toByteArray()));
+                        }
+                    } else {
+                        log.error("request-{} sent failed, {}",
+                                Hex.encodeHexString(data.getId().toByteArray()), data.getMessage());
                     }
                 } else {
                     log.warn("request-{} sent failed with no connector",

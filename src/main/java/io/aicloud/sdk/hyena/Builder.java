@@ -1,5 +1,7 @@
 package io.aicloud.sdk.hyena;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Description:
  * <pre>
@@ -35,6 +37,12 @@ public class Builder {
     public Builder kafka(String brokers, String topic) {
         options.setBrokers(brokers);
         options.setTopic(topic);
+        return this;
+    }
+
+    public Builder timeout(long timeout, TimeUnit unit) {
+        options.setTimeout(timeout);
+        options.setTimeoutUnit(unit);
         return this;
     }
 

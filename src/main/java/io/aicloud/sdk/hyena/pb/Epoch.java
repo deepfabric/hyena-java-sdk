@@ -20,7 +20,7 @@ private static final long serialVersionUID = 0L;
     confVersion_ = 0L;
   }
 
-  @Override
+  @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
     return this.unknownFields;
@@ -31,7 +31,7 @@ private static final long serialVersionUID = 0L;
       throws com.google.protobuf.InvalidProtocolBufferException {
     this();
     if (extensionRegistry == null) {
-      throw new NullPointerException();
+      throw new java.lang.NullPointerException();
     }
     int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
@@ -75,14 +75,14 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return HyenaMetaPB.internal_static_meta_Epoch_descriptor;
+    return io.aicloud.sdk.hyena.pb.HyenaMetaPB.internal_static_meta_Epoch_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return HyenaMetaPB.internal_static_meta_Epoch_fieldAccessorTable
+    return io.aicloud.sdk.hyena.pb.HyenaMetaPB.internal_static_meta_Epoch_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            Epoch.class, Epoch.Builder.class);
+            io.aicloud.sdk.hyena.pb.Epoch.class, io.aicloud.sdk.hyena.pb.Epoch.Builder.class);
   }
 
   private int bitField0_;
@@ -155,15 +155,15 @@ private static final long serialVersionUID = 0L;
     return size;
   }
 
-  @Override
-  public boolean equals(final Object obj) {
+  @java.lang.Override
+  public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof Epoch)) {
+    if (!(obj instanceof io.aicloud.sdk.hyena.pb.Epoch)) {
       return super.equals(obj);
     }
-    Epoch other = (Epoch) obj;
+    io.aicloud.sdk.hyena.pb.Epoch other = (io.aicloud.sdk.hyena.pb.Epoch) obj;
 
     boolean result = true;
     result = result && (hasVersion() == other.hasVersion());
@@ -180,7 +180,7 @@ private static final long serialVersionUID = 0L;
     return result;
   }
 
-  @Override
+  @java.lang.Override
   public int hashCode() {
     if (memoizedHashCode != 0) {
       return memoizedHashCode;
@@ -202,69 +202,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static Epoch parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Epoch parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static Epoch parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Epoch parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static Epoch parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Epoch parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static Epoch parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Epoch parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static Epoch parseFrom(byte[] data)
+  public static io.aicloud.sdk.hyena.pb.Epoch parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static Epoch parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Epoch parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static Epoch parseFrom(java.io.InputStream input)
+  public static io.aicloud.sdk.hyena.pb.Epoch parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static Epoch parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Epoch parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static Epoch parseDelimitedFrom(java.io.InputStream input)
+  public static io.aicloud.sdk.hyena.pb.Epoch parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static Epoch parseDelimitedFrom(
+  public static io.aicloud.sdk.hyena.pb.Epoch parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static Epoch parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Epoch parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static Epoch parseFrom(
+  public static io.aicloud.sdk.hyena.pb.Epoch parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -276,7 +276,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(Epoch prototype) {
+  public static Builder newBuilder(io.aicloud.sdk.hyena.pb.Epoch prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   public Builder toBuilder() {
@@ -284,7 +284,7 @@ private static final long serialVersionUID = 0L;
         ? new Builder() : new Builder().mergeFrom(this);
   }
 
-  @Override
+  @java.lang.Override
   protected Builder newBuilderForType(
       com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
@@ -296,17 +296,17 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:meta.Epoch)
-      EpochOrBuilder {
+      io.aicloud.sdk.hyena.pb.EpochOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return HyenaMetaPB.internal_static_meta_Epoch_descriptor;
+      return io.aicloud.sdk.hyena.pb.HyenaMetaPB.internal_static_meta_Epoch_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return HyenaMetaPB.internal_static_meta_Epoch_fieldAccessorTable
+      return io.aicloud.sdk.hyena.pb.HyenaMetaPB.internal_static_meta_Epoch_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Epoch.class, Epoch.Builder.class);
+              io.aicloud.sdk.hyena.pb.Epoch.class, io.aicloud.sdk.hyena.pb.Epoch.Builder.class);
     }
 
     // Construct using io.aicloud.sdk.hyena.pb.Epoch.newBuilder()
@@ -335,23 +335,23 @@ private static final long serialVersionUID = 0L;
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return HyenaMetaPB.internal_static_meta_Epoch_descriptor;
+      return io.aicloud.sdk.hyena.pb.HyenaMetaPB.internal_static_meta_Epoch_descriptor;
     }
 
-    public Epoch getDefaultInstanceForType() {
-      return Epoch.getDefaultInstance();
+    public io.aicloud.sdk.hyena.pb.Epoch getDefaultInstanceForType() {
+      return io.aicloud.sdk.hyena.pb.Epoch.getDefaultInstance();
     }
 
-    public Epoch build() {
-      Epoch result = buildPartial();
+    public io.aicloud.sdk.hyena.pb.Epoch build() {
+      io.aicloud.sdk.hyena.pb.Epoch result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
       return result;
     }
 
-    public Epoch buildPartial() {
-      Epoch result = new Epoch(this);
+    public io.aicloud.sdk.hyena.pb.Epoch buildPartial() {
+      io.aicloud.sdk.hyena.pb.Epoch result = new io.aicloud.sdk.hyena.pb.Epoch(this);
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -372,7 +372,7 @@ private static final long serialVersionUID = 0L;
     }
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        Object value) {
+        java.lang.Object value) {
       return (Builder) super.setField(field, value);
     }
     public Builder clearField(
@@ -385,25 +385,25 @@ private static final long serialVersionUID = 0L;
     }
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, Object value) {
+        int index, java.lang.Object value) {
       return (Builder) super.setRepeatedField(field, index, value);
     }
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        Object value) {
+        java.lang.Object value) {
       return (Builder) super.addRepeatedField(field, value);
     }
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof Epoch) {
-        return mergeFrom((Epoch)other);
+      if (other instanceof io.aicloud.sdk.hyena.pb.Epoch) {
+        return mergeFrom((io.aicloud.sdk.hyena.pb.Epoch)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(Epoch other) {
-      if (other == Epoch.getDefaultInstance()) return this;
+    public Builder mergeFrom(io.aicloud.sdk.hyena.pb.Epoch other) {
+      if (other == io.aicloud.sdk.hyena.pb.Epoch.getDefaultInstance()) return this;
       if (other.hasVersion()) {
         setVersion(other.getVersion());
       }
@@ -423,11 +423,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Epoch parsedMessage = null;
+      io.aicloud.sdk.hyena.pb.Epoch parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (Epoch) e.getUnfinishedMessage();
+        parsedMessage = (io.aicloud.sdk.hyena.pb.Epoch) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -516,16 +516,16 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:meta.Epoch)
-  private static final Epoch DEFAULT_INSTANCE;
+  private static final io.aicloud.sdk.hyena.pb.Epoch DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new Epoch();
+    DEFAULT_INSTANCE = new io.aicloud.sdk.hyena.pb.Epoch();
   }
 
-  public static Epoch getDefaultInstance() {
+  public static io.aicloud.sdk.hyena.pb.Epoch getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  @Deprecated public static final com.google.protobuf.Parser<Epoch>
+  @java.lang.Deprecated public static final com.google.protobuf.Parser<Epoch>
       PARSER = new com.google.protobuf.AbstractParser<Epoch>() {
     public Epoch parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
@@ -539,12 +539,12 @@ private static final long serialVersionUID = 0L;
     return PARSER;
   }
 
-  @Override
+  @java.lang.Override
   public com.google.protobuf.Parser<Epoch> getParserForType() {
     return PARSER;
   }
 
-  public Epoch getDefaultInstanceForType() {
+  public io.aicloud.sdk.hyena.pb.Epoch getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

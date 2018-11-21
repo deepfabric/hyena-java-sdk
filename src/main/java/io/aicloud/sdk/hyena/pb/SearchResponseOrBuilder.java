@@ -19,7 +19,7 @@ public interface SearchResponseOrBuilder extends
   /**
    * <code>repeated float distances = 2;</code>
    */
-  java.util.List<Float> getDistancesList();
+  java.util.List<java.lang.Float> getDistancesList();
   /**
    * <code>repeated float distances = 2;</code>
    */
@@ -32,7 +32,7 @@ public interface SearchResponseOrBuilder extends
   /**
    * <code>repeated int64 xids = 3;</code>
    */
-  java.util.List<Long> getXidsList();
+  java.util.List<java.lang.Long> getXidsList();
   /**
    * <code>repeated int64 xids = 3;</code>
    */
@@ -50,4 +50,13 @@ public interface SearchResponseOrBuilder extends
    * <code>optional uint64 db = 4;</code>
    */
   long getDb();
+
+  /**
+   * <code>optional bool searchNext = 5;</code>
+   */
+  boolean hasSearchNext();
+  /**
+   * <code>optional bool searchNext = 5;</code>
+   */
+  boolean getSearchNext();
 }

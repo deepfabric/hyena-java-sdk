@@ -28,7 +28,7 @@ public interface SearchRequestOrBuilder extends
   /**
    * <code>repeated float xq = 3;</code>
    */
-  java.util.List<Float> getXqList();
+  java.util.List<java.lang.Float> getXqList();
   /**
    * <code>repeated float xq = 3;</code>
    */
@@ -46,4 +46,13 @@ public interface SearchRequestOrBuilder extends
    * <code>optional int64 offset = 4;</code>
    */
   long getOffset();
+
+  /**
+   * <code>optional bool last = 5;</code>
+   */
+  boolean hasLast();
+  /**
+   * <code>optional bool last = 5;</code>
+   */
+  boolean getLast();
 }
