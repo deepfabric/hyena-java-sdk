@@ -1,7 +1,5 @@
 package io.aicloud.sdk.hyena;
 
-import io.aicloud.sdk.hyena.pb.SearchResponse;
-
 import java.util.concurrent.TimeoutException;
 
 /**
@@ -14,5 +12,5 @@ import java.util.concurrent.TimeoutException;
  * @author fagongzi
  */
 public interface Future {
-    SearchResponse get() throws TimeoutException, InterruptedException;
+    SearchResult get() throws TimeoutException, InterruptedException;
 }

@@ -18,5 +18,5 @@ public interface Client {
 
     long update(UpdateRequest request) throws Exception;
 
-    Future search(SearchRequest request) throws Exception;
+    Future search(Float ...xqs) throws Exception;
 }

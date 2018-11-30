@@ -14,6 +14,8 @@ import java.nio.charset.Charset;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Description:
@@ -71,11 +73,11 @@ class MQBasedClient implements Client, ChannelAware<MessageLite> {
     }
 
     @Override
-    public Future search(SearchRequest request) throws Exception {
+    public Future search(Float... xqs) throws Exception {
         Context ctx = new Context(options);
-        ctx.reset(request.getXqCount() / options.getDim());
+        ctx.reset(xqs.length / options.getDim());
 
-        doSearch(ctx, request);
+        doSearch(ctx, xqs);
 
         return ctx;
     }
@@ -99,7 +101,7 @@ class MQBasedClient implements Client, ChannelAware<MessageLite> {
         return metadata.offset();
     }
 
-    private void doSearch(Context ctx, SearchRequest request) {
+    private void doSearch(Context ctx, Float... xqs) {
         long after = offset.get();
         log.debug("send search request after {} offset", after);
         router.doForEachDB(db -> {
@@ -108,7 +110,7 @@ class MQBasedClient implements Client, ChannelAware<MessageLite> {
                     .setId(ByteString.copyFrom(UUID.randomUUID().toString(), UTF8))
                     .setOffset(after)
                     .setDb(db.getId())
-                    .addAllXq(request.getXqList())
+                    .addAllXq(Stream.of(xqs).collect(Collectors.toList()))
                     .setLast(db.getId() == router.getMaxDB())
                     .build();
             addAsyncContext(req, ctx);
@@ -182,24 +184,25 @@ class MQBasedClient implements Client, ChannelAware<MessageLite> {
         private AtomicLong received;
         private List<Float> distances;
         private List<Long> ids;
+        private List<Long> dbs;
         private CountDownLatch latch;
-        private long db;
 
         public Context(Options options) {
             this.options = options;
         }
 
         @Override
-        public SearchResponse get() throws InterruptedException, TimeoutException {
+        public SearchResult get() throws InterruptedException, TimeoutException {
             if (!wait(options.getTimeout(), options.getTimeoutUnit())) {
                 throw new TimeoutException("timeout wait response");
             }
 
-            return SearchResponse.newBuilder()
-                    .setDb(db)
-                    .addAllDistances(distances)
-                    .addAllXids(ids)
-                    .build();
+            SearchResult value = new SearchResult();
+            value.setDbs(dbs);
+            value.setIds(ids);
+            value.setDistances(distances);
+
+            return value;
         }
 
         private void reset(int size) {
@@ -227,7 +230,7 @@ class MQBasedClient implements Client, ChannelAware<MessageLite> {
                         if (betterThan(response.getDistances(i), distances.get(i))) {
                             distances.set(i, response.getDistances(i));
                             ids.set(i, value);
-                            db = response.getDb();
+                            dbs.set(i, response.getDb());
                         }
                     }
                 }
