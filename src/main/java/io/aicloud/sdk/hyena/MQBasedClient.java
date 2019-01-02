@@ -64,12 +64,12 @@ class MQBasedClient implements Client, ChannelAware<MessageLite> {
 
     @Override
     public long insert(InsertRequest request) throws Exception {
-        return doPublishToMQ(request);
+        return doPublishToMQ(request, true);
     }
 
     @Override
     public long update(UpdateRequest request) throws Exception {
-        return doPublishToMQ(request);
+        return doPublishToMQ(request, false);
     }
 
     @Override
@@ -82,19 +82,21 @@ class MQBasedClient implements Client, ChannelAware<MessageLite> {
         return ctx;
     }
 
-    private long doPublishToMQ(MessageLite request) throws ExecutionException, InterruptedException {
+    private long doPublishToMQ(MessageLite request, boolean refreshOffset) throws ExecutionException, InterruptedException {
         ProducerRecord<byte[], byte[]> record = new ProducerRecord<>(options.getTopic(), null, RPCCodec.DEFAULT.encodeWithLength(request));
         java.util.concurrent.Future<RecordMetadata> value = producer.send(record);
         RecordMetadata metadata = value.get();
 
-        for (; ; ) {
-            long oldValue = offset.get();
-            if (oldValue >= metadata.offset()) {
-                break;
-            }
+        if (refreshOffset) {
+            for (; ; ) {
+                long oldValue = offset.get();
+                if (oldValue >= metadata.offset()) {
+                    break;
+                }
 
-            if (offset.compareAndSet(oldValue, metadata.offset())) {
-                break;
+                if (offset.compareAndSet(oldValue, metadata.offset())) {
+                    break;
+                }
             }
         }
 
